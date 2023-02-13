@@ -1,9 +1,22 @@
 body {
-    font-family: "Avenir Next";
     margin: 0;
-
+    font-family: "Hiragino Kaku Gothic ProN";
 }
 
 * {
     margin: 0;
+}
+
+.container {
+    width: 1170px;
+    padding: 0px 15px;
+    margin: 0 auto;
+}
+
+.top-wrapper {
+    padding: 180px 0 100px 0;
+    background-image: url(../images/unknown-link.png);
+    color: white;
+    background-size: cover;
+    
 }
