@@ -34,3 +34,31 @@ body {
 .button-wrapper {
     margin: 20px 0;
 }
+
+.button-wrapper p {
+    margin: 10px 0;
+}
+
+.login {
+    background-color: #5865F2;
+}
+
+.discord {
+    background-color: #5865F2;
+}
+
+.premium {
+    background-color: #f1de0f;
+}
+
+.button {
+    padding: 8px 24px;
+    color: white;
+    display: inline-block;
+    opacity: 0.9;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    opacity: 1;
+}
