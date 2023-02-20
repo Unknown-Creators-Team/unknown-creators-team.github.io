@@ -7,17 +7,25 @@ body {
     margin: 0;
 }
 
-/* header */
-
-header {
-    
-}
-
 .container {
     width: 1170px;
     padding: 0px 15px;
     margin: 0 auto;
 }
+
+/* header */
+
+header {
+    height: 65px;
+    background-color: #e03409e6;
+}
+  
+.logo {
+    width: 124px;
+    margin-top: 20px;
+}
+
+/* wrapper */
 
 .top-wrapper {
     padding: 180px 0 100px 0;
@@ -68,3 +76,5 @@ header {
 .button:hover {
     opacity: 1;
 }
+
+/* footer */
