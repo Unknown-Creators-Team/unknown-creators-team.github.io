@@ -13,18 +13,6 @@ body {
     margin: 0 auto;
 }
 
-/* header */
-
-header {
-    height: 65px;
-    background-color: rgba(34, 49, 52, 0.9);
-}
-
-.logo {
-    width: 124px;
-    margin-top: 20px;
-}
-
 /* wrapper */
 
 .top-wrapper {
@@ -75,6 +63,18 @@ header {
 
 .button:hover {
     opacity: 1;
+}
+
+/* header */
+
+header {
+    height: 65px;
+    background-color: rgba(34, 49, 52, 0.9);
+}
+
+.logo {
+    width: 124px;
+    margin-top: 20px;
 }
 
 /* footer */
