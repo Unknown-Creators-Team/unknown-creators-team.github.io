@@ -12,7 +12,7 @@ a {
 }
 
 .container {
-    width: 1170px;
+    /* width: 1170px; */
     padding: 0px 15px;
     margin: 0 auto;
 }
@@ -38,12 +38,24 @@ header {
 }
 
 .header-right {
+    margin-top: 12px;
+    border-radius: 5px;
     float: right;
-    background-color: rgba(123, 29, 10, 0.3);
+    transition: all 0.5s;
+    background-color: rgba(238, 61, 37, 0.5);
 }  
  
 .header-right:hover {
-    background-color: rgba(123, 29, 10, 0.5);
+    
+    background-color: rgba(238, 61, 37, 0.8);
+}
+
+.header-right a {
+    line-height: 40px;
+    
+    padding: 0 25px;
+    color: white;
+    display: block;
 }
 
 /* wrapper */
