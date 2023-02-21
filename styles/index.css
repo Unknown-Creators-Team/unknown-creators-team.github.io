@@ -3,6 +3,10 @@ body {
     font-family: "Hiragino Kaku Gothic ProN";
 }
 
+a {
+    text-decoration: none;
+}
+
 * {
     margin: 0;
 }
@@ -11,6 +15,35 @@ body {
     width: 1170px;
     padding: 0px 15px;
     margin: 0 auto;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+/* header */
+
+header {
+    height: 65px;
+    background-color: #b6280be7;
+}
+
+.logo {
+    width: 180px;
+    margin-top: 7px;
+}
+
+.header-left {
+    float: left;
+}
+
+.header-right {
+    float: right;
+    background-color: rgba(123, 29, 10, 0.3);
+}  
+ 
+.header-right:hover {
+    background-color: rgba(123, 29, 10, 0.5);
 }
 
 /* wrapper */
@@ -46,15 +79,17 @@ body {
 }
 
 .discord {
+    margin-left: 12px;
     background-color: #5865F2;
 }
 
 .premium {
-    background-color: #f1de0f;
+    margin-left: 10px;
+    background-color: #f1a20f;
 }
 
 .button {
-    padding: 8px 24px;
+    padding: 8px 28px;
     color: white;
     display: inline-block;
     opacity: 0.8;
@@ -65,16 +100,11 @@ body {
     opacity: 1;
 }
 
-/* header */
-
-header {
-    height: 65px;
-    background-color: rgba(34, 49, 52, 0.9);
-}
-
-.logo {
-    width: 124px;
-    margin-top: 20px;
-}
-
 /* footer */
+
+/* text color */
+
+.text-green {
+    color: green;
+}
+
