@@ -1,0 +1,3 @@
+;/*FB_PKG_DELIM*/
+
+__d("BUIPrivateFocusLevelType",[],(function(a,b,c,d,e,f){"use strict";a=Object.freeze({hover:"hover",focus:"focus",pressed:"pressed"});b=Object.freeze({"default":"default",active:"active",disabled:"disabled"});f.BUIFocusLevelType=a;f.BUIElementStateType=b}),66);

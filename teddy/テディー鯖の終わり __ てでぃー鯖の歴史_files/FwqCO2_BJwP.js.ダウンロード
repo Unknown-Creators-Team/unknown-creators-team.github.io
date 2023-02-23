@@ -1,0 +1,3 @@
+;/*FB_PKG_DELIM*/
+
+__d("BUIPrivateThemeTypeSelectors",[],(function(a,b,c,d,e,f){"use strict";function a(a){return Object.keys(a.type.scale).reduce(function(b,c){var d=Math.round(a.type.scale[c][0]*a.type.base);b[c]={fontSize:d,lineHeight:Math.round(d*a.type.scale[c][1])};return b},{})}f.fontTypeSelector=a}),66);
