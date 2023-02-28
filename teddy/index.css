@@ -1,0 +1,210 @@
+body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN";
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+}
+
+.container {
+    width: 1170px;
+    padding: 0px 15px;
+    margin: 0 auto;
+}
+
+.fa {
+    margin-right: 5px;
+}
+
+/* header */
+
+header {
+    height: 65px;
+    background-color: #b6280be7;
+}
+
+.logo {
+    width: 180px;
+    margin-top: 7px;
+}
+
+.header-left {
+    float: left;
+}
+
+.header-right {
+    margin-top: 12px;
+    border-radius: 5px;
+    float: right;
+    transition: all 0.5s;
+    background-color: rgba(238, 61, 37, 0.5);
+}  
+ 
+.header-right:hover {
+    
+    background-color: rgba(255, 79, 56, 0.942);
+}
+
+.header-right a {
+    line-height: 40px;
+    
+    padding: 0 25px;
+    color: white;
+    display: block;
+}
+
+/* wrapper */
+/* top-wrapper */
+
+.top-wrapper {
+    padding: 180px 0 100px 0;
+    background-image: url(../images/unknown-link.webp);
+    color: white;
+    background-size: cover;
+    text-align: center;
+}
+
+.top-wrapper h1 {
+    opacity: 0.8;
+    font-size: 45px;
+    letter-spacing: 5px;
+}
+
+.top-wrapper p {
+    opacity: 0.8;
+}
+
+.button-wrapper {
+    margin: 20px 0;
+}
+
+.button-wrapper p {
+    margin: 10px 0;
+}
+
+.login {
+    background-color: #5865F2;
+}
+
+.discord {
+    margin-left: 12px;
+    background-color: #5865F2;
+}
+
+.premium {
+    margin-left: 10px;
+    background-color: #f1a20f;
+}
+
+.button {
+    padding: 8px 28px;
+    color: white;
+    display: inline-block;
+    opacity: 0.8;
+    border-radius: 4px;
+}
+
+.button:hover {
+    opacity: 1;
+}
+
+/* chats-wrapper */
+
+.chats-wrapper {
+    height: 200px;
+    padding-bottom: 80px;
+    background-color: #e7e7e7;
+    text-align: center;
+}
+
+.chats-wrapper .heading {
+    padding-top: 60px;
+    padding-bottom: 30px;
+    color: #5f5d60;
+} 
+  
+.chats-wrapper .heading h2 {
+    font-weight: normal;
+}
+
+.chats-wrapper .chat {
+    float: left;
+    width: 25%;
+}
+
+.chats-wrapper .chat a {
+    color: white;
+    font-size: 22px;
+    background-color: #787878;
+    display: block;
+    padding: 12px 0px;
+    margin: 10px 10px;
+    border-radius: 6px;
+    transition: all 0.5s;
+}
+
+.chats-wrapper .chat:hover a {
+    color: rgb(0, 0, 0);
+    font-size: 22px;
+    background-color: #bababa;
+    transition: all 0.5s;
+}
+
+/* images-wrapper */
+
+.images-wrapper {
+    height: 1400px;
+    padding-bottom: 80px;
+    background-color: #e7e7e7;
+    text-align: center;
+    
+}
+  
+.images-wrapper .heading {
+    padding-top: 60px;
+    padding-bottom: 30px;
+    color: #5f5d60;
+}
+  
+.images-wrapper .heading h2 {
+    font-weight: normal;
+}
+  
+.images-wrapper .image {
+    float: left;
+    width: 25%;
+    position: relative;
+}
+
+.images-wrapper .image-icon img {
+    width: 256px;
+    height: auto;
+    margin-bottom: 12px;
+}
+
+/* footer */
+
+/* other */
+
+.text-green { color: green; }
+
+.text-white { color: white; }
+
+.text-black { color: black; }
+
+.text-bold { font-weight: bold; }
+
+.bg-red { background-color: #ff5858; }
+
+.bg-blue { background-color: #4949ff; }
+
+.bg-green { background-color: #44bc44; }
+
+.circle-img img { border-radius: 50%; }
+
+.nowrap { white-space: nowrap; }
