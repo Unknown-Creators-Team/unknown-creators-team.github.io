@@ -1,0 +1,64 @@
+.music-wrapper {
+    text-align: center;
+}
+
+.music-head {
+   font-weight: normal; 
+   margin-top: 24px;
+}
+
+.music-wrapper .musics {
+    margin-top: 36px;
+    /* float: left; */
+    /* width: 25%; */
+    
+}
+
+.music-wrapper .music {
+    float: left;
+    width: 25%;
+}
+
+.music-wrapper .music a {
+    display: block;
+    background-color: #bcbcbc;
+    color: black;
+    font-size: 22px;
+    border-radius: 6px;
+    padding: 6px 8px;
+    margin: 12px 6px;
+}
+
+.music-wrapper .music span {
+    font-size: 12px;
+}
+
+
+.music-wrapper .msg a {
+    color: #323232;
+    background-color: #dddddd;
+    font-weight: bold;
+    transition: all 0.5s;
+    padding: 2px 3px;
+}
+
+.music-wrapper .msg a:hover {
+    
+    font-weight: bold;
+    transition: all 0.5s;
+    color: #dddddd;
+    background-color: #323232;
+}
+
+.music-wrapper .msg iframe {
+    margin-top: 12px;
+}
+
+.support {
+    font-size: 12px;
+    margin-top: 64px;
+}
+
+footer {
+    text-align: center;
+}
