@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="jp">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Commander API Generator | Test</title>
+    </head>
+
+    <!-- css読み込み -->
+    <link rel="stylesheet" href="">
+    <!-- js読み込み -->
+    <script src="generate.js"></script>
+
+    <body>
+
+        <header>
+            <div class="container">
+                <div class="header-left">
+                    <img src="/images/unknown-text.webp" alt="Unknown" class="logo" />
+                </div>
+                <div class="header-right">
+                    <a href="./login.html" class="header-login">ログイン</a>
+                </div>
+            </div>
+        </header>
+
+        <div class="gen-wrapper">
+
+            <div class="heading">
+                <h2>フォーム ジェネレーター</h2>
+            </div>
+
+            <div class="title">
+                <h3>タイトル</h3>
+                <input class="text-field">
+            </div>
+            
+            <div class="body">
+                <h3>ボディ</h3>
+                <form>
+                    <textarea></textarea>
+                </form>
+            </div>
+            
+            <div class="buttons">
+                <h3>ボタン</h3>
+                <div class="button">
+                    <div class="field">
+                        <textarea ></textarea>
+                    </div>
+                    <input type="button" value="Add">
+                </div>
+            </div>
+            
+            <div class="genererator">
+                <input type="button" onclick="generate()" value="Generate">
+
+                <h3>Command</h3>
+                <pre id="output" class="output"></pre>
+            </div>
+            
+        </div>
+        
+    </body>
+</html>

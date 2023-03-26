@@ -1,0 +1,95 @@
+@font-face {
+    font-family: "mainfont";
+    src: url("./assets/NotoSansJP-Light.otf");
+}
+
+body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN"; }
+
+a {
+    text-decoration: none; }
+
+* {
+    margin: 0; }
+
+.container {
+    width: 1170px;
+    padding: 0px 15px;
+    margin: 0 auto; }
+
+.fa {
+    margin-right: 5px; }
+
+/* header */
+
+header {
+    height: 65px;
+    background-color: #b6280be7; }
+
+.logo {
+    width: 180px;
+    margin-top: 7px; }
+
+.header-left {
+    float: left; }
+
+.header-right {
+    margin-top: 12px;
+    border-radius: 5px;
+    float: right;
+    transition: all 0.5s;
+    background-color: rgba(238, 61, 37, 0.5); }  
+ 
+.header-right:hover {
+    
+    background-color: rgba(255, 79, 56, 0.942); }
+
+.header-right a {
+    line-height: 40px;
+    
+    padding: 0 25px;
+    color: white;
+    display: block; }
+
+/* body {
+    background-color: gray;
+    color: white;
+    font-family: "mainfont";
+} */
+
+/* gen wrapper */
+
+.gen-wrapper {
+    margin-top: 12px;
+    text-align: center;    
+}
+
+.gen-wrapper textarea {
+    padding: 10px 10px;
+    border-radius: 6px;
+
+    width: 15vw;
+    height: 3vw;
+
+    resize: vertical;
+}
+
+.gen-wrapper .text-field {
+    padding: 10px 10px;
+    border-radius: 6px;
+
+    width: 15vw;
+    height: 12px;
+}
+
+.buttons .button {
+    float: right;
+}
+
+.output {
+    color: black;
+    background-color: bisque;
+    width: 20vw;
+    height: 25vw;
+}
