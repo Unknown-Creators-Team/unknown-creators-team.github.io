@@ -67,12 +67,55 @@ header {
 /* form-wrapper */
 .form-wrapper {
     text-align: center;
-    padding-top: 100px;
-    padding-bottom: 20px;
+    padding-top: 90px;
     background-color: #cccbcb;
 }
 
 /* footer */
+
+footer {
+    background-color: #bababa;
+    color: #000;
+    height: 260px;   
+}
+
+.footer-left {
+    float: left;
+}
+
+.footer-title {
+    padding-top: 80px;
+    color: #000;
+}
+
+.footer-title img {
+    border-radius: 50%;
+    height: 50px;
+    float: left;
+}
+
+.footer-title h2 {
+    padding: 10px 60px;
+}
+
+.footer-description {
+    padding-top: 3px;
+    font-size: 14px;
+}
+
+.footer-right {
+    padding: 80px 0px 0px 500px;
+}
+
+.footer-link {
+    float: left;
+    padding: 0px 50px;
+}
+
+.footer-link ul {
+    list-style: none;
+    padding-left: 0;
+}
 
 /* other */
 
