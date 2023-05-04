@@ -1,0 +1,49 @@
+.users-wrapper {
+    text-align: center;
+    background-color: #e7e7e7;
+    height: 1000px;
+}
+
+.heading {
+    padding-top: 90px;
+}
+
+.heading h2 {
+    font-weight: normal;
+}
+
+.user {
+    margin-top: 90px;
+    float: left;
+    width: 33.334%;
+}
+
+.user-icon {
+    height: 128px;
+    border-radius: 50%;
+}
+
+.buttons ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.buttons img {
+    height: 32px;
+    background-color: #ababab;
+    padding: 7px 12px;
+    border-radius: 6px;
+    margin: 0 12px;
+}
+
+.buttons ul{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.user-content {
+    width: 80%;
+    display: inline-block;
+    margin-top: 20px;
+}
