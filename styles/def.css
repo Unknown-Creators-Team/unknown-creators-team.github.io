@@ -138,6 +138,18 @@ footer {
     color: #000;
 }
 
+/* copyright */
+.copyright {
+    padding: 20px 0px;
+    height: 23px;
+    background-color: #000;
+}
+
+.copyright p {
+    float: right;
+    color: #fff;
+}
+
 /* other */
 
 .text-green { color: green; }
