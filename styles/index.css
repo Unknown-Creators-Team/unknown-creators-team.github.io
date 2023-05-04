@@ -1,51 +1,67 @@
 body {
     margin: 0;
-    font-family: "Hiragino Kaku Gothic ProN"; }
+    font-family: "Hiragino Kaku Gothic ProN"; 
+}
 
 a {
-    text-decoration: none; }
+    text-decoration: none; 
+}
 
 * {
-    margin: 0; }
+    margin: 0; 
+}
 
 .container {
     width: 1170px;
     padding: 0px 15px;
-    margin: 0 auto; }
+    margin: 0 auto; 
+}
 
 .fa {
-    margin-right: 5px; }
+    margin-right: 5px; 
+}
 
 /* header */
 
 header {
+    /* text-align: center; */
     height: 65px;
-    background-color: #b6280be7; }
+    width: 100%;
+    background-color: #b6280be7; 
+    position: fixed;
+    top: 0;
+
+    z-index: 10;
+}
 
 .logo {
     width: 180px;
-    margin-top: 7px; }
+    margin-top: 7px; 
+}
 
 .header-left {
-    float: left; }
+    float: left; 
+}
 
 .header-right {
     margin-top: 12px;
     border-radius: 5px;
     float: right;
     transition: all 0.5s;
-    background-color: rgba(238, 61, 37, 0.5); }  
+    background-color: rgba(238, 61, 37, 0.5); 
+}  
  
 .header-right:hover {
-    
-    background-color: rgba(255, 79, 56, 0.942); }
+    background-color: rgba(255, 79, 56, 0.942); 
+}
 
 .header-right a {
     line-height: 40px;
     
     padding: 0 25px;
     color: white;
-    display: block; }
+    display: block; 
+}
 
 /* wrapper */
 /* top-wrapper */
@@ -90,7 +106,7 @@ header {
     background-color: #f1a20f;
 }
 
-.button {
+.top-button {
     padding: 8px 28px;
     color: white;
     display: inline-block;
@@ -98,7 +114,7 @@ header {
     border-radius: 4px;
 }
 
-.button:hover {
+.top-button:hover {
     opacity: 1;
 }
 
@@ -174,6 +190,32 @@ header {
     margin-top: 20px;
     font-size: 12px;
     color: #888888;
+}
+
+/* message-wrapper */
+.heading h3 {
+    font-weight: normal;
+}
+
+.message-wrapper {
+    text-align: center;
+    height: 1000px;
+    padding-bottom: 80px;
+    background-color: #e7e7e7;
+}
+
+.message-button {
+    color:#ffffff;
+    background-color: #009805;
+    padding: 15px 40px;
+    border-radius: 7px;
+    box-shadow: 0 7px #005221;
+}
+
+.message-button:active {
+    box-shadow: none;
+    position: relative;
+    top: 7px;
 }
 
 /* footer */
