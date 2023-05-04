@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    font-family: "Hiragino Kaku Gothic ProN"; 
+}
+
+a {
+    text-decoration: none; 
+}
+
+* {
+    margin: 0; 
+}
+
+.container {
+    width: 1170px;
+    padding: 0px 15px;
+    margin: 0 auto; 
+}
+
+.fa {
+    margin-right: 5px; 
+}
+
+/* header */
+
+header {
+    /* text-align: center; */
+    height: 65px;
+    width: 100%;
+    background-color: #b6280be7; 
+    position: fixed;
+    top: 0;
+
+    z-index: 10;
+}
+
+.logo {
+    width: 180px;
+    margin-top: 7px; 
+}
+
+.header-left {
+    float: left; 
+}
+
+.header-right {
+    margin-top: 12px;
+    border-radius: 5px;
+    float: right;
+    transition: all 0.5s;
+    background-color: rgba(238, 61, 37, 0.5); 
+}  
+ 
+.header-right:hover {
+    background-color: rgba(255, 79, 56, 0.942); 
+}
+
+.header-right a {
+    line-height: 40px;
+    
+    padding: 0 25px;
+    color: white;
+    display: block; 
+}
+
+/* wrapper */
+/* form-wrapper */
+.form-wrapper {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 20px;
+    background-color: #cccbcb;
+}
+
+/* footer */
+
+/* other */
+
+.text-green { color: green; }
+
+.text-white { color: white; }
+
+.text-black { color: black; }
+
+.text-bold { font-weight: bold; }
+
+.bg-red { background-color: #ff5858; }
+
+.bg-blue { background-color: #4949ff; }
+
+.bg-green { background-color: #44bc44; }
+
+.circle-img img { border-radius: 50%; }
+
+.nowrap { white-space: nowrap; }
