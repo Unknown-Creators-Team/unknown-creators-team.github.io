@@ -111,7 +111,8 @@ footer {
 }
 
 .footer-title h2 {
-    padding: 10px 60px;
+    padding: 10px 0px 10px 60px;
+    color: #000;
 }
 
 .footer-description {

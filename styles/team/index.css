@@ -30,10 +30,25 @@
 
 .buttons img {
     height: 32px;
-    background-color: #ababab;
+    background-color: #aaaaaa;
     padding: 7px 12px;
     border-radius: 6px;
     margin: 0 12px;
+    box-shadow: 3px 3px #727272;
+    transition: all .3s;
+}
+
+.buttons img:hover {
+    background-color: #cecece;
+    box-shadow: 3px 3px #a0a0a0;
+}
+
+.buttons img:active {
+    background-color: #cecece;
+    position: relative;
+    box-shadow: none;
+    top: 3px;
+    left: 3px;
 }
 
 .buttons ul{
@@ -41,6 +56,8 @@
     display: flex;
     justify-content: center;
 }
+
+
 
 .user-content {
     width: 80%;
