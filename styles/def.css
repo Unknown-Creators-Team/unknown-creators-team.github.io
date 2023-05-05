@@ -122,6 +122,7 @@ footer {
 
 .footer-right {
     padding: 80px 0px 0px 500px;
+    /* float: right; */
 }
 
 .footer-link {
