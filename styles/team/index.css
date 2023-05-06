@@ -1,7 +1,7 @@
 .users-wrapper {
     text-align: center;
     background-color: #e7e7e7;
-    height: 1200px;
+    height: 1500px;
 }
 
 .heading {
@@ -17,8 +17,6 @@
     float: left;
     width: 33.334%;
     height: 150px;
-    /* background-color: #727272; */
-    /* border-radius: 12px; */
 }
 
 .user-icon {
