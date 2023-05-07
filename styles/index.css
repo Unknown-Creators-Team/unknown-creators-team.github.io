@@ -13,6 +13,8 @@
     text-align: center;
 }
 
+.top-wrapper .text-green { color: green; }
+
 .top-wrapper h1 {
     opacity: 0.8;
     font-size: 45px;
@@ -60,8 +62,8 @@
 /* projects-wrapper */
 
 .projects-wrapper {
-    height: 1000px;
-    padding-bottom: 80px;
+    /* height: 1000px; */
+    /* padding-bottom: 80px; */
     background-color: #e7e7e7;
     text-align: center;
     
@@ -81,6 +83,10 @@
     float: left;
     width: 25%;
     position: relative;
+}
+
+.circle-img img {
+    border-radius: 50%;
 }
 
 .project-button p {
@@ -138,8 +144,8 @@
 
 .message-wrapper {
     text-align: center;
-    height: 350px;
-    padding-bottom: 80px;
+    height: 300px;
+    padding: 80px 0;
     background-color: #e7e7e7;
 }
 
@@ -157,3 +163,126 @@
     top: 7px;
 }
 
+@media (max-width: 1000px) {
+    /* top-wrapper */
+
+    .top-wrapper {
+        padding: 110px 0 40px 0;
+    }
+
+    .top-wrapper h1 {
+        text-align: left;
+        margin-left: 8px;
+        font-size: 24px;
+        letter-spacing: 4px;
+    }
+
+    .top-wrapper p {
+        text-align: left;
+        margin-left: 8px;
+        font-size: 14px;
+    }
+
+    .button-wrapper p {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .discord {
+        margin-left: 0px;
+        margin-bottom: 10px;
+    }
+
+    .premium {
+        margin-left: 0px;
+    }
+
+    .top-button {
+        /* width: 90%; */
+        /* padding: 8px 0; */
+    }
+
+    /* projects-wrapper */
+    
+    .project {
+        width: 50%;
+        margin-bottom: 50px;
+    }
+
+    .project-button p {
+        margin: 0 auto;
+    }
+
+    .project-button a {
+        left: 60px;
+    }
+
+    /* message-wrapper */
+
+    .message-wrapper {
+        height: 320px;
+        padding: 0px 0;
+    }
+}
+
+@media (max-width: 670px) {
+    /* top-wrapper */
+
+    .top-wrapper {
+        padding: 110px 0 40px 0;
+    }
+
+    .top-wrapper h1 {
+        text-align: left;
+        margin-left: 8px;
+        font-size: 24px;
+        letter-spacing: 4px;
+    }
+
+    .top-wrapper p {
+        text-align: left;
+        margin-left: 8px;
+        font-size: 14px;
+    }
+
+    .button-wrapper p {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .discord {
+        margin-left: 0px;
+        margin-bottom: 10px;
+    }
+
+    .premium {
+        margin-left: 0px;
+    }
+
+    .top-button {
+        width: 90%;
+        padding: 8px 0;
+    }
+
+    /* projects-wrapper */
+    
+    .project {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .project-button p {
+        margin: 0 auto;
+    }
+
+    .project-button a {
+        left: 60px;
+    }
+
+    /* message-wrapper */
+
+    .message-wrapper {
+        height: 320px;
+        padding: 0px 0;
+    }
+}

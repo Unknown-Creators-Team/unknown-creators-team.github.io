@@ -1,7 +1,8 @@
 .users-wrapper {
     text-align: center;
     background-color: #e7e7e7;
-    height: 1500px;
+    /* height: 1500px; */
+    padding-bottom: 70px;
 }
 
 .heading {
@@ -17,6 +18,7 @@
     float: left;
     width: 33.334%;
     height: 150px;
+    
 }
 
 .user-icon {
@@ -52,16 +54,26 @@
     left: 3px;
 }
 
-.buttons ul{
+.buttons ul {
     margin-top: 10px;
     display: flex;
     justify-content: center;
 }
 
-
-
 .user-content {
     width: 80%;
     display: inline-block;
     margin-top: 20px;
+}
+
+@media (max-width: 1000px) {
+    .user {
+        width: 50%;
+    }
+}
+
+@media (max-width: 670px) {
+    .user {
+        width: 100%;
+    }
 }
