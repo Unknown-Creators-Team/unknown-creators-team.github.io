@@ -1,30 +1,24 @@
-
-/* h2{
-    margin-top: 30px;
-} */
-
 /* wrapper */
 .information-wrapper {
+    text-align: center;
     padding-top: 90px;
+    background-color: #e7e7e7;
 }
 
 .how-to-play-wrapper {
     padding-top: 25px;
-    padding-bottom: 80px;
+    padding-bottom: 20px;
     background-color: #e7e7e7;
     text-align: center;
-    position: relative;
 }
 
 .how-to-play {
-    /* height: 300px; */
     float: left;
     width: 50%;
     position: relative;
 }
 
 .how-to-play-content {
-    /* height: 150px; */
     background-color: #b3b3b3;
     border-radius: 10px;
     margin: 20px;
@@ -33,24 +27,36 @@
 
 .how-to-play-content p {
     margin: 0 auto;
-    width: 95%
+    width: 90%;
 }
 
-.runner {
-    /* opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-    position: absolute;
-    left: 0px; */
+.developer-team {
+    text-align: center;
+    background-color: #e7e7e7;
 }
 
-.hunter {
-    /* opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    position: absolute;
-    z-index:1;
-    left: 0px; */
+.developer-team ul {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: left;
 }
 
-@media (max-width: 1000px) {
-    
+.developer-team a {
+    background-color: #aaaaaa;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 30px 0;
+    border-radius: 6px;
+    color: #000;
+}
+
+.developer-team a:hover {
+    background-color: #cdcdcd;
+}
+
+@media (max-width: 670px) {
+    /* wrapper */
+    .how-to-play {
+        width: 100%;
+    }
 }
