@@ -51,6 +51,22 @@ a {
     transform: scale(1, 1);
 }
 
+.spinner {
+    width: 32px;
+    height: 32px;
+    margin: 10px auto;
+    border: 4px #ddd solid;
+    border-top: 4px #5d5d5d solid;
+    border-radius: 50%;
+    animation: sp-anime 1.0s infinite linear;
+  }
+  
+  @keyframes sp-anime {
+    100% { 
+      transform: rotate(360deg); 
+    }
+  }
+
 /* header */
 
 header {
@@ -71,6 +87,55 @@ header {
 
 .header-left {
     float: left; 
+}
+
+nav {
+    display: none;
+}
+
+#nav-header {
+    float: right;
+
+    display: block;
+}
+
+#nav-header li {
+    float: left;
+    list-style: none;
+    font-size: 18px;
+    padding: 19px;
+}
+
+#nav-header li:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#nav-header a {
+    color: #fff;
+}
+
+#nav-mobile {
+    display: none;
+    position: absolute;
+    top: 70px;
+    background-color: white;
+    width: 100%;
+}
+
+#nav-mobile ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#nav-mobile li {
+    text-align: center;
+    border-bottom: 1px solid #000;
+}
+
+#nav-mobile a {
+    display: block;
+    padding: 10px 0px;
+    color: #000;
 }
 
 .header-right {
@@ -95,6 +160,22 @@ header {
 
 .menu {
     display: none;
+    float: right;
+    margin: 20px 20px 0 0;
+}
+
+.menu-stick {
+    float: none;
+    background-color: white;
+    margin-top: 5px;
+    height: 4px;
+    width: 35px;
+    border-radius: 2px;
+    transition: all 0.3s;
+}
+
+.menu:active .menu-stick {
+    background-color: #838383;
 }
 
 /* footer */
@@ -168,6 +249,10 @@ footer {
     header {
         height: 70px;
     }
+
+    #nav-header {
+        display: none;
+    }
     
     .logo {
         width: 180px;
@@ -176,24 +261,12 @@ footer {
     }
     
     .header-right {
-        /* display: none; */
-        margin: 14px 20px 0 0;
+        display: none;
     }
     
-    /* .menu {
+    .menu {
         display: block;
-        float: right;
-        margin: 20px 20px 0 0;
     }
-
-    .menu-stick {
-        float: none;
-        background-color: white;
-        margin-top: 5px;
-        height: 4px;
-        width: 35px;
-        border-radius: 2px;
-    } */
 
     /* footer */
 
@@ -260,22 +333,6 @@ footer {
     
     .menu {
         display: block;
-        float: right;
-        margin: 20px 20px 0 0;
-    }
-
-    .menu-stick {
-        float: none;
-        background-color: white;
-        margin-top: 5px;
-        height: 4px;
-        width: 35px;
-        border-radius: 2px;
-        transition: all 0.3s;
-    }
-
-    .menu:active .menu-stick {
-        background-color: #838383;
     }
 
     /* footer */

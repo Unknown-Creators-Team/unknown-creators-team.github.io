@@ -1,0 +1,23 @@
+{
+    "texts": [
+        "<div class=\"users\">",
+        "<div class=\"user\">",
+        "<img class=\"user-icon\" src=\"/images/users/$IMAGE$.webp\" alt=\"$NAME$\">",
+        "<h6>$POSITION$</h6>",
+        "<h3>$NAME$</h3>",
+        "<p class=\"user-content\">$DESCRIPTION$</p>",
+        "<div class=\"buttons\">",
+        "<ul>",
+        "$SOCIAL$",
+        "</ul>",
+        "</div>",
+        "</div>"
+    ],
+    "social": {
+        "site": "<li><a href=\"https://$SITE$\" target=\"_blank\"><img src=\"/images/sns/website.webp\" alt=\"WebSite\"></a></li>",
+        "twitter": "<li><a href=\"https://twitter.com/$TWITTER$\" target=\"_blank\"><img src=\"/images/sns/twitter.webp\" alt=\"Twitter\"></a></li>",
+        "youtube": "<li><a href=\"https://www.youtube.com/$YOUTUBE$\" target=\"_blank\"><img src=\"/images/sns/youtube.webp\" alt=\"YouTube\"></a></li>",
+        "github": "<li><a href=\"https://github.com/$GITHUB$\" target=\"_blank\"><img src=\"/images/sns/github.webp\" alt=\"GitHub\"></a></li>",
+        "discord": "<li><a href=\"https://discord.gg/$DISCORD$\" target=\"_blank\"><img src=\"/images/sns/discord.webp\" alt=\"Discord\"></a></li>"
+    }
+}

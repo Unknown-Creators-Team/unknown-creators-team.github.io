@@ -1,0 +1,178 @@
+[
+    [
+        "Nano",
+        {
+            "name": "Nano",
+            "position": "CEO",
+            "description": "主にアンチチートを開発している開発者です。Unknownのオーナーでもあります。",
+            "image": "nano",
+            "social": {
+                "site": "un-known.xyz",
+                "twitter": "Nano191225",
+                "youtube": "@Nano_1225",
+                "github": "Nano191225",
+                "discord": "QF3n85dr4P"
+            }
+        }
+    ],
+    [
+        "Mikankun",
+        {
+            "name": "Mikankun",
+            "position": "COO",
+            "description": "趣味程度にやってます",
+            "image": "mikankun",
+            "social": {
+                "site": null,
+                "twitter": "misosan_mikan",
+                "youtube": "channel/UCBjqbs7auqEiuJxhx66qVGA",
+                "github": "mikankundayooooo",
+                "discord": "ABnmGkANCh"
+            }
+        }
+    ],
+    [
+        "wako",
+        {
+            "name": "wako",
+            "position": "CTO",
+            "description": "わこです",
+            "image": "wako",
+            "social": {
+                "site": null,
+                "twitter": "wakowako377291",
+                "youtube": null,
+                "github": "kazuhiko-takeisi",
+                "discord": null
+            }
+        }
+    ],
+    [
+        "arutaka",
+        {
+            "name": "あるたか",
+            "position": "Member",
+            "description": "あるたかです",
+            "image": "arutaka",
+            "social": {
+                "site": "arutaka1220.github.io/",
+                "twitter": "arutaka1220",
+                "youtube": "channel/UCdHDST2tNH5h-ChBw6DaC8A",
+                "github": "arutaka1220",
+                "discord": "DKEU8rVq"
+            }
+        }
+    ],
+    [
+        "oimo",
+        {
+            "name": "おいも",
+            "position": "Member",
+            "description": "おいもです。ゴキジェットを常備しています。",
+            "image": "oimo",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": "channel/UCZrMxtmlPsOP_SbK58T2YNg",
+                "github": null,
+                "discord": null
+            }
+        }
+    ],
+    [
+        "jun-suzu",
+        {
+            "name": "JUN-SUZU",
+            "position": "Member",
+            "description": "数学・情報オリンピック出場経験あり。6つのプログラミング言語を扱う高校生です。",
+            "image": "jun_suzu",
+            "social": {
+                "site": "jun-suzu.net",
+                "twitter": null,
+                "youtube": "c/JUNSUZUGAMES",
+                "github": null,
+                "discord": null
+            }
+        }
+    ],
+    [
+        "kuro-usagi",
+        {
+            "name": "KURO USAGI",
+            "position": "Member",
+            "description": "KURO USAGIです。ただのポンコツです。Unknownは楽しい。",
+            "image": "kuro_usagi",
+            "social": {
+                "site": null,
+                "twitter": "KUROUSA42630177",
+                "youtube": null,
+                "github": null,
+                "discord": null
+            }
+        }
+    ],
+    [
+        "kenshin",
+        {
+            "name": "けんしん",
+            "position": "Member",
+            "description": "建築を担当している高校生です。暇つぶし程度にサーバーに貢献しています。何卒宜しくお願い致します。",
+            "image": "kenshin",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": null,
+                "github": null,
+                "discord": null
+            }
+        }
+    ],
+    [
+        "karesa",
+        {
+            "name": "karesa",
+            "position": "Member",
+            "description": "karesaです",
+            "image": "karesa",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": null,
+                "github": null,
+                "discord": null
+            }
+        }
+    ],
+    [
+        "wataame",
+        {
+            "name": "わたあめ",
+            "position": "Member",
+            "description": "わたあめです。洋風建築と寝ることが得意です。",
+            "image": "wataame",
+            "social": {
+                "site": null,
+                "twitter": "watamen39",
+                "youtube": null,
+                "github": "watamen",
+                "discord": null
+            }
+        }
+    ],
+    [
+        "pape",
+        {
+            "name": "PAPE",
+            "position": "Member",
+            "description": "Hi",
+            "image": "pape",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": null,
+                "github": null,
+                "discord": null
+            }
+        }
+    ]
+]
