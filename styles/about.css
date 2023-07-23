@@ -1,0 +1,35 @@
+.content {
+    padding: 120px 15px 0 15px;
+    background-color: #e7e7e7;
+}
+
+.content-table {
+    margin: 50px 0;
+}
+
+.content-table li {
+    list-style: none;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+.content-table li h5 {
+    padding: 10px;
+    width: 80px;
+    text-align: center;
+    font-size: 18px;
+    display: inline-block;
+    background-color: #cacaca;
+    float: left;
+}
+
+.content-table li p {
+    font-size: 18px;
+    padding: 10px 0;
+    margin-left: 120px;
+}
+
+.discord {
+    width: 100%;
+    text-align: center;
+}

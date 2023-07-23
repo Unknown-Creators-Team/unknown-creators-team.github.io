@@ -103,7 +103,7 @@ nav {
     float: left;
     list-style: none;
     font-size: 18px;
-    padding: 19px;
+    
 }
 
 #nav-header li:hover {
@@ -111,6 +111,8 @@ nav {
 }
 
 #nav-header a {
+    display: block;
+    padding: 19px;
     color: #fff;
 }
 

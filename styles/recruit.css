@@ -1,0 +1,157 @@
+/* wrapper */
+/* form-wrapper */
+.recruit-wrapper {
+    /* text-align: center; */
+    padding-top: 130px;
+    background-color: #e7e7e7;
+}
+
+.heading {
+    margin-bottom: 50px;
+}
+
+
+.info {
+    padding-bottom: 50px;
+}
+
+.info ul {
+    padding-left: 0;
+    list-style: none;
+}
+
+.info ul li {
+    /* margin: 15px 0; */
+    padding: 20px 0;
+    /* border-top: 1px solid #000; */
+    border-bottom: 1px solid #c6c6c6;
+}
+
+.info ul li h5 {
+    font-size: 14px;
+    /* padding: 10px; */
+    margin-left: 20px;
+    width: 120px;
+    display: inline-block;
+    /* background-color: #525252; */
+    float: left;
+}
+
+.info ul li p {
+    font-size: 14px;
+    /* padding: 10px 0; */
+    margin-left: 150px;
+    /* width: 500px; */
+}
+
+.button {
+    text-align: center;
+}
+
+.form-button {
+    text-align: center;
+    margin-bottom: 50px;
+    
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #b6280be7;
+    color: white;
+    cursor: pointer;
+}
+
+.org-chart {
+    margin-bottom: 50px;
+}
+
+.org-chart-img {
+    text-align: center;
+    padding-top: 50px;
+}
+
+.org-chart-img img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+}
+
+#recruit-form {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+
+    display: none;
+}
+
+.form {
+    /* display: inline-block; */
+    background-color: #cacaca;
+    position: absolute;
+    top: 6%;
+    left: calc(50% - 340px);
+    
+    padding: 20px 0 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 680px;
+    height: auto;
+    /* text-align: center; */
+}
+
+.cancel-btn {
+    display: inline-block;
+    padding: 10px;
+    
+    position: absolute;
+    top: 14px;
+    right: 2px;
+    color: rgba(128, 128, 128, 0.46);
+    cursor: pointer;
+}
+  
+.cancel-btn::before, .cancel-btn::after {
+    display: block;
+    content: "";
+    width: 25px;
+    height: 1px;
+    background: #000;
+}
+
+.cancel-btn::before {
+    transform: rotate(-45deg);
+}
+
+.cancel-btn::after {
+    transform: rotate(45deg);
+}
+
+.form iframe {
+    margin-top: 30px;
+}
+
+@media (max-width: 1000px) {
+    .recruit-wrapper {
+        padding: 130px 15px 0 15px;
+    }
+
+    .info ul li h5 {
+        margin-left: 0;
+        width: 100%;
+        float: none;
+    }
+
+    .info ul li p {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .form {
+        top: 0;
+        left: 0;
+        border-radius: 0;
+    }
+}
