@@ -1,0 +1,179 @@
+.gban-wrapper {
+    background-color: #e7e7e7;
+    text-align: center;
+    padding-top: 100px;
+}
+
+.heading {
+    text-align: center;
+}
+
+.search {
+    padding-top: 30px;
+}
+
+.players {
+    /* float: left; */
+    width: 100%;
+    
+    /* text-align: center; */
+}
+
+.player {
+    /* margin: 90px auto; */
+    float: left;
+    width: 20%;
+    
+    text-align: center;
+    
+}
+
+.player h2 {
+    padding: 10px 10px;
+    margin: 10px;
+    background-color: #c3c3c3;
+    border-radius: 5px;
+    font-size: 18px;
+    /* width: 100px; */
+    /* font-weight: 600; */
+    cursor: pointer;
+    /* margin-bottom: 10px; */
+}
+
+.details-display {
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: rgba(0, 0, 0, 0.5);
+
+    z-index: 100;
+
+    display: none;
+}
+
+.details {
+    width: 100%;
+    max-width: 420px;
+    height: 540px;
+    background-color: #c3c3c3;
+
+    /* padding: 20px; */
+
+    position: absolute;
+    top: calc(50% - 270px);
+    left: calc(50% - 210px);
+
+    
+
+    text-align: left;
+}
+
+.details #heading {
+    text-align: center;
+    padding: 20px
+}
+
+.details .data {
+    list-style: none;
+    padding: 0;
+    padding: 0 10px;
+    margin: 0;
+}
+
+.details .data li {
+    /* margin: 10px 0; */
+    padding: 10px 10px;
+    border-top: 1px solid #aeaeae;
+}
+
+.details .data li:last-child {
+    border-bottom: 1px solid #aeaeae;
+}
+
+
+
+.details #buttons {
+    
+    padding: 20px;
+}
+
+.details #buttons ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.details #buttons li {
+    width: 50%;
+    margin: 25px auto;
+    padding: 10px 20px;
+    background-color: #aaaaaa;
+    /* border-radius: px; */
+    cursor: pointer;
+}
+
+.details #buttons a {
+    color: rgb(0, 0, 0);
+}
+
+.cancel-btn {
+    display: inline-block;
+    padding: 10px;
+    
+    position: absolute;
+    top: 14px;
+    right: 2px;
+    color: rgba(128, 128, 128, 0.46);
+    cursor: pointer;
+}
+  
+.cancel-btn::before, .cancel-btn::after {
+    display: block;
+    content: "";
+    width: 25px;
+    height: 1px;
+    background: #000;
+}
+
+.cancel-btn::before {
+    transform: rotate(-45deg);
+}
+
+.cancel-btn::after {
+    transform: rotate(45deg);
+}
+
+.details .name {
+    margin-top: 30px;
+}
+
+@media (max-width: 1000px) {
+    .player {
+        width: 50%;
+    }
+}
+
+@media (max-width: 670px) {
+    .player {
+        width: 100%;
+    }
+
+    .details {
+        width: 90%;
+        height: 540px;
+        background-color: #c3c3c3;
+    
+        position: absolute;
+        top: calc(50% - 270px);
+        left: calc(50% - (90% / 2));
+    }
+
+    #uuid p, #deviceSessionId p {
+        font-size: 13px;
+    }
+}

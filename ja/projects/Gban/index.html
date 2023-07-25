@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Unknown</title>
+        <link rel="icon" href="/images/unknown-icon.webp">
+        <link rel="stylesheet" href="/styles/projects/Gban/index.css">
+        <link rel="stylesheet" href="/styles/def.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <header>
+            <div class="container">
+                <div class="header-left">
+                    <a href="/">
+                        <img src="/images/unknown-text.webp" alt="Unknown" class="logo" />
+                    </a>
+                    <nav id="nav-header">
+                        <ul>
+                            <li>
+                                <a href="/ja/">ホーム</a></li>
+                            <li>
+                                <a href="/ja/about.html">Unknownについて</a>
+                            </li>
+                            <li>
+                                <a href="/ja/team/">チーム</a>
+                            </li>
+                            <li>
+                                <a href="/ja/faq.html">FAQ</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <a href="/login.html" class="header-login">ログイン</a>
+                </div>
+                <div class="menu">
+                    <div class="menu-stick"></div>
+                    <div class="menu-stick"></div>
+                    <div class="menu-stick"></div>
+                </div>
+                <nav id="nav-mobile">
+                    <ul>
+                        <li>
+                            <a href="/ja/">ホーム</a></li>
+                        <li>
+                            <a href="/ja/about.html">Unknownについて</a>
+                        </li>
+                        <li>
+                            <a href="/ja/team/">チーム</a>
+                        </li>
+                        <li>
+                            <a href="/ja/faq.html">FAQ</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <div class="gban-wrapper">
+            <div class="container">
+                <div class="heading">
+                    <h2>Global Ban</h2>
+                    <p>Unknownが独自に収集し、作成したマインクラフト統合版のハッカーのリストです。</p>
+                    <p>使い方などの詳細は <a href="https://gban.un-known.xyz">https://gban.un-known.xyz</a> をご覧ください。</p>
+                </div>
+                <div class="search">
+                    <input id="search" type="search">
+                </div>
+                <div class="players">
+                    <div class="spinner"></div>
+                    <div class="player"><h2>${item.name}</h2></div>
+                    <div class="player"><h2>${item.a}</h2></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <div class="details-wrapper">
+            <div class="container">
+                <div class="details-display">
+                    <div class="details">
+                        <div class="cancel-btn"></div>
+                        <div id="heading">
+                            <h1 id="name"></h1>
+                            <h2 id="reason"></h2>
+                        </div>
+                        
+                        <ul class="data">
+                            <li id="uuid">
+                                <h4>UUID</h4>
+                                <p></p>
+                            </li>
+                            <li id="deviceSessionId">
+                                <h4>DID</h4>
+                                <p></p>
+                            </li>
+                            <li id="xuid">
+                                <h4>XUID</h4>
+                                <p></p>
+                            </li>
+                        </ul>
+
+                        <div id="buttons">
+                            <ul>
+                                <li id="unban-request">
+                                    <a href="https://github.com/Unknown-Creators-Team/GBan/issues/new" target="_blank">解除を申請</a>
+                                </li>
+                                <li id="provision">
+                                    <a href="https://github.com/Unknown-Creators-Team/GBan/issues/new" target="_blank">情報提供</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <div class="footer-left">
+                    <div class="footer-title">
+                        <a href="/">
+                            <img src="/images/unknown-icon.webp" alt="Unknown">
+                            <h2>Unknown</h2>
+                        </a>
+                    </div>
+                    <div class="footer-description">MINECRAFT MORE WIDELY.<br>MAKE MINECRAFT EVEN MORE FUN.</div>
+                </div>
+                <div class="footer-right underline-anime">
+                    <div class="footer-link">
+                        <h2>便利なリンク</h2>
+                        <ul>
+                            <li>
+                                <a href="/discord.html" target="_blank">ディスコード</a></li>
+                            <li>
+                                <a href="/premium.html" target="_blank">プレミアム</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-link">
+                        <h2>リソース</h2>
+                        <ul>
+                            <li>
+                                <a href="/ja/team/">チーム</a></li>
+                            <li>
+                                <a href="/mail/support.html" target="_blank">サポート</a>
+                            </li>
+                            <li>
+                                <a href="/mail/" target="_blank">問い合わせ</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-link">
+                        <h2>ソーシャル</h2>
+                        <ul>
+                            <li>
+                                <a href="https://www.youtube.com/@Nano_1225" target="_blank">YouTube</a></li>
+                            <li>
+                                <a href="https://twitter.com/U_creators_team" target="_blank">Twitter</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/Unknown-Creators-Team" target="_blank">Github</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </footer>
+        <div class="copyright">
+            <div class="container">
+                <p>© Unknown 2023 - All rights reserved.</p>
+            </div>
+        </div>
+        <script src="/scripts/def.js"></script>
+        <script src="/scripts/projects/Gban/index.js"></script>
+        <script>
+        </script>
+    </body>
+</html>
