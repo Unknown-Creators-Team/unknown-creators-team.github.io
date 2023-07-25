@@ -1,8 +1,9 @@
 $(() => {
+    let showingXuid = undefined;
     const clicking = () => {
-        $(".player h2").click(function() {
-            const name = $(this).text();
-            const player = GBan.find(item => item.name === name);
+        const show = (name = undefined, xuid = undefined) => {
+            const player = GBan.find(item => xuid ? item.xuid === xuid : item.name === name);
+            
             $("#name").text(player.name);
             $("#number").text(`No. ${GBan.indexOf(player) + 1}`);
             $(`#reason`).text(`Banned for ${player.reason}`);
@@ -10,6 +11,26 @@ $(() => {
                 $(`#${key} p`).text(String(value));
             });
             $(".details-display").fadeIn();
+        };
+
+        if (window.location.search) {
+            const params = new URLSearchParams(window.location.search);
+            xuid = params.get('xuid');
+            show(undefined, xuid);
+        };
+
+        $(".player h2").click(function() {
+            const name = $(this).text();
+            show(name);
+        });
+
+        $("#share").click(() => {
+            const url = window.location.href.split("?")[0];
+            const xuid = $("#xuid p").text()
+            const params = new URLSearchParams({ xuid });
+            navigator.clipboard.writeText(`${url}?${params.toString()}`);
+            $("#share").text("Copied!");
+            setTimeout(() => $("#share").text("Share"), 1000);
         })
     }
 
@@ -43,7 +64,7 @@ $(() => {
     });
 
     $(".cancel-btn").click(() => {
-        console.log("cancel")
         $(".details-display").fadeOut();
+        if (window.location.search) window.location.search = "";
     })
 })
