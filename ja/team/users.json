@@ -51,7 +51,7 @@
         "arutaka",
         {
             "name": "あるたか",
-            "position": "Member",
+            "position": "Developer",
             "description": "あるたかです",
             "image": "arutaka",
             "social": {
@@ -64,26 +64,10 @@
         }
     ],
     [
-        "oimo",
-        {
-            "name": "おいも",
-            "position": "Member",
-            "description": "おいもです。ゴキジェットを常備しています。",
-            "image": "oimo",
-            "social": {
-                "site": null,
-                "twitter": null,
-                "youtube": "channel/UCZrMxtmlPsOP_SbK58T2YNg",
-                "github": null,
-                "discord": null
-            }
-        }
-    ],
-    [
         "jun-suzu",
         {
             "name": "JUN-SUZU",
-            "position": "Member",
+            "position": "Developer",
             "description": "数学・情報オリンピック出場経験あり。6つのプログラミング言語を扱う高校生です。",
             "image": "jun_suzu",
             "social": {
@@ -96,10 +80,42 @@
         }
     ],
     [
+        "okakajp",
+        {
+            "name": "おかか",
+            "position": "Developer",
+            "description": "自分のすきなことはなんでもやります",
+            "image": "okakajp",
+            "social": {
+                "site": "sites.google.com/view/okakasites/home/",
+                "twitter": "okakajp25",
+                "youtube": "@okakajp",
+                "github": "Okakajp25",
+                "discord": "fbUhAxTAHx"
+            }
+        }
+    ],
+    [
+        "oimo",
+        {
+            "name": "おいも",
+            "position": "Builder",
+            "description": "おいもです。ゴキジェットを常備しています。",
+            "image": "oimo",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": "channel/UCZrMxtmlPsOP_SbK58T2YNg",
+                "github": null,
+                "discord": null
+            }
+        }
+    ],
+    [
         "kuro-usagi",
         {
             "name": "KURO USAGI",
-            "position": "Member",
+            "position": "Builder",
             "description": "KURO USAGIです。ただのポンコツです。Unknownは楽しい。",
             "image": "kuro_usagi",
             "social": {
@@ -115,7 +131,7 @@
         "kenshin",
         {
             "name": "けんしん",
-            "position": "Member",
+            "position": "Builder",
             "description": "建築を担当している高校生です。暇つぶし程度にサーバーに貢献しています。何卒宜しくお願い致します。",
             "image": "kenshin",
             "social": {
@@ -131,7 +147,7 @@
         "karesa",
         {
             "name": "karesa",
-            "position": "Member",
+            "position": "Builder",
             "description": "karesaです",
             "image": "karesa",
             "social": {
@@ -147,7 +163,7 @@
         "wataame",
         {
             "name": "わたあめ",
-            "position": "Member",
+            "position": "Builder",
             "description": "わたあめです。洋風建築と寝ることが得意です。",
             "image": "wataame",
             "social": {
@@ -163,7 +179,7 @@
         "pape",
         {
             "name": "PAPE",
-            "position": "Member",
+            "position": "Builder",
             "description": "Hi",
             "image": "pape",
             "social": {

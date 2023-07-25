@@ -4,6 +4,7 @@ $(() => {
             const name = $(this).text();
             const player = GBan.find(item => item.name === name);
             $("#name").text(player.name);
+            $("#number").text(`No. ${GBan.indexOf(player) + 1}`);
             $(`#reason`).text(`Banned for ${player.reason}`);
             Object.entries(player).forEach(([key, value]) => {
                 $(`#${key} p`).text(String(value));

@@ -72,6 +72,13 @@
     text-align: left;
 }
 
+.details #number {
+    /* text-align: center; */
+    
+    position: absolute;
+    padding: 2px;
+}
+
 .details #heading {
     text-align: center;
     padding: 20px
@@ -97,7 +104,6 @@
 
 
 .details #buttons {
-    
     padding: 20px;
 }
 
