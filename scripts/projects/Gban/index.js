@@ -28,7 +28,7 @@ $(() => {
             const url = window.location.href.split("?")[0];
             const xuid = $("#xuid p").text()
             const params = new URLSearchParams({ xuid });
-            navigator.clipboard.writeText(`${url}?${params.toString()}`);
+            navigator.clipboard.writeText(`${url.replace("/index.html", "")}?${params.toString()}`);
             const text = $("#share").text();
             $("#share").text("Copied!");
             setTimeout(() => $("#share").text(text), 1000);
