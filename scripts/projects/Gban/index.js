@@ -29,8 +29,9 @@ $(() => {
             const xuid = $("#xuid p").text()
             const params = new URLSearchParams({ xuid });
             navigator.clipboard.writeText(`${url}?${params.toString()}`);
+            const text = $("#share").text();
             $("#share").text("Copied!");
-            setTimeout(() => $("#share").text("Share"), 1000);
+            setTimeout(() => $("#share").text(text), 1000);
         })
     }
 
