@@ -91,16 +91,16 @@
             } else login();
 
             function login() {
-                // const host = window.location.hostname;
-                // if (host === "127.0.0.1") {
-                //     window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Flogin.html&response_type=code&scope=identify%20guilds";
-                // } else if (host == "192.168.1.45") {
-                //     window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2F192.168.1.45%3A5500%2Flogin.html&response_type=code&scope=identify%20email";
-                // } else if (host == "dev.un-known.xyz") {
-                //     window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2Fdev.un-known.xyz%3A5500%2Flogin.html&response_type=code&scope=identify%20guilds";
-                // } else if (host == "www.un-known.xyz") {
-                //     window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=https%3A%2F%2Fun-known.xyz%2Flogin.html&response_type=code&scope=identify%20guilds";
-                // }
+                const host = window.location.hostname;
+                if (host === "127.0.0.1") {
+                    window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Flogin.html&response_type=code&scope=identify%20guilds";
+                } else if (host == "192.168.1.45") {
+                    window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2F192.168.1.45%3A5500%2Flogin.html&response_type=code&scope=identify%20email";
+                } else if (host == "dev.un-known.xyz") {
+                    window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2Fdev.un-known.xyz%3A5500%2Flogin.html&response_type=code&scope=identify%20guilds";
+                } else if (host == "www.un-known.xyz") {
+                    window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=https%3A%2F%2Fwww.un-known.xyz%2Flogin.html&response_type=code&scope=identify%20email";
+                }
             }
 
             function getToken(code) {
