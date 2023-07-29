@@ -1,4 +1,13 @@
 $(() => {
+
+    fetch("https://api.github.com/repos/Unknown-Creators-Team/GBan/contents/list.json")
+    .then(response => response.json())
+    .then(json => {
+        const list = atob(json.content);
+        console.log(JSON.stringify(list, null, 2));
+    })
+    .catch(console.error);
+
     let showingXuid = undefined;
     const clicking = () => {
         const show = (name = undefined, xuid = undefined) => {
