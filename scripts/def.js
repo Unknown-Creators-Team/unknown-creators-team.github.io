@@ -5,6 +5,8 @@ $(function() {
         if (lang !== path[1]) window.location.href = `/${lang}/${path.slice(2)}`;
     }
     
+    $("header").load(`/${path[1]}/header.html`);
+    $("footer").load(`/${path[1]}/footer.html`);
 
     $(".menu").click(function() {
         $("#nav-mobile").slideToggle();
