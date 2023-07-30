@@ -94,11 +94,11 @@
                 if (host === "127.0.0.1") {
                     window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2F127.0.0.1%3A5500%2Flogin.html&response_type=code&scope=identify%20guilds";
                 } else if (host == "192.168.1.45") {
-                    window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2F192.168.1.45%3A5500%2Flogin.html&response_type=code&scope=identify%20email";
+                    window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2F192.168.1.45%3A5500%2Flogin.html&response_type=code&scope=identify%20guilds";
                 } else if (host == "dev.un-known.xyz") {
                     window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=http%3A%2F%2Fdev.un-known.xyz%3A5500%2Flogin.html&response_type=code&scope=identify%20guilds";
                 } else if (host == "www.un-known.xyz") {
-                    window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=https%3A%2F%2Fwww.un-known.xyz%2Flogin.html&response_type=code&scope=identify%20email";
+                    window.location.href = "https://discord.com/api/oauth2/authorize?client_id=1134773310127878274&redirect_uri=https%3A%2F%2Fwww.un-known.xyz%2Flogin.html&response_type=code&scope=identify%20guilds";
                 }
             }
 
@@ -140,7 +140,6 @@
                 })
                 .then(response => response.json())
                 .then(json => {
-                    console.log(json)
 
                     if (!json.error) deferred.resolve(json);
                         else deferred.reject(json);
@@ -162,8 +161,7 @@
                     $("h1").text("ログインしました。");
                     $("#show").append(`<h4>3秒後にトップページに戻ります。</h4>`);
                     $("#show").append(`<img src="https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png">`);
-                    $("#show").append(`<h2>${json.username}</h2>`);
-                    
+                    $("#show").append(`<h2>${json.global_name}</h2>`);
                     
                     return deferred.resolve(json);
                 })
