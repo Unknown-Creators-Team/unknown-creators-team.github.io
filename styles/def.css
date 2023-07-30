@@ -116,12 +116,19 @@ nav {
     color: #fff;
 }
 
+.nav {
+    position: relative;
+    width: 100%;
+}
+
 #nav-menu {
     display: none;
     position: absolute;
     top: 70px;
     background-color: white;
-    width: 100%;
+    width: 20%;
+    right: 0;
+    border-radius: 12px;
 }
 
 #nav-menu ul {
@@ -163,7 +170,7 @@ nav {
 .menu {
     display: none;
     float: right;
-    margin: 20px 20px 0 0;    
+    padding: 20px 20px 0 0;    
 }
 
 .menu-stick {
@@ -260,6 +267,10 @@ nav {
 
     #nav-header {
         display: none;
+    }
+
+    #nav-menu {
+        width: 100%;
     }
     
     .logo {

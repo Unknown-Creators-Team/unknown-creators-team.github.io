@@ -56,15 +56,16 @@ $(function() {
             getFromToken(token).then(json => {
                 
                 refreshToken(cookie.get("token")).then(j => {
-                    const token = j.access_token;
                     cookie.set("token", j, j.expires_in * 9 / 10);
     
                     console.log(json);
                     $(".menu").html(`<img src="https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png" alt="Avatar" class="avatar">`);
-                    $(".menu").css("margin", "14px 20px 0 0");
-
+                    $(".menu").css("padding", "14px 20px 0 0");
+                    $(".menu").css("display", "inline");
+                    
                     $(".system-logout").show();
                     $(".system-login").hide();
+                    $(".header-right").hide();
 
                     $(".system-logout").click(() => {
                         cookie.delete("token");
