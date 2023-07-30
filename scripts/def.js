@@ -44,12 +44,21 @@ $(function() {
     
     const cookie = new Cookie();
 
-    $(window).on("load", () => {
-        $(".menu").click(function() {
-            $("#nav-menu").slideToggle();
-        });
+    $(".menu").click(function() {
+        $("#nav-menu").slideToggle();
+    });
 
-        $(".system-logout").hide();
+    $(window).on("load", () => {
+        setTimeout(() => {
+            $(".menu").click(function() {
+                $("#nav-menu").slideToggle();
+            });
+
+            $(".system-logout").hide();
+        }, 500);
+        
+
+        
 
         if (cookie.has("token")) {
             const token = cookie.get("token")?.access_token;
@@ -60,12 +69,13 @@ $(function() {
     
                     console.log(json);
                     $(".menu").html(`<img src="https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png" alt="Avatar" class="avatar">`);
-                    $(".menu").css("padding", "14px 20px 0 0");
+                    $(".menu").css("margin", "14px 20px 0 0");
                     $(".menu").css("display", "inline");
                     
                     $(".system-logout").show();
                     $(".system-login").hide();
                     $(".header-right").hide();
+
 
                     $(".system-logout").click(() => {
                         cookie.delete("token");
@@ -88,23 +98,7 @@ $(function() {
             .fail(() => cookie.delete("token"))
         } else console.log("No token")
     
-        function refreshToken(json) {
-            const deferred = $.Deferred();
-            fetch('https://discordapp.com/api/oauth2/token', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: `client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&grant_type=refresh_token&refresh_token=${json.refresh_token}`
-            })
-            .then(response => response.json())
-            .then(json => {
-                if (!json.error) deferred.resolve(json);
-                    else deferred.reject(json);
-            });
-    
-            return deferred.promise();
-        }
+        
     });
 
     function getFromToken(token) {
@@ -121,6 +115,24 @@ $(function() {
             if (!json.error) deferred.resolve(json);
                 else deferred.reject(json);
         })
+
+        return deferred.promise();
+    }
+
+    function refreshToken(json) {
+        const deferred = $.Deferred();
+        fetch('https://discordapp.com/api/oauth2/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}&grant_type=refresh_token&refresh_token=${json.refresh_token}`
+        })
+        .then(response => response.json())
+        .then(json => {
+            if (!json.error) deferred.resolve(json);
+                else deferred.reject(json);
+        });
 
         return deferred.promise();
     }

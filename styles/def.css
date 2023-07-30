@@ -170,7 +170,7 @@ nav {
 .menu {
     display: none;
     float: right;
-    padding: 20px 20px 0 0;    
+    margin: 20px 20px 0 0;    
 }
 
 .menu-stick {
@@ -271,6 +271,7 @@ nav {
 
     #nav-menu {
         width: 100%;
+        border-radius: 0;
     }
     
     .logo {

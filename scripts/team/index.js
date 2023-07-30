@@ -1,6 +1,6 @@
 $(() => {
-    $.getJSON("format.json" , (format) => {
-        $.getJSON("users.json" , (USERS) => {
+    $.getJSON("/data/team/format.json" , (format) => {
+        $.getJSON("/data/team/users.json" , (USERS) => {
             const users = new Map(USERS);
             const display = ["<div class=\"spinner\"></div>"];
             for (const [_, value] of users) {
