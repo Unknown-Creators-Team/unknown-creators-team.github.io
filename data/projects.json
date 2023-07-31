@@ -1,0 +1,92 @@
+[
+    [
+        "Unknown Anti-Cheat",
+        {
+            "link": {
+                "url": "https://mee6.xyz/en/m/un-known?subscribe=1060724980838309888",
+                "target": "_blank",
+                "text": "購読"
+            },
+            "description": "世界一の検出力を誇るアンチチートです。移動系から戦闘系まであらゆるチートを対策します。",
+            "image": {
+                "url": "/images/projects/uac-icon.webp",
+                "circle": false
+            }
+        }
+    ],
+    [
+        "Commander API",
+        {
+            "link": {
+                "url": "https://github.com/191225/Commander-API/releases",
+                "target": "_blank",
+                "text": "ダウンロード"
+            },
+            "description": "統合版のコマンドを拡張します。アイテムにエンチャントや名前を付けた状態でgiveすることも可能です。",
+            "image": {
+                "url": "/images/projects/commander_api-icon.webp",
+                "circle": true
+            }
+        }
+    ],
+    [
+        "Unknown WebSocket",
+        {
+            "link": {
+                "url": "",
+                "target": "_self",
+                "text": "近日公開"
+            },
+            "description": "ワールドとディスコードを接続します。Unknown Anti-CheatとTN-AntiCheat、Scythe AntiCheatと互換性があり、UWSにしかないさまざまな機能があります。",
+            "image": {
+                "url": "/images/projects/uws-icon.webp",
+                "circle": true
+            }
+        }
+    ],
+    [
+        "Block Hider",
+        {
+            "link": {
+                "url": "/ja/projects/Block-Hider/",
+                "target": "_self",
+                "text": "詳細"
+            },
+            "description": "ブロック隠れんぼです。ワールドとして配布されていて遊ぶにはダウンロードする必要があります。",
+            "image": {
+                "url": "/images/projects/block_hider-icon.webp",
+                "circle": false
+            }
+        }
+    ],
+    [
+        "GBan",
+        {
+            "link": {
+                "url": "/ja/projects/Gban/",
+                "target": "_self",
+                "text": "詳細"
+            },
+            "description": "Unknownが独自に収集し、作成したマインクラフト統合版のハッカーのリストです。",
+            "image": {
+                "url": "/images/projects/GBan.webp",
+                "circle": true
+            }
+        }
+    ],
+    [
+        "Unknown Games",
+        {
+            "link": {
+                "url": "",
+                "target": "_self",
+                "text": "近日公開予定"
+            },
+            "description": "あらゆるゲームを採用したミニゲームサーバーです。多言語対応しています。",
+            "image": {
+                "url": "/images/projects/unknown_games-icon.webp",
+                "circle": false
+            }
+        }
+    ]
+]
