@@ -1,0 +1,56 @@
+.commerce-wrapper {
+    padding: 120px 0;
+}
+
+.heading {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    
+    border-spacing: 1px;
+    background-color: #999999;
+    text-align: "left";
+    font-size: 13px;
+}
+
+th, td {
+    border: 0px solid #ddd;
+    padding: 9px;
+    /* margin: 1px; */
+}
+
+th {
+    background-color: #eeeeee;
+    color: black;
+}
+
+td {
+    background-color: #ffffff;
+    color: black;
+}
+
+p {
+    text-align: right;
+}
+
+@media (max-width: 670px) {
+    .commerce-wrapper {
+        padding: 100px 5px 50px 5px;
+    }
+    .heading {
+        font-size: 10px;
+    }
+    table {
+        font-size: 10px;
+    }
+    th, td {
+        padding: 2px;
+    }
+    p {
+        font-size: 10px;
+        text-align: center;
+    }
+}
