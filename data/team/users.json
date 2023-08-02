@@ -3,7 +3,7 @@
         "Nano",
         {
             "name": "Nano",
-            "position": "CEO",
+            "position": "CEO / Developer",
             "description": "主にアンチチートを開発している開発者です。Unknownのオーナーでもあります。",
             "image": "nano",
             "social": {
@@ -19,7 +19,7 @@
         "Mikankun",
         {
             "name": "Mikankun",
-            "position": "COO",
+            "position": "COO / Builder",
             "description": "趣味程度にやってます",
             "image": "mikankun",
             "social": {
@@ -35,7 +35,7 @@
         "wako",
         {
             "name": "wako",
-            "position": "CTO",
+            "position": "CTO / Developer",
             "description": "わこです",
             "image": "wako",
             "social": {
@@ -43,6 +43,22 @@
                 "twitter": "wakowako377291",
                 "youtube": null,
                 "github": "kazuhiko-takeisi",
+                "discord": null
+            }
+        }
+    ],
+    [
+        "jun-suzu",
+        {
+            "name": "JUN-SUZU",
+            "position": "CISO / Developer",
+            "description": "数学・情報オリンピック出場経験あり。6つのプログラミング言語を扱う高校生です。",
+            "image": "jun_suzu",
+            "social": {
+                "site": "jun-suzu.net",
+                "twitter": null,
+                "youtube": "c/JUNSUZUGAMES",
+                "github": null,
                 "discord": null
             }
         }
@@ -60,22 +76,6 @@
                 "youtube": "channel/UCdHDST2tNH5h-ChBw6DaC8A",
                 "github": "arutaka1220",
                 "discord": "DKEU8rVq"
-            }
-        }
-    ],
-    [
-        "jun-suzu",
-        {
-            "name": "JUN-SUZU",
-            "position": "Developer",
-            "description": "数学・情報オリンピック出場経験あり。6つのプログラミング言語を扱う高校生です。",
-            "image": "jun_suzu",
-            "social": {
-                "site": "jun-suzu.net",
-                "twitter": null,
-                "youtube": "c/JUNSUZUGAMES",
-                "github": null,
-                "discord": null
             }
         }
     ],

@@ -37,9 +37,13 @@
     background-color: #5865F2;
 }
 
-.discord {
+.other-buttons {
+    margin-top: 12px;
+}
+
+.dashboard {
     margin-left: 12px;
-    background-color: #5865F2;
+    background-color: #f27458;
 }
 
 .premium {
