@@ -1,10 +1,12 @@
 $(function() {
-    const lang = window.navigator.language || window.navigator.userLanguage || window.navigator.browserLanguage;
+    const lang = (window.navigator.language || window.navigator.userLanguage || window.navigator.browserLanguage).replace(/[A-Z-]/g, "");
     const path = window.location.pathname.split('/');
     if (["ja"].includes(lang)) {
         if (lang !== path[1]) window.location.href = `/${lang}/${path.slice(2)}`;
     }
     
+    // window.location.href = lang;
+
     $("header").load(`/${path[1]}/header.html`);
     $("footer").load(`/${path[1]}/footer.html`);
 
@@ -43,21 +45,32 @@ $(function() {
     }
     
     const cookie = new Cookie();
+    
+    function activateNav() {
+        $(".menu").on("click", function() {
+            $("#nav-menu").slideToggle();
+        });
+        $(".system-login").click(() => {
+            window.location.href = "/login.html?redirect=" + window.location.href;
+        });
 
-    $(".menu").click(function() {
-        $("#nav-menu").slideToggle();
-    });
+        $(".system-logout").hide(); 
+    }
 
+    // activateNav();
+
+    const start = Date.now();
     $(window).on("load", () => {
+        const loadTime = Date.now() - start;
+
+        console.log(loadTime);
+
         setTimeout(() => {
-            $(".menu").click(function() {
-                $("#nav-menu").slideToggle();
-            });
+            activateNav();
+        }, loadTime > 500 ? 500 : loadTime);
 
-            $(".system-logout").hide();
-        }, 500);
         
-
+        
         
 
         if (cookie.has("token")) {
@@ -90,7 +103,6 @@ $(function() {
                     //     // $(".guilds").html(display.join(""));
                     // })
                     // .fail((e) => console.error(e));
-                    
                     
     
                 }).fail(() => cookie.delete("token"));

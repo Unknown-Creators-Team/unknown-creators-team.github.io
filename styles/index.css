@@ -42,7 +42,7 @@
 }
 
 .dashboard {
-    margin-left: 12px;
+    /* margin-left: 12px; */
     background-color: #f27458;
 }
 
@@ -193,12 +193,12 @@
         margin: 10px 0;
     }
 
-    .discord {
+    .dashboard {
         margin-left: 0px;
         margin-bottom: 10px;
     }
 
-    .premium {
+    .plans {
         margin-left: 0px;
     }
 
@@ -253,15 +253,6 @@
     .button-wrapper p {
         text-align: center;
         margin: 10px 0;
-    }
-
-    .discord {
-        margin-left: 0px;
-        margin-bottom: 10px;
-    }
-
-    .premium {
-        margin-left: 0px;
     }
 
     .top-button {

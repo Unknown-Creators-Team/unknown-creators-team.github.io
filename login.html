@@ -61,6 +61,11 @@
             const cookie = new Cookie();
 
             const params = new URLSearchParams(window.location.search);
+
+            if (params.has("redirect")) {
+                cookie.set("redirect", params.get("redirect"), 60 * 60);
+            }
+
             if (params.has("code") || cookie.has("token")) {
                 const code = params.get('code');
                 const token = cookie.get("token")?.access_token;
@@ -159,7 +164,7 @@
                 .then(response => response.json())
                 .then(json => {
                     $("h1").text("ログインしました。");
-                    $("#show").append(`<h4>3秒後にトップページに戻ります。</h4>`);
+                    $("#show").append(`<h4>3秒後にサイトに戻ります。</h4>`);
                     $("#show").append(`<img src="https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png">`);
                     $("#show").append(`<h2>${json.global_name}</h2>`);
                     
@@ -171,7 +176,11 @@
 
             function backToPage() {
                 setTimeout(() => {
-                    window.location.pathname = "/";
+                    if (cookie.has("redirect")) {
+                        const redirect = cookie.get("redirect");
+                        cookie.delete("redirect");
+                        window.location.href = redirect;
+                    } else window.location.href = "/";
                 }, 3000);
             }
 
