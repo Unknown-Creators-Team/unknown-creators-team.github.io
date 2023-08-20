@@ -1,0 +1,31 @@
+.proof-wrapper {
+    background-color: #e7e7e7;
+    padding-top: 100px;
+}
+
+#back-btn {
+    background-color: #c3c3c3;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.proof-img {
+    text-align: center;
+}
+
+.proof-img img {
+    width: 100%;
+    height: 100%;
+}
+
+
+#open-new-tab {
+    background-color: #c3c3c3;
+    display: inline-block;
+    padding: 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
