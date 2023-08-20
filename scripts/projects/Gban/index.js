@@ -8,7 +8,7 @@ $(() => {
 
             $("#name").text(player.name);
             $("#number").text(`No. ${GBan.indexOf(player) + 1}`);
-            $(`#reason`).text(`Banned for ${player.reason}`);
+            $(`#reason`).text(`${player.reason}`);
             Object.entries(player).forEach(([key, value]) => {
                 $(`#${key} p`).text(String(value));
             });
