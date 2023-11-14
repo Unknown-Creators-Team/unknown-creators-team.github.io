@@ -52,13 +52,13 @@
         {
             "name": "JUN-SUZU",
             "position": "CISO / Developer",
-            "description": "数学・情報オリンピック出場経験あり。6つのプログラミング言語を扱う高校生です。",
+            "description": "超多言語型高校生プログラマー<br>IT関連全部任せてや～^^",
             "image": "jun_suzu",
             "social": {
                 "site": "jun-suzu.net",
                 "twitter": null,
                 "youtube": "c/JUNSUZUGAMES",
-                "github": null,
+                "github": "JUN-SUZU",
                 "discord": null
             }
         }
