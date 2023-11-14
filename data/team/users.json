@@ -64,6 +64,22 @@
         }
     ],
     [
+        "karesa",
+        {
+            "name": "karesa",
+            "position": "CSO / Builder",
+            "description": "karesaです",
+            "image": "karesa",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": null,
+                "github": null,
+                "discord": null
+            }
+        }
+    ],
+    [
         "arutaka",
         {
             "name": "あるたか",
@@ -144,22 +160,6 @@
         }
     ],
     [
-        "karesa",
-        {
-            "name": "karesa",
-            "position": "Builder",
-            "description": "karesaです",
-            "image": "karesa",
-            "social": {
-                "site": null,
-                "twitter": null,
-                "youtube": null,
-                "github": null,
-                "discord": null
-            }
-        }
-    ],
-    [
         "wataame",
         {
             "name": "わたあめ",
@@ -188,6 +188,22 @@
                 "youtube": null,
                 "github": null,
                 "discord": null
+            }
+        }
+    ],
+    [
+        "buracha",
+        {
+            "name": "buracha",
+            "position": "Developer",
+            "description": "burachaです。数年前の負の遺産が私を追っています。",
+            "image": "buracha",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": null,
+                "github": null,
+                "discord": "hfhmBKqt"
             }
         }
     ]
