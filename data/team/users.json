@@ -24,7 +24,7 @@
             "image": "mikankun",
             "social": {
                 "site": null,
-                "twitter": "MikanKUN39696",
+                "twitter": "Mikkan_Kun",
                 "youtube": "channel/UCBjqbs7auqEiuJxhx66qVGA",
                 "github": "mikankundayooooo",
                 "discord": null
@@ -52,13 +52,29 @@
         {
             "name": "JUN-SUZU",
             "position": "CISO / Developer",
-            "description": "数学・情報オリンピック出場経験あり。6つのプログラミング言語を扱う高校生です。",
+            "description": "超多言語型高校生プログラマー<br>IT関連全部任せてや～^^",
             "image": "jun_suzu",
             "social": {
                 "site": "jun-suzu.net",
                 "twitter": null,
                 "youtube": "c/JUNSUZUGAMES",
                 "github": "JUN-SUZU",
+                "discord": null
+            }
+        }
+    ],
+    [
+        "karesa",
+        {
+            "name": "karesa",
+            "position": "CSO / Builder",
+            "description": "karesaです",
+            "image": "karesa",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": null,
+                "github": null,
                 "discord": null
             }
         }
@@ -91,7 +107,7 @@
                 "twitter": "okakajp25",
                 "youtube": "@okakajp",
                 "github": "Okakajp25",
-                "discord": "fbUhAxTAHx"
+                "discord": null
             }
         }
     ],
@@ -123,22 +139,6 @@
                 "twitter": null,
                 "youtube": null,
                 "github": "Dorobouneko45",
-                "discord": null
-            }
-        }
-    ],
-    [
-        "karesa",
-        {
-            "name": "karesa",
-            "position": "Builder",
-            "description": "karesaです",
-            "image": "karesa",
-            "social": {
-                "site": null,
-                "twitter": null,
-                "youtube": null,
-                "github": "karesa-T",
                 "discord": null
             }
         }
@@ -176,17 +176,33 @@
         }
     ],
     [
-        "sahu",
+        "buracha",
         {
-            "name": "さふ",
-            "position": "Builder",
-            "description": "さふと申します。炭酸水が好きです。中毒です。",
-            "image": "sahu",
+            "name": "buracha",
+            "position": "Developer",
+            "description": "burachaです。数年前の負の遺産が私を追っています。",
+            "image": "buracha",
             "social": {
                 "site": null,
                 "twitter": null,
                 "youtube": null,
-                "github": "sahuH2CO3",
+                "github": null,
+                "discord": "hfhmBKqt"
+            }
+        }
+    ],
+    [
+        "damenaito",
+        {
+            "name": "ダメないと",
+            "position": "Builder",
+            "description": "だみな",
+            "image": "damenaito",
+            "social": {
+                "site": null,
+                "twitter": "damenaito_6600",
+                "youtube": "@damenaito_Lom",
+                "github": "damenaito",
                 "discord": null
             }
         }
