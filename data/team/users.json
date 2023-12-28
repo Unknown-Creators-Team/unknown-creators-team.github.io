@@ -58,7 +58,7 @@
                 "site": "jun-suzu.net",
                 "twitter": null,
                 "youtube": "c/JUNSUZUGAMES",
-                "github": null,
+                "github": "JUN-SUZU",
                 "discord": null
             }
         }
@@ -112,22 +112,6 @@
         }
     ],
     [
-        "kuro-usagi",
-        {
-            "name": "KURO USAGI",
-            "position": "Builder",
-            "description": "KURO USAGIです。ただのポンコツです。Unknownは楽しい。",
-            "image": "kuro_usagi",
-            "social": {
-                "site": null,
-                "twitter": "KUROUSA42630177",
-                "youtube": null,
-                "github": null,
-                "discord": null
-            }
-        }
-    ],
-    [
         "kenshin",
         {
             "name": "けんしん",
@@ -138,7 +122,7 @@
                 "site": null,
                 "twitter": null,
                 "youtube": null,
-                "github": null,
+                "github": "Dorobouneko45",
                 "discord": null
             }
         }
@@ -154,7 +138,7 @@
                 "site": null,
                 "twitter": null,
                 "youtube": null,
-                "github": null,
+                "github": "karesa-T",
                 "discord": null
             }
         }
@@ -187,6 +171,22 @@
                 "twitter": null,
                 "youtube": null,
                 "github": null,
+                "discord": null
+            }
+        }
+    ],
+    [
+        "sahu",
+        {
+            "name": "さふ",
+            "position": "Builder",
+            "description": "さふと申します。炭酸水が好きです。中毒です。",
+            "image": "sahu",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": null,
+                "github": "sahuH2CO3",
                 "discord": null
             }
         }
