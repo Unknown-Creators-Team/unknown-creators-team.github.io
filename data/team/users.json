@@ -112,6 +112,22 @@
         }
     ],
     [
+        "sahu",
+        {
+            "name": "さふ",
+            "position": "Developer / Builder",
+            "description": "さふと申します。炭酸水が好きです。中毒です。",
+            "image": "sahu",
+            "social": {
+                "site": null,
+                "twitter": null,
+                "youtube": null,
+                "github": "sahuH2CO3",
+                "discord": null
+            }
+        }
+    ],
+    [
         "oimo",
         {
             "name": "おいも",
