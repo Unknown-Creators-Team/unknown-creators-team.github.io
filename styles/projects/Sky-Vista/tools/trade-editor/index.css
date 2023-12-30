@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+#edit-panel {
+    margin-bottom: 20px;
+}
+
+#edit-panel label {
+    display: block;
+    margin-top: 10px;
+}
+
+#edit-panel input[type="text"],
+#edit-panel input[type="number"],
+#edit-panel select,
+#edit-panel textarea {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+#edit-panel button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#edit-panel button:hover {
+    background-color: #0056b3;
+}
+
+#edit-panel .delete-price,
+#edit-panel .delete-output,
+#edit-panel .delete-enchant {
+    background-color: #FF0000;
+}
+
+#edit-panel .delete-price:hover,
+#edit-panel .delete-output:hover,
+#edit-panel .delete-enchant:hover {
+    background-color: #b30000;
+}
+
+#json-output {
+    width: 100%;
+    height: 200px;
+}

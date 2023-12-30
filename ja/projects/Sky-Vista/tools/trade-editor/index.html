@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sky Vista JSON Editor</title>
+    <link rel="stylesheet" href="a.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="editor">
+        <!-- 編集パネル -->
+        <div id="edit-panel">
+            <!-- name field -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <!-- content field -->
+            <div id="content">
+                <!-- prices array -->
+                <div id="prices">
+                    <!-- Add button for prices -->
+                    <button id="add-price">Add Price</button>
+                </div>
+                <!-- outputs array -->
+                <div id="outputs">
+                    <!-- Add button for outputs -->
+                    <button id="add-output">Add Output</button>
+                </div>
+            </div>
+        </div>
+        <!-- Export and Import buttons -->
+        <button id="export-json">Export</button>
+        <button id="import-json">Import</button>
+        <!-- JSON textarea -->
+        <textarea id="json-output"></textarea>
+    </div>
+    <script src="./app.js"></script>
+</body>
+</html>
