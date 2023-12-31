@@ -1,10 +1,14 @@
 body {
     margin: 0;
-    font-family: "Hiragino Kaku Gothic ProN"; 
+    font-family: "Hiragino Kaku Gothic ProN";
+
+    min-height: 100vh; /*画面の高さの最小値を指定*/
+    display: flex;
+    flex-direction: column;
 }
 
 a {
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 * {
@@ -20,11 +24,11 @@ a {
     max-width: 1170px;
     width: 100%;
     /* padding: 0px 15px; */
-    margin: 0 auto; 
+    margin: 0 auto;
 }
 
 .fa {
-    margin-right: 5px; 
+    margin-right: 5px;
 }
 
 .underline-anime a {
@@ -37,13 +41,13 @@ a {
     position: absolute;
     bottom: 3px;
     left: 0;
-    content: '';
+    content: "";
     width: 100%;
     height: 1px;
     background: #000000;
     transform: scale(0, 1);
     transform-origin: right top;
-    transition: transform .3s;
+    transition: transform 0.3s;
 }
 
 .underline-anime a:hover::after {
@@ -58,23 +62,23 @@ a {
     border: 4px #ddd solid;
     border-top: 4px #5d5d5d solid;
     border-radius: 50%;
-    animation: sp-anime 1.0s infinite linear;
-  }
-  
-  @keyframes sp-anime {
-    100% { 
-      transform: rotate(360deg); 
+    animation: sp-anime 1s infinite linear;
+}
+
+@keyframes sp-anime {
+    100% {
+        transform: rotate(360deg);
     }
-  }
+}
 
 /* header */
 
 header {
     /* text-align: center; */
-    
+
     height: 65px;
     width: 100%;
-    background-color: #b6280be7; 
+    background-color: #b6280be7;
     position: fixed;
     top: 0;
 
@@ -83,11 +87,11 @@ header {
 
 .logo {
     width: 180px;
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 .header-left {
-    float: left; 
+    float: left;
 }
 
 nav {
@@ -104,7 +108,6 @@ nav {
     float: left;
     list-style: none;
     font-size: 18px;
-    
 }
 
 #nav-header li:hover {
@@ -153,25 +156,25 @@ nav {
     border-radius: 5px;
     float: right;
     transition: all 0.5s;
-    background-color: rgba(238, 61, 37, 0.5); 
-}  
- 
+    background-color: rgba(238, 61, 37, 0.5);
+}
+
 .header-right:hover {
-    background-color: rgba(255, 79, 56, 0.942); 
+    background-color: rgba(255, 79, 56, 0.942);
 }
 
 .header-right a {
     line-height: 40px;
-    
+
     padding: 0 25px;
     color: white;
-    display: block; 
+    display: block;
 }
 
 .menu {
     display: none;
     float: right;
-    margin: 20px 20px 0 0;    
+    margin: 20px 20px 0 0;
 }
 
 .menu-stick {
@@ -194,12 +197,16 @@ nav {
     border-radius: 50%;
 }
 
+main {
+    flex-grow: 1; /*要素が少ないときに縦に伸びる*/
+}
+
 /* footer */
 
 .footer {
     background-color: #bababa;
     color: #000;
-    height: 260px;   
+    height: 260px;
 }
 
 .footer-left {
@@ -235,7 +242,6 @@ nav {
 .footer-link {
     float: left;
     padding: 0px 30px;
-    
 }
 
 .footer-link ul {
@@ -274,17 +280,17 @@ nav {
         width: 100%;
         border-radius: 0;
     }
-    
+
     .logo {
         width: 180px;
         margin-top: 23px;
         margin-left: 18px;
     }
-    
+
     .header-right {
         display: none;
     }
-    
+
     .menu {
         display: block;
     }
@@ -293,7 +299,7 @@ nav {
 
     .footer {
         text-align: center;
-        height: auto;   
+        height: auto;
     }
 
     .footer-left {
@@ -336,22 +342,22 @@ nav {
 }
 
 @media (max-width: 670px) {
-        /* header */
+    /* header */
 
     header {
         height: 70px;
     }
-    
+
     .logo {
         width: 180px;
         margin-top: 23px;
         margin-left: 18px;
     }
-    
+
     .header-right {
         display: none;
     }
-    
+
     .menu {
         display: block;
     }
@@ -360,7 +366,7 @@ nav {
 
     .footer {
         text-align: center;
-        height: auto;   
+        height: auto;
     }
 
     .footer-left {
@@ -400,4 +406,4 @@ nav {
         float: none;
         font-size: 10px;
     }
-} 
+}

@@ -82,8 +82,19 @@ $(document).ready(function () {
         function replacer(key, value) {
             return value === undefined ? null : value;
         }
+
+        tradeData.content.prices.forEach(price => {
+            price.typeId = price.typeId.includes(':') ? price.typeId : 'minecraft:' + price.typeId;
+        });
+        tradeData.content.outputs.forEach(output => {
+            output.typeId = output.typeId.includes(':') ? output.typeId : 'minecraft:' + output.typeId;
+        });
+
+        updateEditor();
         
-        let json = JSON.stringify(tradeData, replacer, 4).replace(/null/g, 'undefined');
+        let json = JSON.stringify(tradeData.content, replacer, 4).replace(/null/g, 'undefined');
+        json = convertLockModeForExport(json);
+        json = json.replace(/"amount": "(\d+)"/g, '"amount": $1');
         $("#json-output").val(json);
         
         let lineCount = json.split('\n').length;
@@ -92,8 +103,13 @@ $(document).ready(function () {
 
     $("#import-json").click(function () {
         try {
-            const json = JSON.parse($("#json-output").val().replace(/undefined/g, 'null'));
-            tradeData = json;
+            let json = $("#json-output").val().replace(/undefined/g, 'null');
+            json = convertLockModeForImport(json);
+            json = json.replace(/"amount": (\d+)/g, '"amount": "$1"');
+            json = json.replace(/"(\w+)"(:\s*")([^"]+)(")/g, '"$1": "$3"');
+            console.log(json);
+            json = JSON.parse(json);
+            tradeData.content = json;
             updateEditor();
         } catch (error) {
             console.error(error);
@@ -118,7 +134,7 @@ $(document).ready(function () {
             $('#price-' + index).append('<label for="typeId">Type ID:</label>');
             $('#price-' + index).append('<input type="text" id="typeId" name="typeId" value="' + price.typeId + '">');
             $('#price-' + index).append('<label for="amount">Amount:</label>');
-            $('#price-' + index).append('<input type="number" id="amount" name="amount" value="' + price.amount + '">');
+            $('#price-' + index).append('<input type="text" id="amount" name="amount" value="' + price.amount + '">');
             $('#price-' + index).append('<label for="nameTag">Name Tag:</label>');
             $('#price-' + index).append('<input type="text" id="nameTag" name="nameTag" value="' + (price.nameTag || '') + '">');
             $('#price-' + index).append('<label for="lockMode">Lock Mode:</label>');
@@ -155,7 +171,7 @@ $(document).ready(function () {
             $('#output-' + index).append('<label for="typeId">Type ID:</label>');
             $('#output-' + index).append('<input type="text" id="typeId" name="typeId" value="' + output.typeId + '">');
             $('#output-' + index).append('<label for="amount">Amount:</label>');
-            $('#output-' + index).append('<input type="number" id="amount" name="amount" value="' + output.amount + '">');
+            $('#output-' + index).append('<input type="text" id="amount" name="amount" value="' + output.amount + '">');
             $('#output-' + index).append('<label for="nameTag">Name Tag:</label>');
             $('#output-' + index).append('<input type="text" id="nameTag" name="nameTag" value="' + (output.nameTag || '') + '">');
             $('#output-' + index).append('<label for="lockMode">Lock Mode:</label>');
@@ -323,3 +339,18 @@ $(document).ready(function () {
     // Initialize the editor
     updateEditor();
 });
+
+function convertLockModeForExport(json) {
+    return json
+        .replace(/"lockMode": "none"/g, '"lockMode": Minecraft.ItemLockMode.none')
+        .replace(/"lockMode": "slot"/g, '"lockMode": Minecraft.ItemLockMode.slot')
+        .replace(/"lockMode": "inventory"/g, '"lockMode": Minecraft.ItemLockMode.inventory');
+    
+}
+
+function convertLockModeForImport(json) {
+    return json
+        .replace(/"lockMode": Minecraft.ItemLockMode.none/g, '"lockMode": "none"')
+        .replace(/"lockMode": Minecraft.ItemLockMode.slot/g, '"lockMode": "slot"')
+        .replace(/"lockMode": Minecraft.ItemLockMode.inventory/g, '"lockMode": "inventory"');
+}

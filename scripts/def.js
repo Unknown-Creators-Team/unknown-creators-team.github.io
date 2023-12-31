@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
     const lang = (window.navigator.language || window.navigator.userLanguage || window.navigator.browserLanguage).replace(/[A-Z-]/g, "");
     const path = window.location.pathname.split('/');
     if (["ja"].includes(lang)) {
