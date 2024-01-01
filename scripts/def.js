@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     const lang = (window.navigator.language || window.navigator.userLanguage || window.navigator.browserLanguage).replace(/[A-Z-]/g, "");
     const path = window.location.pathname.split('/');
     if (["ja"].includes(lang)) {
@@ -50,7 +50,7 @@ $(document).ready(function() {
         $(".menu").on("click", function() {
             $("#nav-menu").slideToggle();
         });
-        $(".system-login").click(() => {
+        $(".system-login").on("click", () => {
             window.location.href = "/login.html?redirect=" + window.location.href;
         });
 

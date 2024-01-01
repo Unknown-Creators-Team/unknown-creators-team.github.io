@@ -1,0 +1,44 @@
+main {
+    padding-top: 120px;
+    text-align: center;
+}
+
+#casettes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.casette {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    width: 40%;
+    margin: auto;
+    padding: 10px;
+    background-color: #c5c5c5;
+    border-radius: 3px;
+
+    h3 {
+        margin: auto 0;
+    }
+
+    h4 {
+        margin: auto 0;
+        background-color: #363636;
+        color: #fff;
+        padding: 0px 5px;
+        border-radius: 3px;
+        margin-right: auto;
+    }
+
+    a {
+        color: #ffffff;
+        background-color: #b6280be7;
+        padding: 6px;
+        margin: auto 0;
+        border-radius: 5px;
+        margin-left: auto;
+    }
+}
