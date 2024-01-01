@@ -52,6 +52,7 @@ $(function () {
                 if (params.has("local2")) serverUri = "http://192.168.1.42:22003";
                 if (params.has("local3")) serverUri = "http://192.168.1.45:22003";
                 if (params.has("dev")) serverUri = "http://dev.un-known.xyz:22003";
+                if (params.has("unsecure")) serverUri = "http://api.un-known.xyz:22003";
 
                 if (!json || !token) window.location.href = "/login.html?redirect=" + window.location.href;
 
@@ -85,7 +86,8 @@ $(function () {
                         <a href="./index.html?local1">local1</a>
                         <a href="./index.html?local2">local2</a>
                         <a href="./index.html?local3">local3</a>
-                        <a href="./index.html?dev">dev</a>`);
+                        <a href="./index.html?dev">dev</a>
+                        <a href="./index.html?unsecure">unsecure</a>`);
                     } else {
                         $("#casettes").html(`<h1>Error occurred</h1>${retryButton}`);
                     }
