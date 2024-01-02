@@ -48,11 +48,11 @@ $(function () {
 
                 const params = new URLSearchParams(window.location.search);
                 let serverUri = "https://api.un-known.xyz:22003";
-                if (params.has("local1")) serverUri = "http://127.0.0.1:22003";
-                if (params.has("local2")) serverUri = "http://192.168.1.42:22003";
-                if (params.has("local3")) serverUri = "http://192.168.1.45:22003";
-                if (params.has("dev")) serverUri = "http://dev.un-known.xyz:22003";
-                if (params.has("unsecure")) serverUri = "http://api.un-known.xyz:22003";
+                if (params.has("local1")) serverUri = "http://127.0.0.1:22002";
+                if (params.has("local2")) serverUri = "http://192.168.1.42:22002";
+                if (params.has("local3")) serverUri = "http://192.168.1.45:22002";
+                if (params.has("dev")) serverUri = "http://dev.un-known.xyz:22002";
+                if (params.has("unsecure")) serverUri = "http://api.un-known.xyz:22002";
                 
                 if (!params.has("id")) window.location.href = "./index.html" + window.location.search;
                 if (!json || !token) window.location.href = "/login.html?redirect=" + window.location.href;
@@ -176,7 +176,13 @@ $(function () {
                             });
                         });
                     } else {
-                        $("#viewer").html(`<h1>${res.status} ${res.statusText}</h1>${retryButton}`);
+                        res.json().then((json) => {
+                            if (json.message) {
+                                $("#viewer").html(`<h1>${res.status} ${res.statusText}: ${json.message}</h1>${retryButton}`);
+                            } else {
+                                $("#viewer").html(`<h1>${res.status} ${res.statusText}</h1>${retryButton}`);
+                            }
+                        });
                     }
                 }).catch((error) => {
                     console.log(error);

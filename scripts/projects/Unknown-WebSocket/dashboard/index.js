@@ -42,23 +42,23 @@ $(function () {
         const token = cookie.get("token")?.access_token;
         getFromToken(token)
             .then((json) => {
-                cookie.set("token", json, (json.expires_in * 9) / 10);
+                // cookie.set("token", json, (json.expires_in * 9) / 10);
 
                 console.log(json);
 
                 const params = new URLSearchParams(window.location.search);
                 let serverUri = "https://api.un-known.xyz:22003";
-                if (params.has("local1")) serverUri = "http://127.0.0.1:22003";
-                if (params.has("local2")) serverUri = "http://192.168.1.42:22003";
-                if (params.has("local3")) serverUri = "http://192.168.1.45:22003";
-                if (params.has("dev")) serverUri = "http://dev.un-known.xyz:22003";
-                if (params.has("unsecure")) serverUri = "http://api.un-known.xyz:22003";
+                if (params.has("local1")) serverUri = "http://127.0.0.1:22002";
+                if (params.has("local2")) serverUri = "http://192.168.1.42:22002";
+                if (params.has("local3")) serverUri = "http://192.168.1.45:22002";
+                if (params.has("dev")) serverUri = "http://dev.un-known.xyz:22002";
+                if (params.has("unsecure")) serverUri = "http://api.un-known.xyz:22002";
 
                 if (!json || !token) window.location.href = "/login.html?redirect=" + window.location.href;
 
                 fetch(serverUri + "/uws/v1/dashboard", {
                     headers: {
-                        token: token,
+                        token: cookie.get("token")?.access_token,
                         Administrator: json.id,
                     },
                 }).then((res) => {
