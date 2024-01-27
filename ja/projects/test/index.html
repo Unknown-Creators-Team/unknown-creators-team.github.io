@@ -12,11 +12,20 @@
     </head>
     
     <body>
-        <h1 id="title"></h1>
-        <div id="messages">
-        </div>
-        <input type="text">
-        <button type="submit">送信</button>
+        <ol></ol>
         <script src="/scripts/projects/test/index.js"></script>
+        <script>
+            $(() => {
+                const params = new URLSearchParams(window.location.search);
+                const color = params.get("color");
+                const names = params.get("names");
+                const namesArray = names.split(",");
+
+                $("body").css("background-color", color);
+                for (const name of namesArray) {
+                    $("ol").append(`<li>${name}</li>`);
+                }
+            })
+        </script>
     </body>
 </html>
