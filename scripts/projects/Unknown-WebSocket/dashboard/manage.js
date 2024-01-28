@@ -65,18 +65,20 @@ $(function () {
                     },
                 }).then((res) => {
                     if (res.status === 200) {
-                        res.json().then((/** @type {{formatVersion: number;token: string;owner: string;administrators: string[];guildId: string;language: string;serverName: string;compatible:| "TN-AntiCheat"| "Unknown Anti-Cheat"| string| null;globalBan: boolean;sendMessageDelete: boolean;sendSay: boolean;sendMe: boolean;maxCharacters: number;console: boolean;playerChartIntervalMinutes: number;setMaxPlayers: string | number;"kill@eProtection": boolean;onlyLinkedPlayer: boolean;discordInvite: string;unLinkCommand: boolean;channels: {main: string;status: string;console: string;};emojis: {join: string;leave: string;death: string;};roleTags: string[];}} */casette) => {
+                        res.json().then((casette) => {
                             console.log(casette);
                             
+                            $("#casetteId").val(params.get("id"));
                             $("#formatVersion").val(casette.formatVersion);
-                            $("#token").val(casette.token ? "暗号化されています" : "暗号化されていません");
                             $("#owner").val(casette.owner);
                             $("#administrators").val(casette.administrators.join(", "));
                             $("#guildId").val(casette.guildId);
                             $("#language").val(casette.language);
                             $("#serverName").val(casette.serverName);
                             $("#compatible").val(casette.compatible ?? "null");
-                            $("#globalBan").prop("checked", casette.globalBan);
+                            $("#globalBan #enabled").prop("checked", casette.globalBan.enabled);
+                            $("#globalBan #punishment").val(casette.globalBan.punishment);
+                            $("#blockedIps").val(casette.blockedIps.join(", "));
                             $("#sendMessageDelete").prop("checked", casette.sendMessageDelete);
                             $("#sendSay").prop("checked", casette.sendSay);
                             $("#sendMe").prop("checked", casette.sendMe);
@@ -84,7 +86,7 @@ $(function () {
                             $("#console").prop("checked", casette.console);
                             $("#playerChartIntervalMinutes").val(casette.playerChartIntervalMinutes);
                             $("#setMaxPlayers").val(casette.setMaxPlayers);
-                            $("#killEProtection").prop("checked", casette["kill@eProtection"]);
+                            $("#killAtEProtection").prop("checked", casette["kill@eProtection"]);
                             $("#onlyLinkedPlayer").prop("checked", casette.onlyLinkedPlayer);
                             $("#discordInvite").val(casette.discordInvite);
                             $("#unLinkCommand").prop("checked", casette.unLinkCommand);
@@ -95,6 +97,7 @@ $(function () {
                             $("#emojis #leave").val(casette.emojis.leave);
                             $("#emojis #death").val(casette.emojis.death);
                             $("#roleTags").val(casette.roleTags.join(", "));
+                            $("#tagRoles").html(casette.tagRoles.join(", "));
 
                             // submit button
                             $("#save").on("click", (event) => {
@@ -107,7 +110,10 @@ $(function () {
                                 data.language = $("#language").val();
                                 data.serverName = $("#serverName").val();
                                 data.compatible = $("#compatible").val() === "null" ? null : $("#compatible").val();
-                                data.globalBan = $("#globalBan").prop("checked");
+                                data.globalBan = {
+                                    enabled: $("#globalBan #enabled").prop("checked"),
+                                    punishment: $("#globalBan #punishment").val(),
+                                }
                                 data.sendMessageDelete = $("#sendMessageDelete").prop("checked");
                                 data.sendSay = $("#sendSay").prop("checked");
                                 data.sendMe = $("#sendMe").prop("checked");
@@ -115,7 +121,7 @@ $(function () {
                                 data.console = $("#console").prop("checked");
                                 data.playerChartIntervalMinutes = parseInt($("#playerChartIntervalMinutes").val());
                                 data.setMaxPlayers = $("#setMaxPlayers").val();
-                                data["kill@eProtection"] = $("#killEProtection").prop("checked");
+                                data["kill@eProtection"] = $("#killAtEProtection").prop("checked");
                                 data.onlyLinkedPlayer = $("#onlyLinkedPlayer").prop("checked");
                                 data.discordInvite = $("#discordInvite").val();
                                 data.unLinkCommand = $("#unLinkCommand").prop("checked");
@@ -130,6 +136,7 @@ $(function () {
                                     death: $("#emojis #death").val(),
                                 };
                                 data.roleTags = $("#roleTags").val().replace(/ /g, "").split(",").filter((v) => v && v.length);
+                                data.tagRoles = $("#tagRoles").html().replace(/ /g, "").split(",").filter((v) => v && v.length);
 
                                 console.log("data:", data);
                                 fetch(serverUri + "/uws/v1/dashboard/edit", {
