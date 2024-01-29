@@ -128,22 +128,6 @@
         }
     ],
     [
-        "oimo",
-        {
-            "name": "おいも",
-            "position": "Builder",
-            "description": "おいもです。ゴキジェットを常備しています。",
-            "image": "oimo",
-            "social": {
-                "site": null,
-                "twitter": null,
-                "youtube": "channel/UCZrMxtmlPsOP_SbK58T2YNg",
-                "github": null,
-                "discord": null
-            }
-        }
-    ],
-    [
         "kenshin",
         {
             "name": "けんしん",
