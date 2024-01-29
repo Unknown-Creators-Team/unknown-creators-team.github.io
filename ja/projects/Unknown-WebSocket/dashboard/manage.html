@@ -19,246 +19,253 @@
     <main>
         <div class="container" id="viewer">
             <form>
-                <div id="info-box" class="box">
-                    <h3>情報</h3>
-                    <label for="カセットID">カセットID</label>
-                    <input type="text" id="casetteId" name="casetteId" readonly required>
+                <div id="big-box">
 
-                    <label for="formatVersion">フォーマットバージョン</label>
-                    <input type="number" id="formatVersion" name="formatVersion" disabled readonly required>
 
-                    <button id="reissueToken">トークンを再発行</button>
-                </div>
+                    <div id="info-box" class="box">
+                        <h3>情報</h3>
+                        <label for="カセットID">カセットID</label>
+                        <input type="text" id="casetteId" name="casetteId" readonly required>
 
-                <div id="server-box" class="box">
-                    <h3>サーバー</h3>
-                    <div class="field">
-                        <label for="owner">オーナー</label>
-                        <input type="text" id="owner" name="owner" readonly required>
+                        <label for="formatVersion">フォーマットバージョン</label>
+                        <input type="number" id="formatVersion" name="formatVersion" disabled readonly required>
+
+                        <button id="reissueToken">トークンを再発行</button>
                     </div>
 
-                    <div class="field">
-                        <label for="administrators">管理者</label>
-                        <input type="text" id="administrators" name="administrators" required>
+                    <div id="server-box" class="box">
+                        <h3>サーバー</h3>
+                        <div class="field">
+                            <label for="owner">オーナー</label>
+                            <input type="text" id="owner" name="owner" readonly required>
+                        </div>
+
+                        <div class="field">
+                            <label for="administrators">管理者</label>
+                            <input type="text" id="administrators" name="administrators" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="language">言語</label>
+                            <select name="language" id="language" required>
+                                <option value="ja_JP">日本語</option>
+                                <option value="en_US">English</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="guildId">サーバーID</label>
+                            <input type="text" id="guildId" name="guildId" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="serverName">サーバー名</label>
+                            <input type="text" id="serverName" name="serverName" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="compatible">アンチチート</label>
+                            <select id="compatible" name="compatible" required>
+                                <option value="null">なし</option>
+                                <option value="TN-AntiCheat">TN-AntiCheat</option>
+                                <option value="Unknown Anti-Cheat">Unknown Anti-Cheat</option>
+                            </select>
+                        </div>
+
+                        <div class="field">
+                            <label for="setMaxPlayers">最大プレイヤー数</label>
+                            <input type="text" id="setMaxPlayers" name="setMaxPlayers" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="discordInvite">Discordの招待</label>
+                            <input type="text" id="discordInvite" name="discordInvite">
+                        </div>
+
+                        <div class="field">
+                            <label for="blockedIps">ブロック済みIP</label>
+                            <input type="text" id="blockedIps" name="blockedIps">
+                        </div>
                     </div>
 
-                    <div class="field">
-                        <label for="language">言語</label>
-                        <select name="language" id="language" required>
-                            <option value="ja_JP">日本語</option>
-                            <option value="en_US">English</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        <label for="guildId">サーバーID</label>
-                        <input type="text" id="guildId" name="guildId" required>
-                    </div>
-
-                    <div class="field">
-                        <label for="serverName">サーバー名</label>
-                        <input type="text" id="serverName" name="serverName" required>
-                    </div>
-
-                    <div class="field">
-                        <label for="compatible">アンチチート</label>
-                        <select id="compatible" name="compatible" required>
-                            <option value="null">なし</option>
-                            <option value="TN-AntiCheat">TN-AntiCheat</option>
-                            <option value="Unknown Anti-Cheat">Unknown Anti-Cheat</option>
-                        </select>
-                    </div>
-
-                    <div class="field">
-                        <label for="setMaxPlayers">最大プレイヤー数</label>
-                        <input type="text" id="setMaxPlayers" name="setMaxPlayers" required>
-                    </div>
-
-                    <div class="field">
-                        <label for="discordInvite">Discordの招待</label>
-                        <input type="text" id="discordInvite" name="discordInvite">
-                    </div>
-
-                    <div class="field">
-                        <label for="blockedIps">ブロック済みIP</label>
-                        <input type="text" id="blockedIps" name="blockedIps">
-                    </div>
-                </div>
-
-                <div id="globalBan" class="box">
-                    <h3>Global Ban</h3>
-                    <!-- <div class="field">
+                    <div id="globalBan" class="box">
+                        <h3>Global Ban</h3>
+                        <!-- <div class="field">
                         <label for="enabled">有効:</label>
                         <input type="checkbox" id="enabled" name="enabled" required>
                     </div> -->
-                    <div>
-                        <label for="enabled">有効</label>
-                        <label class="switch">
-                            <input type="checkbox" id="enabled" name="enabled" required>
-                            <span class="slider round"></span>
-                        </label>
+                        <div>
+                            <label for="enabled">有効</label>
+                            <label class="switch">
+                                <input type="checkbox" id="enabled" name="enabled" required>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+
+                        <div class="field">
+                            <label for="punishment">処罰アクション:</label>
+                            <select id="punishment" name="punishment" required>
+                                <option value="warn">警告</option>
+                                <option value="kick">追放</option>
+                            </select>
+                        </div>
+
                     </div>
 
-                    <div class="field">
-                        <label for="punishment">処罰アクション:</label>
-                        <select id="punishment" name="punishment" required>
-                            <option value="warn">警告</option>
-                            <option value="kick">追放</option>
-                        </select>
-                    </div>
-
-                </div>
-
-                <div id="message-box" class="box">
-                    <h3>メッセージ</h3>
-                    <!-- <div class="field">
+                    <div id="message-box" class="box">
+                        <h3>メッセージ</h3>
+                        <!-- <div class="field">
                         <label for="sendMessageDelete">Send Message Delete:</label>
                         <input type="checkbox" id="sendMessageDelete" name="sendMessageDelete">
                     </div> -->
-                    <div>
-                        <label for="sendMessageDelete">Send Message Delete</label>
-                        <label class="switch">
-                            <input type="checkbox" id="sendMessageDelete" name="sendMessageDelete">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
+                        <div>
+                            <label for="sendMessageDelete">Send Message Delete</label>
+                            <label class="switch">
+                                <input type="checkbox" id="sendMessageDelete" name="sendMessageDelete">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
 
-                    <!-- <div class="field">
+                        <!-- <div class="field">
                         <label for="sendSay">Sayを送信:</label>
                         <input type="checkbox" id="sendSay" name="sendSay">
                     </div> -->
-                    <div>
-                        <label for="sendSay">Sayを送信</label>
-                        <label class="switch">
-                            <input type="checkbox" id="sendSay" name="sendSay">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
+                        <div>
+                            <label for="sendSay">Sayを送信</label>
+                            <label class="switch">
+                                <input type="checkbox" id="sendSay" name="sendSay">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
 
-                    <!-- <div class="field">
+                        <!-- <div class="field">
                         <label for="sendMe">Meを送信:</label>
                         <input type="checkbox" id="sendMe" name="sendMe">
                     </div> -->
-                    <div>
-                        <label for="sendMe">Meを送信</label>
-                        <label class="switch">
-                            <input type="checkbox" id="sendMe" name="sendMe">
-                            <span class="slider round"></span>
-                        </label>
+                        <div>
+                            <label for="sendMe">Meを送信</label>
+                            <label class="switch">
+                                <input type="checkbox" id="sendMe" name="sendMe">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+
+                        <div class="field">
+                            <label for="maxCharacters">最大文字数</label>
+                            <input type="number" id="maxCharacters" name="maxCharacters" required>
+                        </div>
+
                     </div>
 
-                    <div class="field">
-                        <label for="maxCharacters">最大文字数</label>
-                        <input type="number" id="maxCharacters" name="maxCharacters" required>
-                    </div>
-
-                </div>
-
-                <div id="console-box" class="box">
-                    <h3>コンソール</h3>
-                    <!-- <div class="field">
+                    <div id="console-box" class="box">
+                        <h3>コンソール</h3>
+                        <!-- <div class="field">
                         <label for="console">コンソール:</label>
                         <input type="checkbox" id="console" name="console">
                     </div> -->
-                    <div>
-                        <label for="console">コンソール</label>
-                        <label class="switch">
-                            <input type="checkbox" id="console" name="console">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
+                        <div>
+                            <label for="console">コンソール</label>
+                            <label class="switch">
+                                <input type="checkbox" id="console" name="console">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
 
-                    <!-- <div class="field">
+                        <!-- <div class="field">
                         <label for="kill@eProtection">Kill @e 保護:</label>
                         <input type="checkbox" id="killEProtection" name="kill@eProtection">
                     </div> -->
-                    <div>
-                        <label for="killAtEProtection">Kill @e 保護</label>
-                        <label class="switch">
-                            <input type="checkbox" id="killAtEProtection" name="killAtEProtection">
-                            <span class="slider round"></span>
-                        </label>
+                        <div>
+                            <label for="killAtEProtection">Kill @e 保護</label>
+                            <label class="switch">
+                                <input type="checkbox" id="killAtEProtection" name="killAtEProtection">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+
                     </div>
 
-                </div>
+                    <div id="channels" class="box">
+                        <h3>チャンネル</h3>
+                        <div class="field">
+                            <label for="main">メインチャンネルID</label>
+                            <input type="text" id="main" name="main" required>
+                        </div>
 
-                <div id="channels" class="box">
-                    <h3>チャンネル</h3>
-                    <div class="field">
-                        <label for="main">メインチャンネルID</label>
-                        <input type="text" id="main" name="main" required>
+                        <div class="field">
+                            <label for="status">ステータスチャンネルID</label>
+                            <input type="text" id="status" name="status" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="console">コンソールチャンネルID</label>
+                            <input type="text" id="console" name="console" required>
+                        </div>
+
                     </div>
 
-                    <div class="field">
-                        <label for="status">ステータスチャンネルID</label>
-                        <input type="text" id="status" name="status" required>
+                    <div id="emojis" class="box">
+                        <h3>絵文字</h3>
+                        <div class="field">
+                            <label for="join">Join絵文字</label>
+                            <input type="text" id="join" name="join">
+                        </div>
+
+                        <div class="field">
+                            <label for="leave">Leave絵文字</label>
+                            <input type="text" id="leave" name="leave">
+                        </div>
+
+                        <div class="field">
+                            <label for="death">Death絵文字</label>
+                            <input type="text" id="death" name="death">
+                        </div>
+
                     </div>
 
-                    <div class="field">
-                        <label for="console">コンソールチャンネルID</label>
-                        <input type="text" id="console" name="console" required>
+                    <div id="sync-box" class="box">
+                        <h3>同期</h3>
+                        <div class="field">
+                            <label for="roleTags">ロールタグ</label>
+                            <input type="text" id="roleTags" name="roleTags">
+                        </div>
+
+                        <div class="field">
+                            <label for="tagRoles">タグロール</label>
+                            <input type="text" id="tagRoles" name="tagRoles">
+                        </div>
+
                     </div>
 
-                </div>
-
-                <div id="emojis" class="box">
-                    <h3>絵文字</h3>
-                    <div class="field">
-                        <label for="join">Join絵文字</label>
-                        <input type="text" id="join" name="join">
-                    </div>
-
-                    <div class="field">
-                        <label for="leave">Leave絵文字</label>
-                        <input type="text" id="leave" name="leave">
-                    </div>
-
-                    <div class="field">
-                        <label for="death">Death絵文字</label>
-                        <input type="text" id="death" name="death">
-                    </div>
-
-                </div>
-
-                <div id="sync-box" class="box">
-                    <h3>同期</h3>
-                    <div class="field">
-                        <label for="roleTags">ロールタグ</label>
-                        <input type="text" id="roleTags" name="roleTags">
-                    </div>
-
-                    <div class="field">
-                        <label for="tagRoles">タグロール</label>
-                        <input type="text" id="tagRoles" name="tagRoles">
-                    </div>
-
-                </div>
-
-                <div id="other-box" class="box">
-                    <h3>その他</h3>
-                    <!-- <div class="field">
+                    <div id="other-box" class="box">
+                        <h3>その他</h3>
+                        <!-- <div class="field">
                         <label for="playerChartIntervalMinutes">プレイヤーチャート更新間隔(分):</label>
                         <input type="number" id="playerChartIntervalMinutes" name="playerChartIntervalMinutes" required>
                     </div> -->
 
-                    <div>
-                        <label for="unLinkCommand">unlinkコマンド</label>
-                        <label class="switch">
-                            <input type="checkbox" id="unLinkCommand" name="unLinkCommand">
-                            <span class="slider round"></span>
-                        </label>
+                        <div>
+                            <label for="unLinkCommand">unlinkコマンド</label>
+                            <label class="switch">
+                                <input type="checkbox" id="unLinkCommand" name="unLinkCommand">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
 
-                <button type="submit" id="save">保存</button>
-                <button type="reset" id="cancel">キャンセル</button>
+                <div id="buttons">
+                    <button type="reset" id="cancel">キャンセル</button>
+                    <button type="submit" id="save">保存</button>
+                </div>
+                
             </form>
         </div>
     </main>
 
     <footer></footer>
-    <script src="/scripts/def.js"></script>
-    <script src="/scripts/projects/Unknown-WebSocket/dashboard/manage.js"></script>
+    <script type="module" src="/scripts/def.js"></script>
+    <script type="module" src="/scripts/projects/Unknown-WebSocket/dashboard/manage.js"></script>
 </body>
 
 </html>

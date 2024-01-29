@@ -1,18 +1,43 @@
 main {
-    padding-top: 120px;
+    padding-top: 100px;
     /* text-align: center; */
+}
+
+#viewer {
+    padding: 20px 0;
+    position: relative;
+}
+
+#viewer #big-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    /* gap: 20px; */
 }
 
 .box {
     background-color: #cfcfcf;
-    /* display: inblock; */
-    min-width: 200px;
-    width: max-content;
+    width: calc(100% - 80px);
     padding: 20px;
     margin: 20px;
     border-radius: 12px;
-    float: left;
 }
+
+.box:nth-child(1) {
+    grid-column: span 3;
+}
+
+.box:nth-child(2) {
+    grid-row: 2 / span 3;
+}
+
+/* .box:nth-child(n+3):nth-child(-n+5) {
+    grid-column: 2;
+}
+
+.box:nth-child(n+6):nth-child(-n+8) {
+    grid-column: 3;
+} */
 
 .field {
     position: relative;
@@ -39,9 +64,56 @@ input, select {
     /* font-size: 16px; */
 }
 
+#viewer {
+    position: relative;
+    overflow: hidden; /* Add this */
+}
+
+#buttons {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 20px;
+    background-color: #b6270bd0;
+    border-radius: 8px;
+    
+    backdrop-filter: blur(1px);
+    /* transition: all 5s; */
+    /* opacity: 0; */
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut .5s ease-out forwards;
+}
+
 button {
     padding: 10px 20px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     border: none;
     color: #fff;
     background-color: #333;
@@ -50,6 +122,39 @@ button {
 
 button:hover {
     background-color: #444;
+}
+
+#cancel {
+    font-size: 12px;
+    padding: 3px 6px;
+    background-color: #ffffff;
+    color: #eb1414;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+#cancel:hover {
+    background-color: #d33636;
+    color: #ffffff;
+}
+
+#save {
+    font-size: 28px;
+    padding: 3px 6px;
+    background-color: #ffffff;
+    color: #383838;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+}
+
+#save:hover {
+    background-color: #383838;
+    color: #ffffff;
 }
 
 .switch {
