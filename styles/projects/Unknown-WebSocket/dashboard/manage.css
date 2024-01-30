@@ -1,10 +1,19 @@
 main {
-    padding-top: 100px;
+    padding-top: 80px;
     /* text-align: center; */
 }
 
+.spinner {
+    position: fixed;
+    top: 50%;
+    left: calc(50% - 16px);
+    z-index: 100;
+}
+
 #viewer {
+    /* display: none; */
     padding: 20px 0;
+    padding-bottom: 80px;
     position: relative;
 }
 
@@ -80,7 +89,7 @@ input, select {
     
     backdrop-filter: blur(1px);
     /* transition: all 5s; */
-    /* opacity: 0; */
+    opacity: 0;
 }
 
 @keyframes slideUp {
@@ -206,4 +215,33 @@ input:checked + .slider:before {
 
 .slider.round:before {
     border-radius: 50%;
+}
+
+
+@media (max-width: 1024px) {
+    #viewer #big-box {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .box:nth-child(1) {
+        grid-column: span 2;
+    }
+    
+    .box:nth-child(2) {
+        grid-row: 2 / span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    #viewer #big-box {
+        grid-template-columns: 1fr;
+    }
+
+    .box:nth-child(1) {
+        grid-column: span 1;
+    }
+    
+    .box:nth-child(2) {
+        grid-row: 2 / span 1;
+    }
 }

@@ -1,5 +1,5 @@
 main {
-    padding-top: 120px;
+    padding-top: 80px;
     text-align: center;
 }
 
@@ -7,6 +7,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 20px 0;
 }
 
 .casette {
@@ -22,6 +23,7 @@ main {
 
     h3 {
         margin: auto 0;
+        word-break: break-all;
     }
 
     h4 {
@@ -40,5 +42,37 @@ main {
         margin: auto 0;
         border-radius: 5px;
         margin-left: auto;
+    }
+}
+
+@media (max-width: 1024px) {
+    #casettes {
+        width: 70%;
+    }
+
+    .casette {
+        width: 100%;
+    }
+    
+    .casette h3 {
+        display: block;
+        width: 100%;
+        word-break: break-all;
+    }
+}
+
+@media (max-width: 768px) {
+    #casettes {
+        width: 80%;
+    }
+
+    .casette {
+        width: 100%;
+    }
+    
+    .casette h3 {
+        display: block;
+        width: 100%;
+        word-break: break-all;
     }
 }

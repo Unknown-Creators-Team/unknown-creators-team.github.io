@@ -2,7 +2,7 @@ import { Cookie, cookie, getFromToken } from "../../../init.js";
 
 $(function () {
     const retryButton = `<a href="${window.location}">再試行</a>`;
-    let firstData;
+    let firstData = toDate();
 
     if (cookie.has("token")) {
         const token = cookie.get("token")?.access_token;
@@ -32,6 +32,9 @@ $(function () {
                         if (res.status === 200) {
                             res.json().then((casette) => {
                                 console.log(casette);
+
+                                $(".spinner").hide();
+                                $("#viewer").show();
 
                                 $("#casetteId").val(params.get("id"));
                                 $("#formatVersion").val(casette.formatVersion);
@@ -175,6 +178,12 @@ $(function () {
                     // bottom: "10px",
                 });
             }
+
+            setTimeout(() => {
+                $("#buttons").css({
+                    opacity: "1",
+                });
+            }, 400);
         } else {
             $("#buttons").removeClass("slide-up");
             $("#buttons").addClass("fade-out");
@@ -182,24 +191,32 @@ $(function () {
             // setTimeout(() => {
             //     $("#buttons").css({
             //         display: "none",
+            //         opacity: "0",
             //     });
-            // }, 500);
+            // }, 0);
         }
     };
 
     $(window).on("scroll", function () {
         buttonControl();
+        // console.log("scroll")
     });
 
     // keyup
     $(window).on("keyup", function (e) {
         buttonControl();
+        // console.log("keyup")
     });
 
     // click any
     $(window).on("click", function (e) {
         buttonControl();
+        // console.log("click")
     });
+
+    // setInterval(() => {
+    //     buttonControl();
+    // }, 1000);
 });
 
 function toDate() {
