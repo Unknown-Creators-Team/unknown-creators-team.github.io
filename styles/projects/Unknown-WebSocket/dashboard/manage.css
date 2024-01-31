@@ -3,6 +3,12 @@ main {
     /* text-align: center; */
 }
 
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
 .spinner {
     position: fixed;
     top: 50%;
@@ -78,6 +84,62 @@ input, select {
     overflow: hidden; /* Add this */
 }
 
+.array-field {
+    min-height: 10px;
+}
+
+.add-button {
+    font-size: 13px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 2px 3px;
+    background-color: #ffffff;
+    color: #000000;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: all .2s;
+}
+
+.add-button:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.add-button:active {
+    transform: translateY(2px);
+
+}
+
+.add-button::before {
+    content: "✛";
+    /* padding: 7px; */
+}
+
+.array li:first-child input{
+    margin-top: 30px;
+}
+
+.array li:not(:first-child) input {
+    margin-top: 5px;
+}
+
+.array li span {
+    padding: 0 3px;
+}
+
+.array li span::after {
+    content: "✕";
+    padding: 7px;
+    color: #000000;
+    cursor: pointer;
+}
+
+.array li span:hover::after {
+    color: #eb1414;
+}
+
+
 #buttons {
     display: none;
     position: fixed;
@@ -118,19 +180,6 @@ input, select {
 
 .fade-out {
     animation: fadeOut .5s ease-out forwards;
-}
-
-button {
-    padding: 10px 20px;
-    /* margin-right: 10px; */
-    border: none;
-    color: #fff;
-    background-color: #333;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #444;
 }
 
 #cancel {

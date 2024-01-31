@@ -19,7 +19,7 @@
     <main>
         <div class="spinner"></div>
         <div class="container" id="viewer">
-            <form>
+            <form method="dialog">
                 <div id="big-box">
 
 
@@ -30,8 +30,6 @@
 
                         <label for="formatVersion">フォーマットバージョン</label>
                         <input type="number" id="formatVersion" name="formatVersion" disabled readonly required>
-
-                        <button id="reissueToken">トークンを再発行</button>
                     </div>
 
                     <div id="server-box" class="box">
@@ -41,9 +39,11 @@
                             <input type="text" id="owner" name="owner" readonly required>
                         </div>
 
-                        <div class="field">
-                            <label for="administrators">管理者</label>
-                            <input type="text" id="administrators" name="administrators" required>
+                        <div class="field array-field">
+                            <label for="administrators">管理者
+                                <p class="add-button" id="add-administrator">追加</p></label>
+                            <ul class="array" id="administrators">
+                            </ul>
                         </div>
 
                         <div class="field">
@@ -83,18 +83,16 @@
                             <input type="text" id="discordInvite" name="discordInvite">
                         </div>
 
-                        <div class="field">
-                            <label for="blockedIps">ブロック済みIP</label>
-                            <input type="text" id="blockedIps" name="blockedIps">
+                        <div class="field array-field">
+                            <label for="blockedIps">ブロック済みIP
+                                <p class="add-button" id="add-blockedIp">追加</p></label>
+                            <ul class="array" id="blockedIps">
+                            </ul>
                         </div>
                     </div>
 
                     <div id="globalBan" class="box">
                         <h3>Global Ban</h3>
-                        <!-- <div class="field">
-                        <label for="enabled">有効:</label>
-                        <input type="checkbox" id="enabled" name="enabled" required>
-                    </div> -->
                         <div>
                             <label for="enabled">有効</label>
                             <label class="switch">
@@ -115,10 +113,6 @@
 
                     <div id="message-box" class="box">
                         <h3>メッセージ</h3>
-                        <!-- <div class="field">
-                        <label for="sendMessageDelete">Send Message Delete:</label>
-                        <input type="checkbox" id="sendMessageDelete" name="sendMessageDelete">
-                    </div> -->
                         <div>
                             <label for="sendMessageDelete">Send Message Delete</label>
                             <label class="switch">
@@ -127,10 +121,6 @@
                             </label>
                         </div>
 
-                        <!-- <div class="field">
-                        <label for="sendSay">Sayを送信:</label>
-                        <input type="checkbox" id="sendSay" name="sendSay">
-                    </div> -->
                         <div>
                             <label for="sendSay">Sayを送信</label>
                             <label class="switch">
@@ -139,10 +129,6 @@
                             </label>
                         </div>
 
-                        <!-- <div class="field">
-                        <label for="sendMe">Meを送信:</label>
-                        <input type="checkbox" id="sendMe" name="sendMe">
-                    </div> -->
                         <div>
                             <label for="sendMe">Meを送信</label>
                             <label class="switch">
@@ -160,10 +146,6 @@
 
                     <div id="console-box" class="box">
                         <h3>コンソール</h3>
-                        <!-- <div class="field">
-                        <label for="console">コンソール:</label>
-                        <input type="checkbox" id="console" name="console">
-                    </div> -->
                         <div>
                             <label for="console">コンソール</label>
                             <label class="switch">
@@ -172,10 +154,6 @@
                             </label>
                         </div>
 
-                        <!-- <div class="field">
-                        <label for="kill@eProtection">Kill @e 保護:</label>
-                        <input type="checkbox" id="killEProtection" name="kill@eProtection">
-                    </div> -->
                         <div>
                             <label for="killAtEProtection">Kill @e 保護</label>
                             <label class="switch">
@@ -226,25 +204,24 @@
 
                     <div id="sync-box" class="box">
                         <h3>同期</h3>
-                        <div class="field">
-                            <label for="roleTags">ロールタグ</label>
-                            <input type="text" id="roleTags" name="roleTags">
+                        <div class="field array-field">
+                            <label for="roleTags">ロールタグ
+                                <p class="add-button" id="add-roleTag">追加</p></label>
+                            <ul class="array" id="roleTags">
+                            </ul>
                         </div>
-
-                        <div class="field">
-                            <label for="tagRoles">タグロール</label>
-                            <input type="text" id="tagRoles" name="tagRoles">
+                        
+                        <div class="field array-field">
+                            <label for="tagRoles">タグロール
+                                <p class="add-button" id="add-tagRole">追加</p></label>
+                            <ul class="array" id="tagRoles">
+                            </ul>
                         </div>
 
                     </div>
 
                     <div id="other-box" class="box">
                         <h3>その他</h3>
-                        <!-- <div class="field">
-                        <label for="playerChartIntervalMinutes">プレイヤーチャート更新間隔(分):</label>
-                        <input type="number" id="playerChartIntervalMinutes" name="playerChartIntervalMinutes" required>
-                    </div> -->
-
                         <div>
                             <label for="unLinkCommand">unlinkコマンド</label>
                             <label class="switch">
@@ -259,7 +236,7 @@
                     <button type="reset" id="cancel">キャンセル</button>
                     <button type="submit" id="save">保存</button>
                 </div>
-                
+
             </form>
         </div>
     </main>

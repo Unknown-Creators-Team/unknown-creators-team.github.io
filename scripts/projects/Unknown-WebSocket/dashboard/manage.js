@@ -39,14 +39,24 @@ $(function () {
                                 $("#casetteId").val(params.get("id"));
                                 $("#formatVersion").val(casette.formatVersion);
                                 $("#owner").val(casette.owner);
-                                $("#administrators").val(casette.administrators.join(", "));
+                                casette.administrators.forEach((admin, i) => {
+                                    $("#administrators")
+                                        .append(
+                                            `<li><input type="text" name="administrators" required><span></span></li>`
+                                        ).children("li").eq(i).children("input").val(admin);
+                                });
                                 $("#guildId").val(casette.guildId);
                                 $("#language").val(casette.language);
                                 $("#serverName").val(casette.serverName);
                                 $("#compatible").val(casette.compatible ?? "null");
                                 $("#globalBan #enabled").prop("checked", casette.globalBan.enabled);
-                                $("#globalBan #punishment").val(casette.globalBan.punishment);
-                                $("#blockedIps").val(casette.blockedIps.join(", "));
+                                $("#globalBan #punishment").val(casette.globalBan.punishment);// $("#blockedIps").val(casette.blockedIps.join(", "));
+                                casette.blockedIps.forEach((ip, i) => {
+                                    $("#blockedIps")
+                                        .append(
+                                            `<li><input type="text" name="blockedIps" required><span></span></li>`
+                                        ).children("li").eq(i).children("input").val(ip);
+                                });
                                 $("#sendMessageDelete").prop("checked", casette.sendMessageDelete);
                                 $("#sendSay").prop("checked", casette.sendSay);
                                 $("#sendMe").prop("checked", casette.sendMe);
@@ -64,10 +74,70 @@ $(function () {
                                 $("#emojis #join").val(casette.emojis.join);
                                 $("#emojis #leave").val(casette.emojis.leave);
                                 $("#emojis #death").val(casette.emojis.death);
-                                $("#roleTags").val(casette.roleTags.join(", "));
-                                $("#tagRoles").html(casette.tagRoles.join(", "));
+                                casette.roleTags.forEach((tag, i) => {
+                                    $("#roleTags")
+                                        .append(
+                                            `<li><input type="text" name="roleTags" required><span></span></li>`
+                                        ).children("li").eq(i).children("input").val(tag);
+                                });
+                                casette.tagRoles.forEach((tag, i) => {
+                                    $("#tagRoles")
+                                        .append(
+                                            `<li><input type="text" name="tagRoles" required><span></span></li>`
+                                        ).children("li").eq(i).children("input").val(tag);
+                                });                                
 
                                 firstData = toDate();
+
+                                $("#administrators li span").on("click", function () {
+                                    $(this).parent().remove();
+                                });
+
+                                $("#add-administrator").on("click", () => {
+                                    $("#administrators").append(
+                                        `<li><input type="text" name="administrators" required><span></span></li>`
+                                    );
+
+                                    $("#administrators li:last-child span").on("click", function () {
+                                        $(this).parent().remove();
+                                    });
+                                });
+
+                                $("#blockedIps li span").on("click", function () {
+                                    $(this).parent().remove();
+                                });
+
+                                $("#add-blockedIp").on("click", () => {
+                                    $("#blockedIps").append(`<li><input type="text" name="blockedIps" required><span></span></li>`);
+
+                                    $("#blockedIps li:last-child span").on("click", function () {
+                                        $(this).parent().remove();
+                                    });
+                                });
+
+                                $("#roleTags li span").on("click", function () {
+                                    $(this).parent().remove();
+                                });
+
+                                $("#add-roleTag").on("click", () => {
+                                    $("#roleTags").append(`<li><input type="text" name="roleTags" required><span></span></li>`);
+
+                                    $("#roleTags li:last-child span").on("click", function () {
+                                        $(this).parent().remove();
+                                    });
+                                });
+
+                                $("#tagRoles li span").on("click", function () {
+                                    $(this).parent().remove();
+                                });
+
+                                $("#add-tagRole").on("click", () => {
+                                    $("#tagRoles").append(`<li><input type="text" name="tagRoles" required><span></span></li>`);
+
+                                    $("#tagRoles li:last-child span").on("click", function () {
+                                        $(this).parent().remove();
+                                    });
+                                });
 
                                 // submit button
                                 $("#save").on("click", (event) => {
@@ -169,13 +239,11 @@ $(function () {
                 $("#buttons").css({
                     display: "block",
                     position: "absolute",
-                    // bottom: "10px",
                 });
             } else {
                 $("#buttons").css({
                     display: "block",
                     position: "fixed",
-                    // bottom: "10px",
                 });
             }
 
@@ -187,46 +255,35 @@ $(function () {
         } else {
             $("#buttons").removeClass("slide-up");
             $("#buttons").addClass("fade-out");
-
-            // setTimeout(() => {
-            //     $("#buttons").css({
-            //         display: "none",
-            //         opacity: "0",
-            //     });
-            // }, 0);
         }
     };
 
     $(window).on("scroll", function () {
         buttonControl();
-        // console.log("scroll")
     });
 
     // keyup
     $(window).on("keyup", function (e) {
         buttonControl();
-        // console.log("keyup")
     });
 
     // click any
     $(window).on("click", function (e) {
         buttonControl();
-        // console.log("click")
     });
 
-    // setInterval(() => {
-    //     buttonControl();
-    // }, 1000);
+    setInterval(() => {
+        buttonControl();
+    }, 500);
 });
 
 function toDate() {
     const data = {};
 
-    data.administrators = $("#administrators")
-        .val()
-        .replace(/ /g, "")
-        .split(",")
-        .filter((v) => v && v.length);
+    data.administrators = [];
+    $("#administrators li input").each((i, e) => {
+        data.administrators.push($(e).val());
+    });
     data.guildId = $("#guildId").val();
     data.language = $("#language").val();
     data.serverName = $("#serverName").val();
@@ -235,6 +292,10 @@ function toDate() {
         enabled: $("#globalBan #enabled").prop("checked"),
         punishment: $("#globalBan #punishment").val(),
     };
+    data.blockedIps = [];
+    $("#blockedIps li input").each((i, e) => {
+        data.blockedIps.push($(e).val());
+    });
     data.sendMessageDelete = $("#sendMessageDelete").prop("checked");
     data.sendSay = $("#sendSay").prop("checked");
     data.sendMe = $("#sendMe").prop("checked");
@@ -256,16 +317,14 @@ function toDate() {
         leave: $("#emojis #leave").val(),
         death: $("#emojis #death").val(),
     };
-    data.roleTags = $("#roleTags")
-        .val()
-        .replace(/ /g, "")
-        .split(",")
-        .filter((v) => v && v.length);
-    data.tagRoles = $("#tagRoles")
-        .html()
-        .replace(/ /g, "")
-        .split(",")
-        .filter((v) => v && v.length);
+    data.roleTags = [];
+    $("#roleTags li input").each((i, e) => {
+        data.roleTags.push($(e).val());
+    });
+    data.tagRoles = [];
+    $("#tagRoles li input").each((i, e) => {
+        data.tagRoles.push($(e).val());
+    });
 
     console.log("data:", data);
     return data;
