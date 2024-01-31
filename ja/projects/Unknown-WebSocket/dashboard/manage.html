@@ -30,6 +30,8 @@
 
                         <label for="formatVersion">フォーマットバージョン</label>
                         <input type="number" id="formatVersion" name="formatVersion" disabled readonly required>
+
+                        <p id="reissueToken">トークンを再発行</p>
                     </div>
 
                     <div id="server-box" class="box">
@@ -238,6 +240,11 @@
                 </div>
 
             </form>
+        </div>
+        <div id="reissuedDisplay" class="display">
+            <h2>トークンを再発行しました</h2>
+            <p>再発行したトークンはカセットオーナーのDMに送信されます</p>
+            <button id="closeReissuedDisplay">閉じる</button>
         </div>
     </main>
 

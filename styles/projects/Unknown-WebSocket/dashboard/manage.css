@@ -84,6 +84,22 @@ input, select {
     overflow: hidden; /* Add this */
 }
 
+#reissueToken {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    color: #eb1414;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: all .2s;
+}
+
+#reissueToken:hover {
+    background-color: #d33636;
+    color: #ffffff;
+}
+
 .array-field {
     min-height: 10px;
 }
@@ -266,6 +282,17 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
+.display {
+    display: none;
+    position: fixed;
+    width: max-content;
+    height: max-content;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
 
 @media (max-width: 1024px) {
     #viewer #big-box {

@@ -193,6 +193,61 @@ $(function () {
                                 $("#cancel").on("click", () => {
                                     this.location.reload();
                                 });
+
+                                $("#reissueToken").on("click", () => {
+                                    fetch(serverUri + "/uws/v1/dashboard/reissue", {
+                                        method: "POST",
+                                        headers: {
+                                            token: new Cookie().get("token")?.access_token,
+                                            casette: params.get("id"),
+                                        },
+                                    })
+                                        .then((res) => {
+                                            res.json().then((json) => {
+                                                if (res.status === 200) {
+                                                    console.log(json);
+                                                    const width = $("#reissuedDisplay").outerWidth();
+                                                    const height = $("#reissuedDisplay").outerHeight();
+                                                    $("#reissuedDisplay").css({
+                                                        position: "fixed",
+                                                        left: `calc(50% - ${width / 2}px)`,
+                                                        top: `calc(50% - ${height / 2}px)`,
+                                                    });
+
+                                                    $("#reissuedDisplay").fadeIn(200);
+
+                                                    $("#closeReissuedDisplay").on("click", () => {
+                                                        this.location.reload();
+                                                    });
+                                                } else {
+                                                    if (json.message) {
+                                                        $("#viewer").html(
+                                                            `<h1>${res.status} ${res.statusText}: ${json.message}</h1>${retryButton}`
+                                                        );
+                                                    } else {
+                                                        $("#viewer").html(
+                                                            `<h1>${res.status} ${res.statusText}</h1>${retryButton}`
+                                                        );
+                                                    }
+                                                }
+                                            });
+                                        })
+                                        .catch((error) => {
+                                            console.log(JSON.stringify(error, null, 4));
+                                            if (error.message.includes("ENOTFOUND")) {
+                                                $("#viewer").html("<h1>Server not found</h1>");
+                                            } else if (error.message.includes("Failed to fetch")) {
+                                                $("#viewer").html(`<h1>Failed to fetch data</h1>
+                                        ${retryButton}
+                                        <a href="./index.html?local1">local1</a>
+                                        <a href="./index.html?local2">local2</a>
+                                        <a href="./index.html?local3">local3</a>
+                                        <a href="./index.html?dev">dev</a>`);
+                                            } else {
+                                                $("#viewer").html(`<h1>Error occurred</h1>${retryButton}`);
+                                            }
+                                        });
+                                });
                             });
                         } else {
                             res.json().then((json) => {
