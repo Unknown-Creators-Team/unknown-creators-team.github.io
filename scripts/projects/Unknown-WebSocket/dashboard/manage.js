@@ -46,6 +46,10 @@ $(function () {
     setInterval(() => {
         buttonControl();
     }, 500);
+
+    $("#closeSentDisplay").on("click", () => {
+        $("#sentDisplay").fadeOut(200);
+    });
 });
 
 function getConfig() {
@@ -333,10 +337,19 @@ function sendConfig() {
                                         console.log("cancel2", json);
                                         account = json;
                                         getConfig();
+
+                                        const width = $("#sentDisplay").outerWidth();
+                                        const height = $("#sentDisplay").outerHeight();
+                                        $("#sentDisplay").css({
+                                            position: "fixed",
+                                            left: `calc(50% - ${width / 2}px)`,
+                                            top: `calc(50% - ${height / 2}px)`,
+                                        });
+                                        $("#sentDisplay").fadeIn(200);
                                     })
                                     .fail(() => {
                                         cookie.delete("token");
-                                        location.reload();
+                                        // location.reload();
                                     });
                             }, 500);
                         })
