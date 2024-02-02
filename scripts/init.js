@@ -4,10 +4,14 @@ export const CLIENT_SECRET = "mq-4uMfHlixM0rTaODV4Cfq92B2gfxrh";
 export class Cookie extends Map {
     constructor() {
         super();
+        this.load();
+    }
+    load() {
         document.cookie.split(";").forEach((cookie) => {
             const [key, value] = cookie.split("=");
             this.set(key.trim(), value);
         });
+        return this;
     }
     set(key, value, expire = 0) {
         if (typeof value === "object") value = JSON.stringify(value);
@@ -56,6 +60,7 @@ export function getFromToken(token) {
 
 export function refreshToken(json) {
     const deferred = $.Deferred();
+    // return deferred.promise();
     console.log("join:", json)
     fetch("https://discordapp.com/api/oauth2/token", {
         method: "POST",

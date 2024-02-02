@@ -40,27 +40,25 @@ $(function() {
             getFromToken(token).then(json => {
                 console.log("def:", json);
                 console.log("cookie:", cookie.get("token"));
-                setTimeout(() => {
-                    refreshToken(cookie.get("token")).then(j => {
-                        cookie.set("token", j, j.expires_in * 9 / 10);
-        
-                        
-                        $(".menu").html(`<img src="https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png" alt="Avatar" class="avatar">`);
-                        $(".menu").css("margin", "14px 20px 0 0");
-                        $(".menu").css("display", "inline");
-                        
-                        $(".system-logout").show();
-                        $(".system-login").hide();
-                        $(".header-right").hide();
+                refreshToken(cookie.get("token")).then(j => {
+                    cookie.set("token", j, j.expires_in * 9 / 10);
     
+                    
+                    $(".menu").html(`<img src="https://cdn.discordapp.com/avatars/${json.id}/${json.avatar}.png" alt="Avatar" class="avatar">`);
+                    $(".menu").css("margin", "14px 20px 0 0");
+                    $(".menu").css("display", "inline");
+                    
+                    $(".system-logout").show();
+                    $(".system-login").hide();
+                    $(".header-right").hide();
+
+
+                    $(".system-logout").click(() => {
+                        cookie.delete("token");
+                        window.location.reload();
+                    });
     
-                        $(".system-logout").click(() => {
-                            cookie.delete("token");
-                            window.location.reload();
-                        });
-        
-                    }).fail(() => cookie.delete("token"));
-                }, 1000);
+                }).fail(() => cookie.delete("token"));
                 
             })
             .fail(() => cookie.delete("token"))

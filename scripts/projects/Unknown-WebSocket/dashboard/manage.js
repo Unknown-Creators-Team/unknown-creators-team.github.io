@@ -1,21 +1,20 @@
-import { Cookie, cookie, getFromToken } from "../../../init.js";
-let firstData = toDate();
-// @ts-ignore
-let token, json, casette, params;
+import { Cookie, cookie, getFromToken, refreshToken } from "../../../init.js";
+let token, params, serverUri, account, casette, firstData, defaultData;
 const retryButton = `<a href="${window.location}">再試行</a>`;
 
-$(function async() {
-    
-    
+$(function () {
+    defaultData = $("#viewer").html();
+    firstData = toDate();
 
     if (cookie.has("token")) {
         token = cookie.get("token")?.access_token;
         getFromToken(token)
             .then((json) => {
-                console.log(json);
+                account = json;
+                console.log(account);
 
-                const params = new URLSearchParams(window.location.search);
-                let serverUri = "https://api.un-known.xyz:22003";
+                params = new URLSearchParams(window.location.search);
+                serverUri = "https://api.un-known.xyz:22003";
                 if (params.has("local1")) serverUri = "http://127.0.0.1:22002";
                 if (params.has("local2")) serverUri = "http://192.168.1.42:22002";
                 if (params.has("local3")) serverUri = "http://192.168.1.45:22002";
@@ -23,14 +22,12 @@ $(function async() {
                 if (params.has("unsecure")) serverUri = "http://api.un-known.xyz:22002";
 
                 if (!params.has("id")) window.location.href = "./index.html" + window.location.search;
-                if (!json || !token) window.location.href = "/login.html?redirect=" + window.location.href;
+                if (!account || !token) window.location.href = "/login.html?redirect=" + window.location.href;
 
-                getConfig(serverUri);
+                getConfig();
             })
             .fail(() => cookie.delete("token"));
     } else window.location.href = "/login.html?redirect=" + window.location.href;
-
-    
 
     $(window).on("scroll", function () {
         buttonControl();
@@ -51,222 +48,63 @@ $(function async() {
     }, 500);
 });
 
-/**
- * 
- * @param {string} URI 
- * @returns 
- */
-function getConfig(URI) {
+function getConfig() {
     $(".spinner").show();
-    return new Promise((resolve, reject) => {
-        fetch(URI + "/uws/v1/dashboard/view", {
-            headers: {
-                token: token,
-                administrator: json.id,
-                casette: params.get("id"),
-            },
+    fetch(serverUri + "/uws/v1/dashboard/view", {
+        headers: {
+            token: token,
+            administrator: account.id,
+            casette: params.get("id"),
+        },
+    })
+        .then((res) => {
+            $(".spinner").hide();
+            if (res.status === 200) {
+                res.json().then((json) => {
+                    casette = json;
+                    console.log(casette);
+
+                    loadData();
+
+                    firstData = toDate();
+
+                    setUpHtml();
+                });
+            } else {
+                res.json().then((json) => {
+                    if (json.message) {
+                        $("#viewer").html(`<h1>${res.status} ${res.statusText}: ${json.message}</h1>${retryButton}`);
+                    } else {
+                        $("#viewer").html(`<h1>${res.status} ${res.statusText}</h1>${retryButton}`);
+                    }
+                });
+            }
         })
-            .then((res) => {
-                if (res.status === 200) {
-                    res.json().then((casette) => {
-                        console.log(casette);
-
-                        $("#administrators li span").on("click", function () {
-                            $(this).parent().remove();
-                        });
-
-                        $("#add-administrator").on("click", () => {
-                            $("#administrators").append(
-                                `<li><input type="text" name="administrators" required><span></span></li>`
-                            );
-
-                            $("#administrators li:last-child span").on("click", function () {
-                                $(this).parent().remove();
-                            });
-                        });
-
-                        $("#blockedIps li span").on("click", function () {
-                            $(this).parent().remove();
-                        });
-
-                        $("#add-blockedIp").on("click", () => {
-                            $("#blockedIps").append(
-                                `<li><input type="text" name="blockedIps" required><span></span></li>`
-                            );
-
-                            $("#blockedIps li:last-child span").on("click", function () {
-                                $(this).parent().remove();
-                            });
-                        });
-
-                        $("#roleTags li span").on("click", function () {
-                            $(this).parent().remove();
-                        });
-
-                        $("#add-roleTag").on("click", () => {
-                            $("#roleTags").append(`<li><input type="text" name="roleTags" required><span></span></li>`);
-
-                            $("#roleTags li:last-child span").on("click", function () {
-                                $(this).parent().remove();
-                            });
-                        });
-
-                        $("#tagRoles li span").on("click", function () {
-                            $(this).parent().remove();
-                        });
-
-                        $("#add-tagRole").on("click", () => {
-                            $("#tagRoles").append(`<li><input type="text" name="tagRoles" required><span></span></li>`);
-
-                            $("#tagRoles li:last-child span").on("click", function () {
-                                $(this).parent().remove();
-                            });
-                        });
-
-                        // submit button
-                        $("#save").on("click", (event) => {
-                            event.preventDefault();
-
-                            const data = toDate();
-
-                            fetch(serverUri + "/uws/v1/dashboard/edit", {
-                                method: "POST",
-                                headers: {
-                                    token: new Cookie().get("token")?.access_token,
-                                    administrator: json.id,
-                                    casette: params.get("id"),
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify(data),
-                            })
-                                .then((res) => {
-                                    res.json().then((json) => {
-                                        if (res.status === 200) {
-                                            console.log(json);
-                                            this.location.reload();
-                                        } else {
-                                            if (json.message) {
-                                                $("#viewer").html(
-                                                    `<h1>${res.status} ${res.statusText}: ${json.message}</h1>${retryButton}`
-                                                );
-                                            } else {
-                                                $("#viewer").html(
-                                                    `<h1>${res.status} ${res.statusText}</h1>${retryButton}`
-                                                );
-                                            }
-                                        }
-                                    });
-                                })
-                                .catch((error) => {
-                                    console.log(JSON.stringify(error, null, 4));
-                                    if (error.message.includes("ENOTFOUND")) {
-                                        $("#viewer").html("<h1>Server not found</h1>");
-                                    } else if (error.message.includes("Failed to fetch")) {
-                                        $("#viewer").html(`<h1>Failed to fetch data</h1>
-                                ${retryButton}
-                                <a href="./index.html?local1">local1</a>
-                                <a href="./index.html?local2">local2</a>
-                                <a href="./index.html?local3">local3</a>
-                                <a href="./index.html?dev">dev</a>`);
-                                    } else {
-                                        $("#viewer").html(`<h1>Error occurred</h1>${retryButton}`);
-                                    }
-                                });
-                        });
-
-                        $("#cancel").on("click", () => {
-                            this.location.reload();
-                        });
-
-                        $("#reissueToken").on("click", () => {
-                            fetch(serverUri + "/uws/v1/dashboard/reissue", {
-                                method: "POST",
-                                headers: {
-                                    token: new Cookie().get("token")?.access_token,
-                                    casette: params.get("id"),
-                                },
-                            })
-                                .then((res) => {
-                                    res.json().then((json) => {
-                                        if (res.status === 200) {
-                                            console.log(json);
-                                            const width = $("#reissuedDisplay").outerWidth();
-                                            const height = $("#reissuedDisplay").outerHeight();
-                                            $("#reissuedDisplay").css({
-                                                position: "fixed",
-                                                left: `calc(50% - ${width / 2}px)`,
-                                                top: `calc(50% - ${height / 2}px)`,
-                                            });
-
-                                            $("#reissuedDisplay").fadeIn(200);
-
-                                            $("#closeReissuedDisplay").on("click", () => {
-                                                this.location.reload();
-                                            });
-                                        } else {
-                                            if (json.message) {
-                                                $("#viewer").html(
-                                                    `<h1>${res.status} ${res.statusText}: ${json.message}</h1>${retryButton}`
-                                                );
-                                            } else {
-                                                $("#viewer").html(
-                                                    `<h1>${res.status} ${res.statusText}</h1>${retryButton}`
-                                                );
-                                            }
-                                        }
-                                    });
-                                })
-                                .catch((error) => {
-                                    console.log(JSON.stringify(error, null, 4));
-                                    if (error.message.includes("ENOTFOUND")) {
-                                        $("#viewer").html("<h1>Server not found</h1>");
-                                    } else if (error.message.includes("Failed to fetch")) {
-                                        $("#viewer").html(`<h1>Failed to fetch data</h1>
-                                ${retryButton}
-                                <a href="./index.html?local1">local1</a>
-                                <a href="./index.html?local2">local2</a>
-                                <a href="./index.html?local3">local3</a>
-                                <a href="./index.html?dev">dev</a>`);
-                                    } else {
-                                        $("#viewer").html(`<h1>Error occurred</h1>${retryButton}`);
-                                    }
-                                });
-                        });
-                    });
-                } else {
-                    res.json().then((json) => {
-                        if (json.message) {
-                            $("#viewer").html(
-                                `<h1>${res.status} ${res.statusText}: ${json.message}</h1>${retryButton}`
-                            );
-                        } else {
-                            $("#viewer").html(`<h1>${res.status} ${res.statusText}</h1>${retryButton}`);
-                        }
-                    });
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-                if (error.message.includes("ENOTFOUND")) {
-                    $("#viewer").html("<h1>Server not found</h1>");
-                } else if (error.message.includes("Failed to fetch")) {
-                    $("#viewer").html(`<h1>Failed to fetch data</h1>
-                ${retryButton}
-                <a href="./index.html?local1">local1</a>
-                <a href="./index.html?local2">local2</a>
-                <a href="./index.html?local3">local3</a>
-                <a href="./index.html?dev">dev</a>
-                <a href="./index.html?unsecure">unsecure</a>`);
-                } else {
-                    $("#viewer").html("<h1>Error occurred</h1>${retryButton}");
-                }
-            });
-    });
+        .catch((error) => {
+            $(".spinner").hide();
+            console.log(error);
+            if (error.message.includes("ENOTFOUND")) {
+                $("#viewer").html("<h1>Server not found</h1>");
+            } else if (error.message.includes("Failed to fetch")) {
+                $("#viewer").html(
+                    [
+                        `<h1>Failed to fetch data</h1>`,
+                        retryButton,
+                        `<a href="./index.html?local1">local1</a>`,
+                        `<a href="./index.html?local2">local2</a>`,
+                        `<a href="./index.html?local3">local3</a>`,
+                        `<a href="./index.html?dev">dev</a>`,
+                        `<a href="./index.html?unsecure">unsecure</a>`,
+                    ].json("")
+                );
+            } else {
+                $("#viewer").html("<h1>Error occurred</h1>${retryButton}");
+            }
+        });
 }
 
 function loadData() {
-    $(".spinner").hide();
-
+    $("#viewer").html(defaultData);
     $("#casetteId").val(params.get("id"));
     $("#formatVersion").val(casette.formatVersion);
     $("#owner").val(casette.owner);
@@ -283,7 +121,7 @@ function loadData() {
     $("#serverName").val(casette.serverName);
     $("#compatible").val(casette.compatible ?? "null");
     $("#globalBan #enabled").prop("checked", casette.globalBan.enabled);
-    $("#globalBan #punishment").val(casette.globalBan.punishment);
+    $("#globalBan #punishment").val(casette.globalBan.punishment); // $("#blockedIps").val(casette.blockedIps.join(", "));
     casette.blockedIps.forEach((ip, i) => {
         $("#blockedIps")
             .append(`<li><input type="text" name="blockedIps" required><span></span></li>`)
@@ -325,8 +163,6 @@ function loadData() {
             .children("input")
             .val(tag);
     });
-
-    firstData = toDate();
 }
 
 function toDate() {
@@ -378,11 +214,222 @@ function toDate() {
         data.tagRoles.push($(e).val());
     });
 
-    console.log("data:", data);
+    // console.log("data:", data);
     return data;
 }
 
-function buttonControl () {
+function setUpHtml() {
+    $("#administrators li span").on("click", function () {
+        $(this).parent().remove();
+    });
+
+    $("#add-administrator").on("click", () => {
+        $("#administrators").append(`<li><input type="text" name="administrators" required><span></span></li>`);
+
+        $("#administrators li:last-child span").on("click", function () {
+            $(this).parent().remove();
+        });
+    });
+
+    $("#blockedIps li span").on("click", function () {
+        $(this).parent().remove();
+    });
+
+    $("#add-blockedIp").on("click", () => {
+        $("#blockedIps").append(`<li><input type="text" name="blockedIps" required><span></span></li>`);
+
+        $("#blockedIps li:last-child span").on("click", function () {
+            $(this).parent().remove();
+        });
+    });
+
+    $("#roleTags li span").on("click", function () {
+        $(this).parent().remove();
+    });
+
+    $("#add-roleTag").on("click", () => {
+        $("#roleTags").append(`<li><input type="text" name="roleTags" required><span></span></li>`);
+
+        $("#roleTags li:last-child span").on("click", function () {
+            $(this).parent().remove();
+        });
+    });
+
+    $("#tagRoles li span").on("click", function () {
+        $(this).parent().remove();
+    });
+
+    $("#add-tagRole").on("click", () => {
+        $("#tagRoles").append(`<li><input type="text" name="tagRoles" required><span></span></li>`);
+
+        $("#tagRoles li:last-child span").on("click", function () {
+            $(this).parent().remove();
+        });
+    });
+
+    // submit button
+    $("#save").on("click", (event) => {
+        event.preventDefault();
+        $(".spinner").show();
+        sendConfig();
+    });
+
+    $("#cancel").on("click", () => {
+        // location.reload();
+        $(".spinner").show();
+        const token_ = cookie.load().get("token");
+        console.log("token_:", token_);
+        refreshToken(token_)
+            .then((j) => {
+                token = j.access_token;
+                console.log("cancel1", j);
+                cookie.set("token", j, (j.expires_in * 9) / 10);
+                setTimeout(() => {
+                    getFromToken(token)
+                        .then((json) => {
+                            console.log("cancel2", json);
+                            account = json;
+                            getConfig();
+                        })
+                        .fail(() => {
+                            cookie.delete("token");
+                            // location.reload();
+                        });
+                }, 500);
+            })
+            .fail(() => {
+                cookie.delete("token");
+                // location.reload();
+            });
+    });
+
+    $("#reissueToken").on("click", () => reissueToken());
+}
+
+function sendConfig() {
+    const data = toDate();
+
+    fetch(serverUri + "/uws/v1/dashboard/edit", {
+        method: "POST",
+        headers: {
+            token: new Cookie().get("token")?.access_token,
+            administrator: account.id,
+            casette: params.get("id"),
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+        .then((res) => {
+            res.json().then((json) => {
+                if (res.status === 200) {
+                    refreshToken(cookie.load().get("token"))
+                        .then((j) => {
+                            token = j.access_token;
+                            console.log("cancel1", j);
+                            cookie.set("token", j, (j.expires_in * 9) / 10);
+                            setTimeout(() => {
+                                getFromToken(token)
+                                    .then((json) => {
+                                        console.log("cancel2", json);
+                                        account = json;
+                                        getConfig();
+                                    })
+                                    .fail(() => {
+                                        cookie.delete("token");
+                                        location.reload();
+                                    });
+                            }, 500);
+                        })
+                        .fail(() => {
+                            cookie.delete("token");
+                            location.reload();
+                        });
+                } else {
+                    if (json.message) {
+                        $("#viewer").html(`<h1>${res.status} ${res.statusText}: ${json.message}</h1>${retryButton}`);
+                    } else {
+                        $("#viewer").html(`<h1>${res.status} ${res.statusText}</h1>${retryButton}`);
+                    }
+                }
+            });
+        })
+        .catch((error) => {
+            console.log(JSON.stringify(error, null, 4));
+            if (error.message.includes("ENOTFOUND")) {
+                $("#viewer").html("<h1>Server not found</h1>");
+            } else if (error.message.includes("Failed to fetch")) {
+                $("#viewer").html(
+                    [
+                        `<h1>Failed to fetch data</h1>`,
+                        retryButton,
+                        `<a href="./index.html?local1">local1</a>`,
+                        `<a href="./index.html?local2">local2</a>`,
+                        `<a href="./index.html?local3">local3</a>`,
+                        `<a href="./index.html?dev">dev</a>`,
+                    ].join("")
+                );
+            } else {
+                $("#viewer").html(`<h1>Error occurred</h1>${retryButton}`);
+            }
+        });
+}
+
+function reissueToken() {
+    fetch(serverUri + "/uws/v1/dashboard/reissue", {
+        method: "POST",
+        headers: {
+            token: new Cookie().get("token")?.access_token,
+            casette: params.get("id"),
+        },
+    })
+        .then((res) => {
+            res.json().then((json) => {
+                if (res.status === 200) {
+                    console.log(json);
+                    const width = $("#reissuedDisplay").outerWidth();
+                    const height = $("#reissuedDisplay").outerHeight();
+                    $("#reissuedDisplay").css({
+                        position: "fixed",
+                        left: `calc(50% - ${width / 2}px)`,
+                        top: `calc(50% - ${height / 2}px)`,
+                    });
+
+                    $("#reissuedDisplay").fadeIn(200);
+
+                    $("#closeReissuedDisplay").on("click", () => {
+                        location.reload();
+                    });
+                } else {
+                    if (json.message) {
+                        $("#viewer").html(`<h1>${res.status} ${res.statusText}: ${json.message}</h1>${retryButton}`);
+                    } else {
+                        $("#viewer").html(`<h1>${res.status} ${res.statusText}</h1>${retryButton}`);
+                    }
+                }
+            });
+        })
+        .catch((error) => {
+            console.log(JSON.stringify(error, null, 4));
+            if (error.message.includes("ENOTFOUND")) {
+                $("#viewer").html("<h1>Server not found</h1>");
+            } else if (error.message.includes("Failed to fetch")) {
+                $("#viewer").html(
+                    [
+                        `<h1>Failed to fetch data</h1>`,
+                        retryButton,
+                        `<a href="./index.html?local1">local1</a>`,
+                        `<a href="./index.html?local2">local2</a>`,
+                        `<a href="./index.html?local3">local3</a>`,
+                        `<a href="./index.html?dev">dev</a>`,
+                    ].join("")
+                );
+            } else {
+                $("#viewer").html(`<h1>Error occurred</h1>${retryButton}`);
+            }
+        });
+}
+
+function buttonControl() {
     const viewerBottom = $("#viewer").offset().top + $("#viewer").outerHeight();
     const windowHeight = $(window).height();
     const data = toDate();
@@ -412,4 +459,4 @@ function buttonControl () {
         $("#buttons").removeClass("slide-up");
         $("#buttons").addClass("fade-out");
     }
-};
+}
