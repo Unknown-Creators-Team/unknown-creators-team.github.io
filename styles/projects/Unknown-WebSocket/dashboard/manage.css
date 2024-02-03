@@ -3,6 +3,14 @@ main {
     /* text-align: center; */
 }
 
+.right {
+    float: right;
+}
+
+.inline {
+    display: inline-block;
+}
+
 ul {
     list-style: none;
     padding: 0;
@@ -62,6 +70,7 @@ ul {
 
 .field label {
     position: absolute;
+    /* display: block; */
     top: 0;
     left: 0;
     margin-bottom: 0;
@@ -133,6 +142,10 @@ input, select {
     /* padding: 7px; */
 }
 
+.array li {
+    margin-top: 10px;
+}
+
 .array li:first-child input{
     margin-top: 30px;
 }
@@ -156,17 +169,37 @@ input, select {
     color: #eb1414;
 }
 
+.dummy {
+    height: 20px;
+}
+
+#roleTag li {
+    margin: 0;
+    margin-top: 10px;
+    padding: 8px;
+    border: 1px solid #000000;
+    border-radius: 6px;
+}
+
+#roleTag input, #roleTag select {
+    margin-top: 0;
+}
+
+#roleTag input {
+    margin: 2px 0;
+}
 
 #buttons {
     display: none;
     position: fixed;
     bottom: 10px;
     right: 10px;
-    padding: 20px;
-    background-color: #b6270bd0;
+    padding: 10px 20px;
+    background-color: #05b113cb;
+    /* background-color: #000000ad; */
     border-radius: 8px;
     
-    backdrop-filter: blur(1px);
+    backdrop-filter: blur(3px);
     /* transition: all 5s; */
     opacity: 0;
 }
@@ -201,6 +234,11 @@ input, select {
 
 #cancel {
     font-size: 12px;
+    /* margin: 0 0 100px 0; */
+    /* position: absolute; */
+    /* top: 100%; */
+    /* transform: translateY(-5px); */
+    
     padding: 3px 6px;
     background-color: #ffffff;
     color: #eb1414;
@@ -220,7 +258,7 @@ input, select {
     font-size: 28px;
     padding: 3px 6px;
     background-color: #ffffff;
-    color: #383838;
+    color: #141414;
     border-radius: 4px;
     cursor: pointer;
     border: none;

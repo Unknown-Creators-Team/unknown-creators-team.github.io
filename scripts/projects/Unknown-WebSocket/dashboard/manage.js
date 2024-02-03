@@ -151,22 +151,37 @@ function loadData() {
     $("#emojis #join").val(casette.emojis.join);
     $("#emojis #leave").val(casette.emojis.leave);
     $("#emojis #death").val(casette.emojis.death);
-    casette.roleTags.forEach((tag, i) => {
-        $("#roleTags")
-            .append(`<li><input type="text" name="roleTags" required><span></span></li>`)
+    casette.roleTag.forEach((tag, i) => {
+        $("#roleTag")
+            .append(`<li><div class="if"><p>もし<span class="right"></span></p><select name="type" class="type"><option value="tag">タグ</option><option value="role" selected>ロール</option></select><input type="text" class="id" placeholder="1093029073355296839" /><p class="inline">が</p><select name="action" class="action"><option value="add">ある</option><option value="remove">ない</option></select><p class="inline">なら</p></div><div class="do"><select name="type" class="type"><option value="tag">タグ</option><option value="role">ロール</option></select><input type="text" class="id" placeholder="uws:op" /><p class="inline">を</p><select name="action" class="action"><option value="add">追加</option><option value="remove">削除</option></select><p class="inline">する</p></div></li>`)
             .children("li")
             .eq(i)
-            .children("input")
-            .val(tag);
+            .find(".if .action")
+            .val(tag.if.action)
+            .end()
+            .find(".if .type")
+            .val(tag.if.type)
+            .end()
+            .find(".if .id")
+            .val(tag.if.id)
+            .end()
+            .find(".do .action")
+            .val(tag.do.action)
+            .end()
+            .find(".do .type")
+            .val(tag.do.type)
+            .end()
+            .find(".do .id")
+            .val(tag.do.id);
     });
-    casette.tagRoles.forEach((tag, i) => {
-        $("#tagRoles")
-            .append(`<li><input type="text" name="tagRoles" required><span></span></li>`)
-            .children("li")
-            .eq(i)
-            .children("input")
-            .val(tag);
-    });
+    // casette.tagRoles.forEach((tag, i) => {
+    //     $("#tagRoles")
+    //         .append(`<li><input type="text" name="tagRoles" required><span></span></li>`)
+    //         .children("li")
+    //         .eq(i)
+    //         .children("input")
+    //         .val(tag);
+    // });
 }
 
 function toDate() {
@@ -209,13 +224,21 @@ function toDate() {
         leave: $("#emojis #leave").val(),
         death: $("#emojis #death").val(),
     };
-    data.roleTags = [];
-    $("#roleTags li input").each((i, e) => {
-        data.roleTags.push($(e).val());
-    });
-    data.tagRoles = [];
-    $("#tagRoles li input").each((i, e) => {
-        data.tagRoles.push($(e).val());
+    data.roleTag = [];
+    $("#roleTag li").each((i, e) => {
+        
+        data.roleTag.push({
+            if: {
+                action: $(e).find(".if .action").val(),
+                type: $(e).find(".if .type").val(),
+                id: $(e).find(".if .id").val(),
+            },
+            do: {
+                action: $(e).find(".do .action").val(),
+                type: $(e).find(".do .type").val(),
+                id: $(e).find(".do .id").val(),
+            },
+        });
     });
 
     // console.log("data:", data);
@@ -247,27 +270,15 @@ function setUpHtml() {
         });
     });
 
-    $("#roleTags li span").on("click", function () {
-        $(this).parent().remove();
+    $("#roleTag li span").on("click", function () {
+        $(this).parents("li").remove();
     });
-
+    
     $("#add-roleTag").on("click", () => {
-        $("#roleTags").append(`<li><input type="text" name="roleTags" required><span></span></li>`);
+        $("#roleTag").append(`<li><div class="if"><p>もし<span class="right"></span></p><select name="type" class="type"><option value="tag">タグ</option><option value="role" selected>ロール</option></select><input type="text" class="id" placeholder="1093029073355296839" /><p class="inline">が</p><select name="action" class="action"><option value="add">ある</option><option value="remove">ない</option></select><p class="inline">なら</p></div><div class="do"><select name="type" class="type"><option value="tag">タグ</option><option value="role">ロール</option></select><input type="text" class="id" placeholder="uws:op" /><p class="inline">を</p><select name="action" class="action"><option value="add">追加</option><option value="remove">削除</option></select><p class="inline">する</p></div></li>`);
 
-        $("#roleTags li:last-child span").on("click", function () {
-            $(this).parent().remove();
-        });
-    });
-
-    $("#tagRoles li span").on("click", function () {
-        $(this).parent().remove();
-    });
-
-    $("#add-tagRole").on("click", () => {
-        $("#tagRoles").append(`<li><input type="text" name="tagRoles" required><span></span></li>`);
-
-        $("#tagRoles li:last-child span").on("click", function () {
-            $(this).parent().remove();
+        $("#roleTag li:last-child span").on("click", function () {
+            $(this).parents("li").remove();
         });
     });
 
