@@ -110,6 +110,38 @@ input, select {
     color: #ffffff;
 }
 
+#howToUse {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #303030;
+    color: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    transition: all .2s;
+}
+
+#howToUse:hover {
+    background-color: #181818;
+    color: #ffffff;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #000000;
+
+}
+
+pre {
+    background-color: #444444;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin-bottom: 10px;
+}
+
 .array-field {
     min-height: 10px;
 }

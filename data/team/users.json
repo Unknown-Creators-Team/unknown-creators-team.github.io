@@ -48,22 +48,6 @@
         }
     ],
     [
-        "jun-suzu",
-        {
-            "name": "JUN-SUZU",
-            "position": "CISO / Developer",
-            "description": "超多言語型高校生プログラマー<br>IT関連全部任せてや～^^",
-            "image": "jun_suzu",
-            "social": {
-                "site": "jun-suzu.net",
-                "twitter": null,
-                "youtube": "c/JUNSUZUGAMES",
-                "github": "JUN-SUZU",
-                "discord": null
-            }
-        }
-    ],
-    [
         "karesa",
         {
             "name": "karesa",
@@ -155,22 +139,6 @@
                 "twitter": "watamen39",
                 "youtube": null,
                 "github": "watamen",
-                "discord": null
-            }
-        }
-    ],
-    [
-        "pape",
-        {
-            "name": "PAPE",
-            "position": "Builder",
-            "description": "Hi",
-            "image": "pape",
-            "social": {
-                "site": null,
-                "twitter": null,
-                "youtube": null,
-                "github": null,
                 "discord": null
             }
         }

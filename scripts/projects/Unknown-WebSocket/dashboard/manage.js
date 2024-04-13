@@ -111,6 +111,18 @@ function loadData() {
     $("#viewer").html(defaultData);
     $("#casetteId").val(params.get("id"));
     $("#formatVersion").val(casette.formatVersion);
+    let status = "不明";
+    if (casette.subscription.status === "active") status = "アクティブ";
+    else if (casette.subscription.status === "canceled") status = "キャンセル済み";
+    else if (casette.subscription.status === "incomplete") status = "未完了";
+    else if (casette.subscription.status === "incomplete_expired") status = "未完了(期限切れ)";
+    else if (casette.subscription.status === "past_due") status = "支払い期限切れ";
+    else if (casette.subscription.status === "paused") status = "一時停止中";
+    else if (casette.subscription.status === "trialing") status = "トライアル中";
+    else if (casette.subscription.status === "unpaid") status = "未払い";
+    $("#subscription").val(status);
+    const expires_at = casette.subscription.expires_at;
+    $("#expires_at").val(expires_at === -1 ? "無期限" : new Date(expires_at * 1000).toLocaleString());
     $("#owner").val(casette.owner);
     casette.administrators.forEach((admin, i) => {
         $("#administrators")
@@ -126,6 +138,9 @@ function loadData() {
     $("#compatible").val(casette.compatible ?? "null");
     $("#globalBan #enabled").prop("checked", casette.globalBan.enabled);
     $("#globalBan #punishment").val(casette.globalBan.punishment); // $("#blockedIps").val(casette.blockedIps.join(", "));
+    $("#globalChat #enabled").prop("checked", casette.globalChat.enabled);
+    $("#globalChat #room").val(casette.globalChat.room);
+
     casette.blockedIps.forEach((ip, i) => {
         $("#blockedIps")
             .append(`<li><input type="text" name="blockedIps" required><span></span></li>`)
@@ -198,6 +213,10 @@ function toDate() {
     data.globalBan = {
         enabled: $("#globalBan #enabled").prop("checked"),
         punishment: $("#globalBan #punishment").val(),
+    };
+    data.globalChat = {
+        enabled: $("#globalChat #enabled").prop("checked"),
+        room: $("#globalChat #room").val(),
     };
     data.blockedIps = [];
     $("#blockedIps li input").each((i, e) => {
@@ -284,6 +303,9 @@ function setUpHtml() {
 
     // submit button
     $("#save").on("click", (event) => {
+        // const form = document.querySelector('form');
+        // if (!form.checkValidity()) return;
+
         event.preventDefault();
         $(".spinner").show();
         sendConfig();
@@ -319,6 +341,7 @@ function setUpHtml() {
     });
 
     $("#reissueToken").on("click", () => reissueToken());
+    $("#howToUse").on("click", () => howToUse());
 }
 
 function sendConfig() {
@@ -451,6 +474,24 @@ function reissueToken() {
                 $("#viewer").html(`<h1>Error occurred</h1>${retryButton}`);
             }
         });
+}
+
+function howToUse() {
+    const width = $("#howToUseDisplay").outerWidth();
+    const height = $("#howToUseDisplay").outerHeight();
+    $("#howToUseDisplay").css({
+        position: "fixed",
+        left: `calc(50% - ${width / 2}px)`,
+        top: `calc(50% - ${height / 2}px)`,
+    });
+
+    $("#casette-id").text($("#casette-id").text().replace("{CASETTE_ID}", params.get("id")))
+
+    $("#howToUseDisplay").fadeIn(200);
+
+    $("#closeHowToUse").on("click", () => {
+        $("#howToUseDisplay").fadeOut(200);
+    });
 }
 
 function buttonControl() {

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unknown</title>
+    <link rel="icon" href="/images/unknown-icon.webp">
+    <link rel="stylesheet" href="/styles/subscription.css">
+    <link rel="stylesheet" href="/styles/def.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <header></header>
+
+    <main>
+        <div class="container">
+            <div class="spinner"></div>
+            <div class="subscription-wrapper" style="display: none;">
+                <div id="product">
+                    <h1>Unknown WebSocket Online</h1>
+                </div>
+                <div id="status" class="left">
+                    <h2 class="inline">ステータス</h2>
+                    <p class="space inline"></p>
+                </div>
+                <div id="price" class="left">
+                    <h2 class="inline">価格</h2>
+                    <p class="space inline"></p>
+                </div>
+                <div id="start" class="left">
+                    <h2 class="inline">開始日時</h2>
+                    <p class="space inline">2021/10/10</p>
+                </div>
+                <div id="next" class="left">
+                    <h2 class="inline">次回支払日時</h2>
+                    <p class="space inline">2021/11/10</p>
+                </div>
+            </div>
+            <div class="manage-wrapper" style="display: none;">
+                <div id="manage">
+                    <h3>サブスクリプションを管理</h3>
+                </div>
+            </div>
+            <!-- <form>
+                <button type="submit" id="manage">Manage billing</button>
+            </form> -->
+        </div>
+    </main>
+
+    <footer></footer>
+    <script type="module" src="/scripts/def.js"></script>
+    <script type="module" src="/scripts/subscription.js"></script>
+</body>
+
+</html>

@@ -199,6 +199,7 @@ nav {
 
 main {
     flex-grow: 1; /*要素が少ないときに縦に伸びる*/
+    /* padding-top: 120px; */
 }
 
 /* footer */

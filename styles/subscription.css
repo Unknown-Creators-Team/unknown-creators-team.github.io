@@ -1,0 +1,61 @@
+main {
+    padding-top: 120px
+}
+
+.subscription-wrapper {
+    text-align: center;
+    margin: 0 auto;
+    padding: 20px;
+    padding-bottom: 10px;
+    width: 50%;
+    max-width: 600px;
+
+    background-color: #dddddd;
+    border-radius: 16px 16px 0 0;
+}
+
+.left {
+    text-align: left;
+}
+
+.inline {
+    display: inline-block;
+
+}
+
+.space {
+    padding: 0;
+    margin: 0;
+    margin-left: 20px;
+}
+
+.manage-wrapper {
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 20px;
+    width: 50%;
+    max-width: 600px;
+
+    background-color: #dddddd;
+    border-radius: 0 0 16px 16px;
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.manage-wrapper:not(.active):hover {
+    color: white;
+    background-color: #000;
+}
+
+.manage-wrapper:not(.active):active {
+    color: white;
+    background-color: #f85555;
+}
+
+.manage-wrapper:not(:not(.active)) {
+    color: white;
+    background-color: #f85555;
+    /* loading */
+    cursor: not-allowed;
+}

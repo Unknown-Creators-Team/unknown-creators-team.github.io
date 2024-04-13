@@ -17,16 +17,27 @@
     <main>
         <div class="plans-wrapper">
             <div class="container">
-                <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-                <stripe-pricing-table pricing-table-id="prctbl_1NahXhLTC37VNVWY2lM8OguO"
-                    publishable-key="pk_test_51KMEG0LTC37VNVWYkaXKyLQuBWrtx1mx7QTrlmhgnxxrPTmLtH2ZZL2zPiAzDwYqLuZh6rInVeHWUHElwvUC0UQ100xpsd3Slq">
-                </stripe-pricing-table>
+                <div id="process">
+                    <h2>処理中...</h2>
+                </div>
+                <div id="login" style="display: none;">
+                    <h2>プランを表示するにはログインする必要があります</h2>
+                    <button type="button" id="login">ログイン</button>
+                </div>
+                <div id="plans" style="display: none;">
+                    <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
+                    <stripe-pricing-table pricing-table-id="prctbl_1OvCKnLTC37VNVWYDPJnTZGv"
+                        publishable-key="pk_test_51KMEG0LTC37VNVWYkaXKyLQuBWrtx1mx7QTrlmhgnxxrPTmLtH2ZZL2zPiAzDwYqLuZh6rInVeHWUHElwvUC0UQ100xpsd3Slq">
+                    </stripe-pricing-table>
+                </div>
+
             </div>
         </div>
     </main>
 
     <footer></footer>
     <script type="module" src="/scripts/def.js"></script>
+    <script type="module" src="/scripts/plans.js"></script>
 </body>
 
 </html>

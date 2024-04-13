@@ -31,7 +31,16 @@
                         <label for="formatVersion">フォーマットバージョン</label>
                         <input type="number" id="formatVersion" name="formatVersion" disabled readonly required>
 
+                        <br>
+
+                        <label for="subscription">サブスクリプション</label>
+                        <input type="text" id="subscription" name="subscription" readonly required>
+
+                        <label for="expires_at">期限切れまで</label>
+                        <input type="text" id="expires_at" name="expires_at" readonly required>
+
                         <p id="reissueToken">トークンを再発行</p>
+                        <p id="howToUse">使い方</p>
                     </div>
 
                     <div id="server-box" class="box">
@@ -112,7 +121,22 @@
                                 <option value="kick">追放</option>
                             </select>
                         </div>
+                    </div>
 
+                    <div id="globalChat" class="box">
+                        <h3>Global Chat</h3>
+                        <div>
+                            <label for="enabled">有効</label>
+                            <label class="switch">
+                                <input type="checkbox" id="enabled" name="enabled" required>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+
+                        <div class="field">
+                            <label for="room">ルーム名</label>
+                            <input type="text" id="room" name="room" minlength="3">
+                        </div>
                     </div>
 
                     <div id="message-box" class="box">
@@ -182,7 +206,7 @@
 
                         <div class="field">
                             <label for="console">コンソールチャンネルID</label>
-                            <input type="text" id="console" name="console" required>
+                            <input type="text" id="console" name="console">
                         </div>
 
                     </div>
@@ -244,6 +268,21 @@
         <div id="sentDisplay" class="display">
             <h2>保存しました</h2>
             <button id="closeSentDisplay">閉じる</button>
+        </div>
+        <div id="howToUseDisplay" class="display">
+            <h2>使い方</h2>
+            <p>トークンを再発行するには「トークンを再発行」をクリックしてください</p>
+            <p>サーバーの設定を変更するには各項目を編集して「保存」をクリックしてください</p>
+            <hr>
+            <div style="text-align: left;">
+                <p>1. カセットIDを含むタグを自己に追加してください</p>
+                <pre><code id="casette-id">/tag @s add "uws:casette-{CASETTE_ID}"</code></pre>
+                <p>2. トークンを含むタグを自己に追加してください</p>
+                <p>トークンは「トークンを再発行」をクリックしてDMに送信されたトークンを追加してください</p>
+                <p>3. サーバーに接続してください</p>
+                <pre><code>/connect uws.un-known.xyz:3000</code></pre>
+            </div>
+            <button id="closeHowToUse">閉じる</button>
         </div>
     </main>
 
