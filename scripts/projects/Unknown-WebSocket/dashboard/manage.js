@@ -157,9 +157,9 @@ function loadData() {
     $("#playerChartIntervalMinutes").val(casette.playerChartIntervalMinutes);
     $("#setMaxPlayers").val(casette.setMaxPlayers);
     $("#killAtEProtection").prop("checked", casette["kill@eProtection"]);
-    $("#onlyLinkedPlayer").prop("checked", casette.onlyLinkedPlayer);
-    $("#discordInvite").val(casette.discordInvite);
-    $("#unLinkCommand").prop("checked", casette.unLinkCommand);
+    // $("#onlyLinkedPlayer").prop("checked", casette.onlyLinkedPlayer);
+    // $("#discordInvite").val(casette.discordInvite);
+    // $("#unLinkCommand").prop("checked", casette.unLinkCommand);
     $("#channels #main").val(casette.channels.main);
     $("#channels #status").val(casette.channels.status);
     $("#channels #console").val(casette.channels.console);
@@ -189,14 +189,18 @@ function loadData() {
             .find(".do .id")
             .val(tag.do.id);
     });
-    // casette.tagRoles.forEach((tag, i) => {
-    //     $("#tagRoles")
-    //         .append(`<li><input type="text" name="tagRoles" required><span></span></li>`)
-    //         .children("li")
-    //         .eq(i)
-    //         .children("input")
-    //         .val(tag);
-    // });
+
+    $("#playerNameRegex #enabled").prop("checked", casette.advanced.playerNameRegex.enabled);
+    $("#playerNameRegex #regex").val(casette.advanced.playerNameRegex.regex);
+
+    casette.advanced.betaModules.forEach((module, i) => {
+        $("#betaModules")
+            .append(`<li><input type="text" name="betaModules" required><span></span></li>`)
+            .children("li")
+            .eq(i)
+            .children("input")
+            .val(module);
+    });
 }
 
 function toDate() {
@@ -230,9 +234,9 @@ function toDate() {
     data.playerChartIntervalMinutes = parseInt($("#playerChartIntervalMinutes").val());
     data.setMaxPlayers = $("#setMaxPlayers").val();
     data["kill@eProtection"] = $("#killAtEProtection").prop("checked");
-    data.onlyLinkedPlayer = $("#onlyLinkedPlayer").prop("checked");
-    data.discordInvite = $("#discordInvite").val();
-    data.unLinkCommand = $("#unLinkCommand").prop("checked");
+    // data.onlyLinkedPlayer = $("#onlyLinkedPlayer").prop("checked");
+    // data.discordInvite = $("#discordInvite").val();
+    // data.unLinkCommand = $("#unLinkCommand").prop("checked");
     data.channels = {
         main: $("#channels #main").val(),
         status: $("#channels #status").val(),
@@ -259,8 +263,19 @@ function toDate() {
             },
         });
     });
+    
+    data.advanced = {
+        playerNameRegex: {
+            enabled: $("#playerNameRegex #enabled").prop("checked"),
+            regex: $("#playerNameRegex #regex").val(),
+        },
+        betaModules: [],
+    };
 
-    // console.log("data:", data);
+    $("#betaModules li input").each((i, e) => {
+        data.advanced.betaModules.push($(e).val());
+    });
+
     return data;
 }
 
@@ -298,6 +313,18 @@ function setUpHtml() {
 
         $("#roleTag li:last-child span").on("click", function () {
             $(this).parents("li").remove();
+        });
+    });
+
+    $("#betaModules li span").on("click", function () {
+        $(this).parent().remove();
+    });
+
+    $("#add-betaModule").on("click", () => {
+        $("#betaModules").append(`<li><input type="text" name="betaModules" required><span></span></li>`);
+
+        $("#betaModules li:last-child span").on("click", function () {
+            $(this).parent().remove();
         });
     });
 

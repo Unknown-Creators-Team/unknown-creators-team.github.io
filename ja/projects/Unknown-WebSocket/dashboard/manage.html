@@ -90,10 +90,10 @@
                             <input type="text" id="setMaxPlayers" name="setMaxPlayers" required>
                         </div>
 
-                        <div class="field">
+                        <!-- <div class="field">
                             <label for="discordInvite">Discordの招待</label>
                             <input type="text" id="discordInvite" name="discordInvite">
-                        </div>
+                        </div> -->
 
                         <div class="field array-field">
                             <label for="blockedIps">ブロック済みIP
@@ -241,7 +241,7 @@
                         </div>
                     </div>
 
-                    <div id="other-box" class="box">
+                    <!-- <div id="other-box" class="box">
                         <h3>その他</h3>
                         <div>
                             <label for="unLinkCommand">unlinkコマンド</label>
@@ -249,6 +249,34 @@
                                 <input type="checkbox" id="unLinkCommand" name="unLinkCommand">
                                 <span class="slider round"></span>
                             </label>
+                        </div>
+                    </div> -->
+
+                    <div id="advanced-box" class="box">
+                        <h3>高度な設定</h3>
+                        <div id="playerNameRegex">
+                            <h4>改変された名前</h4>
+                            <div>
+                                <label for="enabled">有効</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="enabled" name="enabled" required>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+
+                            <div class="field">
+                                <label for="regex">正規表現</label>
+                                <input type="text" id="regex" name="regex" placeholder="§.\[.+\]§. §.{name}§.">
+                            </div>
+                        </div>
+                        <div>
+                            <h4>ベータモジュール</h4>
+                            <div class="field array-field">
+                                <label for="betaModules">モジュール名
+                                    <p class="add-button" id="add-betaModule">追加</p>
+                                </label>
+                                <ul class="array" id="betaModules"></ul>
+                            </div>
                         </div>
                     </div>
                 </div>

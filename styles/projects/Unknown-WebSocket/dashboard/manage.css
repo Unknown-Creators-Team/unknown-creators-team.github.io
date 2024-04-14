@@ -76,7 +76,7 @@ ul {
     margin-bottom: 0;
 }
 
-.field input, select, .switch {
+.field input, select {
     margin-top: 25px;
 }
 
@@ -307,6 +307,7 @@ pre {
     display: inline-block;
     width: 42px;
     height: 23.8px;
+    margin-top: 5px;
 }
 
 .switch input { 
