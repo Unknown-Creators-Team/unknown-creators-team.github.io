@@ -225,6 +225,8 @@ function loadData() {
 
     $("#playerNameRegex #enabled").prop("checked", casette.advanced.playerNameRegex.enabled);
     $("#playerNameRegex #regex").val(casette.advanced.playerNameRegex.regex);
+    $("#chatRegex #enabled").prop("checked", casette.advanced.chatRegex.enabled);
+    $("#chatRegex #regex").val(casette.advanced.chatRegex.regex);
 
     casette.advanced.betaModules.forEach((module, i) => {
         $("#betaModules")
@@ -300,6 +302,10 @@ function toDate() {
         playerNameRegex: {
             enabled: $("#playerNameRegex #enabled").prop("checked"),
             regex: $("#playerNameRegex #regex").val(),
+        },
+        chatRegex: {
+            enabled: $("#chatRegex #enabled").prop("checked"),
+            regex: $("#chatRegex #regex").val(),
         },
         betaModules: [],
     };
