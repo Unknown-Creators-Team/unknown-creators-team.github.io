@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- ハイクオリティなカスタムドロップダウン -->
+    <div class="dropdown">
+        <p>Dropdown</p>
+        <div>
+            <input type="search" placeholder="Search">
+            <option value="one">10000000000000000000000000</option>
+            <option value="two" disabled>2</option>
+            <option value="three">3</option>
+        </div>
+    </div>
+    <!-- <div class="dropdown">
+        <p>Dropdown</p>
+        <div>
+            <input type="search" placeholder="Search">
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+        </div>
+    </div> -->
+
+    <style>
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            width: max-content;
+            min-width: 100px;
+            background-color: #dadada;
+            border: #333 solid 2px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+
+        .dropdown:not(.dropdown-active):hover {
+            background-color: #bbbbbb;
+        }
+
+        .dropdown-active {
+            border: #d63313 solid 2px;
+        }
+
+        .dropdown p {
+            margin: 0;
+            padding: 10px;
+            font-weight: bold;
+            color: #000000;
+        }
+
+        .dropdown div {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            border: #333 solid 1px;
+            z-index: 1;
+        }
+
+        .dropdown div input {
+            width: calc(100% - 20px);
+            margin: 10px;
+            font-size: 16px;
+            color: #333;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            background-color: #f1f1f1;
+            border-radius: 0;
+            outline: none;
+        }
+
+        .dropdown div option {
+            display: block;
+            padding: 10px;
+            font-size: 16px;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .dropdown div option:hover {
+            font-weight: bold;
+            background-color: #a3a3a3;
+        }
+
+        .dropdown div option:disabled {
+            color: #ffffff;
+            background-color: #969696;
+            cursor: not-allowed;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $(".dropdown").each(function () {
+                const width = $(this).children("div").children("option").map(function () {
+                    return getTextWidth($(this).text());
+                }).get().reduce((a, b) => Math.max(a, b)) * 10 + 40;
+                if (Number($(this).css("width").replace(/[^0-9.]/g, "")) < width) {
+                    $(this).css("width", width + "px");
+                }
+            });
+
+            $(".dropdown div option").click(function () {
+                $(this).parent().parent().children("p").text($(this).text());
+                $(this).parent().slideUp();
+                $(this).parent().parent().removeClass("dropdown-active");
+            });
+
+            $(".dropdown p").click(function () {
+                $(this).next().slideToggle();
+                $(this).parent().toggleClass("dropdown-active");
+
+                $(".dropdown").each(function () {
+                    const width = $(this).children("div").children("option").map(function () {
+                        return getTextWidth($(this).text());
+                    }).get().reduce((a, b) => Math.max(a, b)) * 10 + 40;
+                    if (Number($(this).css("width").replace(/[^0-9.]/g, "")) < width) {
+                        $(this).css("width", width + "px");
+                    }
+                });
+            });
+
+            $(".dropdown input").on("keyup search", function () {
+                const value = $(this).val().toLowerCase();
+                $(this).parent().children("option").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+
+            $(document).click(function (e) {
+                if (!$(e.target).closest(".dropdown").length) {
+                    $(".dropdown div").each(function () {
+                        $(this).slideUp();
+                        $(this).parent().removeClass("dropdown-active");
+                    });
+                }
+            });
+
+            // 何が選択されているかを取得
+            const interval = setInterval(() => {
+                function getDropdownValue(dropdown) {
+                    dropdown = $(dropdown);
+                    const text = dropdown.children("p").text();
+                    const value = dropdown.children("div").children("option").filter(function () {
+                        return $(this).text() === text;
+                    }).attr("value");
+                    return value;
+                }
+                console.log(getDropdownValue(".dropdown"));
+            }, 1000);
+        });
+
+        function getTextWidth(text) {
+            let width = 0;
+            for (let i = 0; i < text.length; i++) {
+                const c = text.charCodeAt(i);
+                if ((c >= 0x00 && c < 0x81) || (c === 0xf8f0) || (c >= 0xff61 && c < 0xffa0) || (c >= 0xf8f1 && c < 0xf8f4)) {
+                    width += 1;
+                } else {
+                    width += 2;
+                }
+            }
+            return width;
+        }
+    </script>
+</body>
+
+</html>

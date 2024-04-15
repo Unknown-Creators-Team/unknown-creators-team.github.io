@@ -96,3 +96,41 @@ export function getGuilds(token) {
 
     return deferred.promise();
 }
+
+export function getDropdownValue(dropdown) {
+    dropdown = $(dropdown);
+    const text = dropdown.children("p").text();
+    const value = dropdown.children("div").children("option").filter(function () {
+        return $(this).text() === text;
+    }).attr("value");
+    return value;
+}
+
+export function setDropdownValue(dropdown, value) {
+    dropdown = $(dropdown);
+    dropdown.children("div").children("option").filter(function () {
+        return $(this).attr("value") === value;
+    }).each(function () {
+        dropdown.children("p").text($(this).text());
+    });
+
+    const width = dropdown.children("div").children("option").map(function () {
+        return getTextWidth($(this).text());
+    }).get().reduce((a, b) => Math.max(a, b)) * 10 + 40;
+    if (Number(dropdown.css("width").replace(/[^0-9.]/g, "")) < width) {
+        dropdown.css("width", width + "px");
+    }
+}
+
+export function getTextWidth(text) {
+    let width = 0;
+    for (let i = 0; i < text.length; i++) {
+        const c = text.charCodeAt(i);
+        if ((c >= 0x00 && c < 0x81) || (c === 0xf8f0) || (c >= 0xff61 && c < 0xffa0) || (c >= 0xf8f1 && c < 0xf8f4)) {
+            width += 1;
+        } else {
+            width += 2;
+        }
+    }
+    return width;
+}

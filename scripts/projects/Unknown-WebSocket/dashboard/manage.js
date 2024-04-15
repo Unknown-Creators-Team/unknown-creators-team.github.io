@@ -1,9 +1,10 @@
-import { Cookie, cookie, getFromToken, refreshToken } from "../../../init.js";
-let token, params, serverUri, account, casette, firstData, defaultData;
+import { Cookie, cookie, getFromToken, refreshToken, getGuilds, setDropdownValue, getDropdownValue } from "../../../init.js";
+let token, params, serverUri, account, casette, firstData, latestData, guilds;
 const retryButton = `<a href="${window.location}">再試行</a>`;
 
 $(function () {
-    defaultData = $("#viewer").html();
+    $(".spinner").show();
+    // defaultData = $("#viewer").html();
     firstData = toDate();
 
     if (cookie.has("token")) {
@@ -23,8 +24,30 @@ $(function () {
 
                 if (!params.has("id")) window.location.href = "./index.html" + window.location.search;
                 if (!account || !token) window.location.href = "/login.html?redirect=" + window.location.href;
+    
+                        
 
-                getConfig();
+                guilds = [];
+                getGuilds(token).then((servers) => {
+                    console.log(servers);
+                    servers = servers.filter((g) => (g.permissions & 0x20) === 0x20);
+                    fetch(serverUri + "/uws/v1/servers", {
+                        headers: {
+                            guilds: JSON.stringify(servers.map((g) => g.id)),
+                        },
+                    })
+                    .then((res) => res.json())
+                    .then((servers) => {
+                        console.log(servers);
+                        servers.forEach((guild) => {
+                            guilds.push(guild);
+                        });
+    
+                        getConfig();
+                    })
+                    .catch(console.error);
+                })
+                .fail(() => window.location.reload());
             })
             .fail(() => cookie.delete("token"));
     } else window.location.href = "/login.html?redirect=" + window.location.href;
@@ -53,10 +76,10 @@ $(function () {
 });
 
 function getConfig() {
-    $(".spinner").show();
+    
     fetch(serverUri + "/uws/v1/dashboard/view", {
         headers: {
-            token: token,
+            token: cookie.load().get("token")?.access_token,
             administrator: account.id,
             casette: params.get("id"),
         },
@@ -73,6 +96,7 @@ function getConfig() {
                     firstData = toDate();
 
                     setUpHtml();
+                    
                 });
             } else {
                 res.json().then((json) => {
@@ -108,7 +132,7 @@ function getConfig() {
 }
 
 function loadData() {
-    $("#viewer").html(defaultData);
+    // $("#viewer").html(defaultData);
     $("#casetteId").val(params.get("id"));
     $("#formatVersion").val(casette.formatVersion);
     let status = "不明";
@@ -132,12 +156,19 @@ function loadData() {
             .children("input")
             .val(admin);
     });
-    $("#guildId").val(casette.guildId);
-    $("#language").val(casette.language);
+    guilds.forEach((guild, i) => {
+        $("#guildId div").append(`<option value="${guild.id}">${guild.name}</option>`);
+    });
+    if (!guilds.find((guild) => guild.id === casette.guildId)) {
+        $("#guildId").append(`<option value="${casette.guildId}">アクセスできないサーバー</option>`);
+    }
+    setDropdownValue("#guildId", casette.guildId);
+    
+    setDropdownValue("#language", casette.language);
     $("#serverName").val(casette.serverName);
-    $("#compatible").val(casette.compatible ?? "null");
+    setDropdownValue("#compatible", casette.compatible ?? "null");
     $("#globalBan #enabled").prop("checked", casette.globalBan.enabled);
-    $("#globalBan #punishment").val(casette.globalBan.punishment); // $("#blockedIps").val(casette.blockedIps.join(", "));
+    setDropdownValue("#globalBan #punishment", casette.globalBan.punishment);
     $("#globalChat #enabled").prop("checked", casette.globalChat.enabled);
     $("#globalChat #room").val(casette.globalChat.room);
 
@@ -160,15 +191,17 @@ function loadData() {
     // $("#onlyLinkedPlayer").prop("checked", casette.onlyLinkedPlayer);
     // $("#discordInvite").val(casette.discordInvite);
     // $("#unLinkCommand").prop("checked", casette.unLinkCommand);
-    $("#channels #main").val(casette.channels.main);
-    $("#channels #status").val(casette.channels.status);
-    $("#channels #console").val(casette.channels.console);
+    // $("#channels #main").val(casette.channels.main);
+    // $("#channels #status").val(casette.channels.status);
+    // $("#channels #console").val(casette.channels.console);
     $("#emojis #join").val(casette.emojis.join);
     $("#emojis #leave").val(casette.emojis.leave);
     $("#emojis #death").val(casette.emojis.death);
     casette.roleTag.forEach((tag, i) => {
         $("#roleTag")
-            .append(`<li><div class="if"><p>もし<span class="right"></span></p><select name="type" class="type"><option value="tag">タグ</option><option value="role" selected>ロール</option></select><input type="text" class="id" placeholder="1093029073355296839" /><p class="inline">が</p><select name="action" class="action"><option value="add">ある</option><option value="remove">ない</option></select><p class="inline">なら</p></div><div class="do"><select name="type" class="type"><option value="tag">タグ</option><option value="role">ロール</option></select><input type="text" class="id" placeholder="uws:op" /><p class="inline">を</p><select name="action" class="action"><option value="add">追加</option><option value="remove">削除</option></select><p class="inline">する</p></div></li>`)
+            .append(
+                `<li><div class="if"><p>もし<span class="right"></span></p><select name="type" class="type"><option value="tag">タグ</option><option value="role" selected>ロール</option></select><input type="text" class="id" placeholder="1093029073355296839" /><p class="inline">が</p><select name="action" class="action"><option value="add">ある</option><option value="remove">ない</option></select><p class="inline">なら</p></div><div class="do"><select name="type" class="type"><option value="tag">タグ</option><option value="role">ロール</option></select><input type="text" class="id" placeholder="uws:op" /><p class="inline">を</p><select name="action" class="action"><option value="add">追加</option><option value="remove">削除</option></select><p class="inline">する</p></div></li>`
+            )
             .children("li")
             .eq(i)
             .find(".if .action")
@@ -210,13 +243,13 @@ function toDate() {
     $("#administrators li input").each((i, e) => {
         data.administrators.push($(e).val());
     });
-    data.guildId = $("#guildId").val();
-    data.language = $("#language").val();
+    data.guildId = getDropdownValue("#guildId");
+    data.language = getDropdownValue("#language");
     data.serverName = $("#serverName").val();
-    data.compatible = $("#compatible").val() === "null" ? null : $("#compatible").val();
+    data.compatible = getDropdownValue("#compatible") === "null" ? null : getDropdownValue("#compatible");
     data.globalBan = {
         enabled: $("#globalBan #enabled").prop("checked"),
-        punishment: $("#globalBan #punishment").val(),
+        punishment: getDropdownValue("#globalBan #punishment"),
     };
     data.globalChat = {
         enabled: $("#globalChat #enabled").prop("checked"),
@@ -238,9 +271,9 @@ function toDate() {
     // data.discordInvite = $("#discordInvite").val();
     // data.unLinkCommand = $("#unLinkCommand").prop("checked");
     data.channels = {
-        main: $("#channels #main").val(),
-        status: $("#channels #status").val(),
-        console: $("#channels #console").val(),
+        main: getDropdownValue("#channels #main"),
+        status: getDropdownValue("#channels #status"),
+        console: getDropdownValue("#channels #console"),
     };
     data.emojis = {
         join: $("#emojis #join").val(),
@@ -249,7 +282,6 @@ function toDate() {
     };
     data.roleTag = [];
     $("#roleTag li").each((i, e) => {
-        
         data.roleTag.push({
             if: {
                 action: $(e).find(".if .action").val(),
@@ -263,7 +295,7 @@ function toDate() {
             },
         });
     });
-    
+
     data.advanced = {
         playerNameRegex: {
             enabled: $("#playerNameRegex #enabled").prop("checked"),
@@ -303,13 +335,21 @@ function setUpHtml() {
             $(this).parent().remove();
         });
     });
+    
+    // #guildId のtextが変更されたとき
+    $("#guildId p").on("change", function () {
+        console.log("guildId changed");
+    });
+    
 
     $("#roleTag li span").on("click", function () {
         $(this).parents("li").remove();
     });
-    
+
     $("#add-roleTag").on("click", () => {
-        $("#roleTag").append(`<li><div class="if"><p>もし<span class="right"></span></p><select name="type" class="type"><option value="tag">タグ</option><option value="role" selected>ロール</option></select><input type="text" class="id" placeholder="1093029073355296839" /><p class="inline">が</p><select name="action" class="action"><option value="add">ある</option><option value="remove">ない</option></select><p class="inline">なら</p></div><div class="do"><select name="type" class="type"><option value="tag">タグ</option><option value="role">ロール</option></select><input type="text" class="id" placeholder="uws:op" /><p class="inline">を</p><select name="action" class="action"><option value="add">追加</option><option value="remove">削除</option></select><p class="inline">する</p></div></li>`);
+        $("#roleTag").append(
+            `<li><div class="if"><p>もし<span class="right"></span></p><select name="type" class="type"><option value="tag">タグ</option><option value="role" selected>ロール</option></select><input type="text" class="id" placeholder="1093029073355296839" /><p class="inline">が</p><select name="action" class="action"><option value="add">ある</option><option value="remove">ない</option></select><p class="inline">なら</p></div><div class="do"><select name="type" class="type"><option value="tag">タグ</option><option value="role">ロール</option></select><input type="text" class="id" placeholder="uws:op" /><p class="inline">を</p><select name="action" class="action"><option value="add">追加</option><option value="remove">削除</option></select><p class="inline">する</p></div></li>`
+        );
 
         $("#roleTag li:last-child span").on("click", function () {
             $(this).parents("li").remove();
@@ -369,6 +409,7 @@ function setUpHtml() {
 
     $("#reissueToken").on("click", () => reissueToken());
     $("#howToUse").on("click", () => howToUse());
+    setChannels();
 }
 
 function sendConfig() {
@@ -512,7 +553,7 @@ function howToUse() {
         top: `calc(50% - ${height / 2}px)`,
     });
 
-    $("#casette-id").text($("#casette-id").text().replace("{CASETTE_ID}", params.get("id")))
+    $("#casette-id").text($("#casette-id").text().replace("{CASETTE_ID}", params.get("id")));
 
     $("#howToUseDisplay").fadeIn(200);
 
@@ -551,4 +592,45 @@ function buttonControl() {
         $("#buttons").removeClass("slide-up");
         $("#buttons").addClass("fade-out");
     }
+
+    if (JSON.stringify(data) !== JSON.stringify(latestData)) {
+        if (data?.guildId !== latestData?.guildId) {
+            // latestData = data;
+            setChannels(true);
+        }
+    };
+    latestData = data;
 }
+
+function setChannels(force = false) {
+    console.log("Hi")
+    $("#channels").addClass("ban");
+
+    console.log(getDropdownValue("#guildId"))
+    fetch(serverUri + `/uws/v1/server/${getDropdownValue("#guildId")}/channels`)
+    .then((res) => res.json())
+    .then((channels) => {
+        $("#channels #main option").remove();
+        $("#channels #status option").remove();
+        $("#channels #console option").remove();
+        channels.forEach((channel) => {
+            if (![0,4].includes(channel.type)) return;
+            const disabled = channel.type === 4 ? "disabled" : "";
+            $("#channels #main div").append(`<option value="${channel.id}" ${disabled}>${channel.name}</option>`);
+            $("#channels #status div").append(`<option value="${channel.id}" ${disabled}>${channel.name}</option>`);
+            $("#channels #console div").append(`<option value="${channel.id}" ${disabled}>${channel.name}</option>`);
+        });
+        const channelsId = channels.map((channel) => channel.id);
+        if (!channelsId.includes(casette.channels.main)) {
+            $("#channels #main div").append(`<option value="${casette.channels.main}" selected>アクセスできないチャンネル</option>`);
+        }
+        setDropdownValue("#channels #main", casette.channels.main);
+        setDropdownValue("#channels #status", casette.channels.status);
+        setDropdownValue("#channels #console", casette.channels.console);
+
+        $("#channels").removeClass("ban");
+        if (!force) firstData = toDate();
+    })
+    .catch((e) => console.error("error:", e));
+}
+

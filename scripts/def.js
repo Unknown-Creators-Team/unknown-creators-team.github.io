@@ -1,4 +1,4 @@
-import { cookie, getFromToken, refreshToken } from "./init.js";
+import { cookie, getFromToken, getTextWidth, refreshToken } from "./init.js";
 
 $(function() {
     const lang = (window.navigator.language || window.navigator.userLanguage || window.navigator.browserLanguage).replace(/[A-Z-]/g, "");
@@ -63,7 +63,58 @@ $(function() {
             })
             .fail(() => cookie.delete("token"))
         } else console.log("No token")
-    
-        
+    });
+
+    $(".dropdown").each(function () {
+        if ($(this).children("div").children("option").length === 0) return;
+        const width = $(this).children("div").children("option").map(function () {
+            return getTextWidth($(this).text());
+        }).get().reduce((a, b) => Math.max(a, b)) * 10 + 40;
+        if (Number($(this).css("width").replace(/[^0-9.]/g, "")) < width) {
+            $(this).css("width", width + "px");
+        }
+    });
+
+    // $(".dropdown div option").on("click", function () {
+    //     $(this).parent().parent().children("p").text($(this).text());
+    //     $(this).parent().slideUp();
+    //     $(this).parent().parent().removeClass("dropdown-active");
+    // });
+
+    $(".dropdown p").on("click", function () {
+        $(this).next().slideToggle();
+        $(this).parent().toggleClass("dropdown-active");
+
+        $(".dropdown").each(function () {
+            if ($(this).children("div").children("option").length === 0) return;
+            const width = $(this).children("div").children("option").map(function () {
+                return getTextWidth($(this).text());
+            }).get().reduce((a, b) => Math.max(a, b)) * 10 + 40;
+            if (Number($(this).css("width").replace(/[^0-9.]/g, "")) < width) {
+                $(this).css("width", width + "px");
+            }
+        });
+
+        $(".dropdown div option").one("click", function () {
+            $(this).parent().parent().children("p").text($(this).text());
+            $(this).parent().slideUp();
+            $(this).parent().parent().removeClass("dropdown-active");
+        });
+    });
+
+    $(".dropdown input").on("keyup search", function () {
+        const value = $(this).val().toLowerCase();
+        $(this).parent().children("option").filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+        });
+    });
+
+    $(document).on("click", function (e) {
+        if (!$(e.target).closest(".dropdown").length) {
+            $(".dropdown div").each(function () {
+                $(this).slideUp();
+                $(this).parent().removeClass("dropdown-active");
+            });
+        }
     });
 });

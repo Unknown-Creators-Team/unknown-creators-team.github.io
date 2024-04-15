@@ -18,6 +18,14 @@ $(function () {
         cookie.set("redirect", window.location.search.replace("?redirect=", "").replace("=", ":-:"), 60 * 60);
     }
 
+    if (params.has("error")) {
+        $("h3").text("エラーが発生しました");
+        setTimeout(() => {
+            backToPage();
+        }, 1000 * 3);
+        return;
+    }
+
     if (params.has("code") || cookie.has("token")) {
         const code = params.get("code");
         const token = cookie.get("token")?.access_token;

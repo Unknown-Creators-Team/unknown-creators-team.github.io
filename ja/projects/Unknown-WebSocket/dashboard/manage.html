@@ -59,17 +59,27 @@
                         </div>
 
                         <div class="field">
-                            <label for="language">言語</label>
-                            <select name="language" id="language" required>
-                                <option value="ja_JP">日本語</option>
-                                <option value="en_US">English</option>
-                            </select>
+                            <p for="language">言語</p>
+                            <div class="dropdown" id="language" style="max-width: 300px;">
+                                <p>言語を選択</p>
+                                <div>
+                                    <!-- <input type="search" placeholder="Search"> -->
+                                    <option value="ja_JP">日本語</option>
+                                    <option value="en_US">English</option>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="field">
-                            <label for="guildId">サーバーID</label>
-                            <input type="text" id="guildId" name="guildId" required>
+                            <p for="guildId">サーバー</p>
+                            <div class="dropdown" id="guildId" style="max-width: 300px;">
+                                <p>サーバーを選択</p>
+                                <div>
+                                    <input type="search" placeholder="Search">
+                                </div>
+                            </div>
                         </div>
+
 
                         <div class="field">
                             <label for="serverName">サーバー名</label>
@@ -77,12 +87,15 @@
                         </div>
 
                         <div class="field">
-                            <label for="compatible">アンチチート</label>
-                            <select id="compatible" name="compatible" required>
-                                <option value="null">なし</option>
-                                <option value="TN-AntiCheat">TN-AntiCheat</option>
-                                <option value="Unknown Anti-Cheat">Unknown Anti-Cheat</option>
-                            </select>
+                            <p for="compatible">アンチチート</p>
+                            <div class="dropdown" id="compatible" style="max-width: 300px;">
+                                <p>アンチチートを選択</p>
+                                <div>
+                                    <option value="null">なし</option>
+                                    <option value="TN-AntiCheat">TN-AntiCheat</option>
+                                    <option value="Unknown Anti-Cheat">Unknown Anti-Cheat</option>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="field">
@@ -115,11 +128,18 @@
                         </div>
 
                         <div class="field">
-                            <label for="punishment">処罰アクション:</label>
-                            <select id="punishment" name="punishment" required>
+                            <p>処罰アクション</p>
+                            <!-- <select id="punishment" name="punishment" required>
                                 <option value="warn">警告</option>
                                 <option value="kick">追放</option>
-                            </select>
+                            </select> -->
+                            <div class="dropdown" id="punishment" style="max-width: 300px;">
+                                <p>処罰アクションを選択</p>
+                                <div>
+                                    <option value="warn">警告</option>
+                                    <option value="kick">追放</option>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -192,21 +212,41 @@
 
                     </div>
 
-                    <div id="channels" class="box">
+                    <!-- クリック不可 -->
+                    <div id="channels" class="box ban">
                         <h3>チャンネル</h3>
-                        <div class="field">
-                            <label for="main">メインチャンネルID</label>
-                            <input type="text" id="main" name="main" required>
+                        <div class="field custom-select">
+                            <p for="main">メインチャンネルID</p>
+                            <!-- <input type="text" id="main" name="main" required> -->
+                            <!-- <select name="main" id="main" class="channelSelector"></select> -->
+                            <div class="dropdown" id="main" style="max-width: 300px;">
+                                <p>チャンネルを選択</p>
+                                <div>
+                                    <input type="search" placeholder="Search">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="field">
-                            <label for="status">ステータスチャンネルID</label>
-                            <input type="text" id="status" name="status" required>
+                            <p for="status">ステータスチャンネルID</p>
+                            <!-- <input type="text" id="status" name="status" required> -->
+                            <div class="dropdown" id="status" style="max-width: 300px;">
+                                <p>チャンネルを選択</p>
+                                <div>
+                                    <input type="search" placeholder="Search">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="field">
-                            <label for="console">コンソールチャンネルID</label>
-                            <input type="text" id="console" name="console">
+                            <p for="console">コンソールチャンネルID</p>
+                            <!-- <input type="text" id="console" name="console"> -->
+                            <div class="dropdown" id="console" style="max-width: 300px;">
+                                <p>チャンネルを選択</p>
+                                <div>
+                                    <input type="search" placeholder="Search">
+                                </div>
+                            </div>
                         </div>
 
                     </div>
@@ -267,6 +307,21 @@
                             <div class="field">
                                 <label for="regex">正規表現</label>
                                 <input type="text" id="regex" name="regex" placeholder="§.\[.+\]§. §.{name}§.">
+                            </div>
+                        </div>
+                        <div id="chatRegex">
+                            <h4>改変されたチャット</h4>
+                            <div>
+                                <label for="enabled">有効</label>
+                                <label class="switch">
+                                    <input type="checkbox" id="enabled" name="enabled" required>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+
+                            <div class="field">
+                                <label for="regex">正規表現</label>
+                                <input type="text" id="regex" name="regex" placeholder="{name} §7>>§r §a{message}">
                             </div>
                         </div>
                         <div>
