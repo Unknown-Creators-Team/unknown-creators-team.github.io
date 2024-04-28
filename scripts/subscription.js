@@ -1,11 +1,11 @@
-import { Cookie, cookie, getFromToken, refreshToken } from "./init.js";
+import { Cookie, cookie, getFromToken, refreshToken, waitNewToken } from "./init.js";
 let token, params, serverUri, account, casette, firstData, defaultData;
 const retryButton = `<a href="${window.location}">再試行</a>`;
 
 $(async function () {
     // defaultData = $("#viewer").html();
     // firstData = toDate();
-
+    await waitNewToken();
     token = cookie.get("token")?.access_token;
     account = await getFromToken(token).fail(() => cookie.delete("token"));
     if (account && account.message) account = undefined;

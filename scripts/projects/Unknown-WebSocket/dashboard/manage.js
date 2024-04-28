@@ -1,13 +1,16 @@
-import { Cookie, cookie, getFromToken, refreshToken, getGuilds, setDropdownValue, getDropdownValue } from "../../../init.js";
+import { Cookie, cookie, getFromToken, refreshToken, getGuilds, setDropdownValue, getDropdownValue, waitNewToken } from "../../../init.js";
 let token, params, serverUri, account, casette, firstData, latestData, guilds;
 const retryButton = `<a href="${window.location}">再試行</a>`;
 
-$(function () {
+$(async function () {
     $(".spinner").show();
     // defaultData = $("#viewer").html();
     firstData = toDate();
 
     if (cookie.has("token")) {
+        console.log("waiting token");
+        await waitNewToken();
+        console.log("got token");
         token = cookie.get("token")?.access_token;
         getFromToken(token)
             .then((json) => {
@@ -629,6 +632,12 @@ function setChannels(force = false) {
         const channelsId = channels.map((channel) => channel.id);
         if (!channelsId.includes(casette.channels.main)) {
             $("#channels #main div").append(`<option value="${casette.channels.main}" selected>アクセスできないチャンネル</option>`);
+        }
+        if (!channelsId.includes(casette.channels.status)) {
+            $("#channels #status div").append(`<option value="${casette.channels.status}" selected>アクセスできないチャンネル</option>`);
+        }
+        if (!channelsId.includes(casette.channels.console)) {
+            $("#channels #console div").append(`<option value="${casette.channels.console}" selected>アクセスできないチャンネル</option>`);
         }
         setDropdownValue("#channels #main", casette.channels.main);
         setDropdownValue("#channels #status", casette.channels.status);

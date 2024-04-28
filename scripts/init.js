@@ -1,6 +1,8 @@
 export const CLIENT_ID = "1134773310127878274";
 export const CLIENT_SECRET = "mq-4uMfHlixM0rTaODV4Cfq92B2gfxrh";
 
+let refreshed = false;
+
 export class Cookie extends Map {
     constructor() {
         super();
@@ -72,9 +74,25 @@ export function refreshToken(json) {
         .then((response) => response.json())
         .then((json) => {
             console.log("get:", json);
-            if (!json.error) deferred.resolve(json);
+            if (!json.error) {
+                deferred.resolve(json);
+                refreshed = true;
+            }
             else deferred.reject(json);
         });
+
+    return deferred.promise();
+}
+
+export function waitNewToken() {
+    const deferred = $.Deferred();
+
+    const interval = setInterval(() => {
+        if (refreshed) {
+            clearInterval(interval);
+            deferred.resolve(cookie.get("token"));
+        }
+    }, 500);
 
     return deferred.promise();
 }
