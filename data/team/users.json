@@ -80,6 +80,22 @@
         }
     ],
     [
+        "haruka",
+        {
+            "name": "はるか",
+            "position": "Developer",
+            "description": "植物を育ててる腐男子",
+            "image": "haruka",
+            "social": {
+                "site": null,
+                "twitter": "Harukakeron",
+                "youtube": "@nisshi24yt",
+                "github": "Harukakeron",
+                "discord": null
+            }
+        }
+    ],
+    [
         "okakajp",
         {
             "name": "おかか",
