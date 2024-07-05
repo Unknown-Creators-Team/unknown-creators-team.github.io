@@ -1,10 +1,13 @@
 import { cookie, getFromToken, waitNewToken } from "../../../init.js";
 
 $(async function () {
+    console.log("start");
     const retryButton = `<a href="${window.location}">再試行</a>`;
 
     if (cookie.has("token")) {
-        await waitNewToken();
+        console.log("a");
+        await waitNewToken().catch(console.error);
+        console.log("b");
         const token = cookie.get("token")?.access_token;
         getFromToken(token)
             .then((json) => {

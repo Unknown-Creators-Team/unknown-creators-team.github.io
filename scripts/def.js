@@ -26,7 +26,9 @@ $(function() {
     // activateNav();
 
     const start = Date.now();
-    $(window).on("load", () => {
+    console.log("A");
+    $(document).ready(() => {
+        console.log("B");
         const loadTime = Date.now() - start;
 
         console.log(loadTime);

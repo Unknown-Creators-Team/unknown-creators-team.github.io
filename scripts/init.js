@@ -85,6 +85,7 @@ export function refreshToken(json) {
 }
 
 export function waitNewToken() {
+    console.log("hi");
     const deferred = $.Deferred();
 
     const interval = setInterval(() => {
