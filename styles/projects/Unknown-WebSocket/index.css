@@ -106,3 +106,29 @@ tbody > tr:nth-of-type(even) {
 .question.open h3 span {
     transform: rotate(180deg);
 }
+
+@media (max-width: 768px) {
+    main {
+        padding: 80px 0;
+        width: 95%;
+        margin: 0 auto;
+    }
+
+    .links li {
+        width: 80%;
+        display: block;
+        margin: 5px auto;
+    }
+
+    .space {
+        height: 30px;
+    }
+
+    /* tableだけwidth800pxで横にスクロールできるように（埋め込みのように */
+    .table-parents {
+        overflow: auto;
+    }
+    table {
+        width: 800px;
+    }
+}
