@@ -28,7 +28,255 @@
                         <li style="background-color: #5865F2;"><a href="/ja/subscription.html">サブスクリプション</a></li>
                     </ul>
                 </div>
-                
+                <div class="space"></div>
+                <div class="tutorial">
+                    <h2 class="title">チュートリアル</h2>
+                    <p>Unknown WebSocket Onlineを使いこなすための第一歩を歩みましょう！</p>
+
+                    <h3>準備</h3>
+                    <p>まずは、Unknown WebSocket Onlineを使うために、以下を用意してください。</p>
+                    <ol style="margin: 10px;">
+                        <li><input type="checkbox">接続先のワールド（チートは有効）</li>
+                        <li><input type="checkbox">ディスコードアカウント</li>
+                        <li><input type="checkbox">接続元のディスコードサーバー</li>
+                        <li><input type="checkbox">メインチャンネル</li>
+                        <li><input type="checkbox">ステータスチャンネル</li>
+                        <li><input type="checkbox">コンソールチャンネル</li>
+                    </ol>
+
+                    <h3>１．カセットを契約</h3>
+                    <p>Unknown WebSocket Onlineを使うためには、カセットを契約する必要があります。</p>
+                    <ol style="margin: 10px;">
+                        <li><a href="/ja/plans.html" target="_blank">プランページ</a>にアクセス（新しいタブを開きます）</li>
+                        <li>プランを選択</li>
+                        <li>「登録する」をクリック</li>
+                        <li>メールアドレスが正しいことを確認してから「申し込む」をクリック</li>
+                    </ol>
+                    <p>正常に契約できれば、Unknownのサイトにリダイレクトされ、カセットが１つある状態になります。</p>
+
+                    <h3>２．カセットを設定</h3>
+                    <p>UWSが自分の思い通りに動くようにカスタマイズします。</p>
+                    <ol style="margin: 10px;">
+                        <li><a href="/ja/projects/Unknown-WebSocket/dashboard/">ダッシュボード</a>からカセットを選択（Viewをクリック）</li>
+                        <li>サーバー枠のサーバーを選択</li>
+                        <li>サーバー枠のサーバー名を設定</li>
+                        <li>チャンネル枠のメインチャンネルを選択</li>
+                        <li>チャンネル枠のステータスチャンネルを選択</li>
+                        <li>チャンネル枠のコンソールチャンネルを選択</li>
+                        <li>「保存」をクリック</li>
+                    </ol>
+                    必須設定は以上です。他の設定も行いたい場合は、各項目を設定してください。<br>
+                    正しく設定できていない場合は、接続時にエラーが発生します。
+
+                    <h3>３．ワールドを設定</h3>
+                    <p>カセットを使用できるようにタグをつけます。</p>
+                    <ol style="margin: 10px;">
+                        <li><a href="/ja/projects/Unknown-WebSocket/dashboard/">ダッシュボード</a>からカセットを選択（Viewをクリック）</li>
+                        <li>情報枠の「使い方」をクリック</li>
+                        <li>１番のコマンドをコピー（例： <code>/tag @s add "uws:casette-XXXXXXXX"</code> ）</li>
+                        すでに他のカセットのタグがついている場合は、先にそのカセットのタグを削除してください。
+                        <li>ワールドを開き、コマンドを実行</li>
+                        <li><a href="/ja/projects/Unknown-WebSocket/dashboard/">ダッシュボード</a>からカセットを選択（Viewをクリック）</li>
+                        <li>情報枠の「トークンを再発行」をクリック</li>
+                        <li>ディスコードのDMに送信されたトークンのコマンドをコピー</li>
+                        <li>ワールドでコマンドを実行</li>
+                        <li>接続コマンド（<code>/connect uws.un-known.xyz:22000</code>）を実行</li>
+                    </ol>
+                    <br>
+
+                    以上で、Unknown WebSocket Onlineの設定は完了です。<br>
+                    トークンは接続時に暗号化されます。また、トークンは再発行するたびに変更されます。<br>
+                    素敵な時間をお過ごしください！
+                </div>
+                <div class="space"></div>
+                <div class="errors">
+                    <h2 class="title">エラーコード</h2>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>エラーコード</th>
+                                <th>エラー内容</th>
+                                <th>解決方法</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>4001</th>
+                                <td>カセットIDが見つからない</td>
+                                <td>
+                                    <ul>
+                                        <li>カセットIDのタグを追加してください（参照：<code>チュートリアル</code> > <code>３．ワールドを設定</code> > <code>3, 4</code>）。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4002</th>
+                                <td>トークンが見つからない</td>
+                                <td>
+                                    <ul>
+                                        <li>トークンを再発行してください（参照：<code>チュートリアル</code> > <code>３．ワールドを設定</code> > <code>5, 6</code>）。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4003</th>
+                                <td>無効なカセットID</td>
+                                <td>
+                                    <ul>
+                                        <li>カセットIDが正しいか確認してください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4004</th>
+                                <td>無効なトークン</td>
+                                <td>
+                                    <ul>
+                                        <li>トークンが正しいか確認してください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4005</th>
+                                <td>すでに接続済み</td>
+                                <td>
+                                    <ul>
+                                        <li>ワールドを再起動してください。</li>
+                                        <li>他のデバイスから接続していないか確認してください。</li>
+                                        <li>他のユーザーが接続していないか確認してください。</li>
+                                        <li>不正に接続されている可能性があるので、トークンを再発行してください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4006</th>
+                                <td>サーバーIDが見つかりません</td>
+                                <td>
+                                    <ul>
+                                        <li>サーバーIDを設定してください。</li>
+                                        <li>サーバーIDが正しいか確認してください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4007</th>
+                                <td>メインチャンネルIDが見つかりません</td>
+                                <td>
+                                    <ul>
+                                        <li>メインチャンネルIDを設定してください。</li>
+                                        <li>メインチャンネルIDが正しいか確認してください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4008</th>
+                                <td>ステータスチャンネルIDが見つかりません</td>
+                                <td>
+                                    <ul>
+                                        <li>ステータスチャンネルIDを設定してください。</li>
+                                        <li>ステータスチャンネルIDが正しいか確認してください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4009</th>
+                                <td>コンソールチャンネルIDが見つかりません</td>
+                                <td>
+                                    <ul>
+                                        <li>コンソールチャンネルIDを設定してください。</li>
+                                        <li>コンソールチャンネルIDが正しいか確認してください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4010</th>
+                                <td>所有者にDMを送信できませんでした</td>
+                                <td>
+                                    <ul>
+                                        <li>ディスコードのDMを許可してください。</li>
+                                        <li>ボットのブロックを解除してください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4101</th>
+                                <td>通信を暗号化できませんでした</td>
+                            </tr>
+                            <tr>
+                                <th>4102</th>
+                                <td>IPアドレスがブロックされています</td>
+                                <td>
+                                    <ul>
+                                        <li>ダッシュボードのブロック済みIPアドレスから当該のアドレスを削除してください。</li>
+                                        <li>所有者とボットのDMのパネルからブロックを解除してください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4900~</th>
+                                <td>予期しないエラーが発生しました</td>
+                                <td>
+                                    <ul>
+                                        <li>未確認のエラーです。サポートに問い合わせてください。</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>4901</th>
+                                <td>無効な入力</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="space"></div>
+                <div class="faq">
+                    <h2 class="title">よくある質問</h2>
+                    <div class="question">
+                        <h3>契約はどこで解約できますか？<span>▼</span></h3>
+                        <div hidden>
+                            <p>契約は、Stripeのサブスクリプションページから解約できます。</p>
+                            <ol style="margin: 10px;">
+                                <li><a href="/ja/subscription.html">サブスクリプション</a>ページにアクセス</li>
+                                <li>ログインしていない人はログインする</li>
+                                <li>「サブスクリプションを管理」をクリック</li>
+                                <li>「サブスクリプションをキャンセル」をクリック</li>
+                                <li>キャンセル理由を回答</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <h3>UWSのコマンドの説明はどこにありますか？<span>▼</span></h3>
+                        <div hidden>
+                            <h4>ワールド</h4>
+                            <p><code>#help</code> を使用することでコマンドを確認します。</p>
+                            <p><code>#help &lt;command&gt;</code> でコマンドの詳細を確認します。</p>
+                            <h4>ディスコード</h4>
+                            <p><code>/help</code> を使用することでコマンドを確認します。</p>
+                            <br>
+                            <p>いずれも接続中のみ利用可能です。</p>
+                        </div>
+                    </div>
+                    <script type="module">
+                        $(".faq .question").click(function() {
+                            if ($(this).find("div").is(":hidden")) {
+                                $(".faq .question div").slideUp();
+                                $(".faq .question").removeClass("open");
+                                $(this).find("div").slideDown();
+                                $(this).addClass("open");
+                            } else {
+                                $(this).find("div").slideUp();
+                                $(this).removeClass("open");
+                            }
+                        });
+                        
+                        $(document).click(function(e) {
+                            if (!$(e.target).closest(".faq .question").length) {
+                                $(".faq .question div").slideUp();
+                                $(".faq .question").removeClass("open");
+                            }
+                        });
+                    </script>
+                </div>
             </div>
         </div>
     </main>

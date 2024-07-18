@@ -33,9 +33,9 @@
         "Unknown WebSocket",
         {
             "link": {
-                "url": "",
+                "url": "/ja/projects/Unknown-WebSocket/",
                 "target": "_self",
-                "text": "近日公開"
+                "text": "詳細"
             },
             "description": "ワールドとディスコードを接続します。Unknown Anti-CheatとTN-AntiCheat、Scythe AntiCheatと互換性があり、UWSにしかないさまざまな機能があります。",
             "image": {
