@@ -127,8 +127,10 @@ export function getDropdownValue(dropdown) {
 
 export function setDropdownValue(dropdown, value) {
     dropdown = $(dropdown);
+
     if (dropdown.children(".old-text").length === 0)
-        dropdown.append($("<div>").addClass("old-text").hide().text(dropdown.children("p").text()));
+        dropdown.append($("<q>").addClass("old-text").hide().text(dropdown.children("p").text()));
+
     dropdown.children("div").children("option").filter(function () {
         return $(this).attr("value") === value;
     }).each(function () {dropdown.children("p").text($(this).text());

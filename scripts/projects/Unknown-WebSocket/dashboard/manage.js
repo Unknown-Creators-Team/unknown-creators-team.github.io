@@ -246,6 +246,8 @@ function loadData() {
             .children("input")
             .val(module);
     });
+
+    setChannels();
 }
 
 function toDate() {
@@ -328,11 +330,23 @@ function toDate() {
 }
 
 function setUpHtml() {
-    if (setupFinished) return;
-
     $("#administrators li span").on("click", function () {
         $(this).parent().remove();
     });
+
+    $("#blockedIps li span").on("click", function () {
+        $(this).parent().remove();
+    });
+
+    $("#roleTag li span").on("click", function () {
+        $(this).parents("li").remove();
+    });
+
+    $("#betaModules li span").on("click", function () {
+        $(this).parent().remove();
+    });
+    if (setupFinished) return;
+
 
     $("#add-administrator").on("click", () => {
         $("#administrators").append(`<li><input type="text" name="administrators" required><span></span></li>`);
@@ -342,9 +356,7 @@ function setUpHtml() {
         });
     });
 
-    $("#blockedIps li span").on("click", function () {
-        $(this).parent().remove();
-    });
+    
 
     $("#add-blockedIp").on("click", () => {
         $("#blockedIps").append(`<li><input type="text" name="blockedIps" required><span></span></li>`);
@@ -360,9 +372,7 @@ function setUpHtml() {
     });
     
 
-    $("#roleTag li span").on("click", function () {
-        $(this).parents("li").remove();
-    });
+    
 
     $("#add-roleTag").on("click", () => {
         $("#roleTag").append(
@@ -374,9 +384,7 @@ function setUpHtml() {
         });
     });
 
-    $("#betaModules li span").on("click", function () {
-        $(this).parent().remove();
-    });
+    
 
     $("#add-betaModule").on("click", () => {
         $("#betaModules").append(`<li><input type="text" name="betaModules" required><span></span></li>`);
@@ -427,7 +435,7 @@ function setUpHtml() {
 
     $("#reissueToken").on("click", () => reissueToken());
     $("#howToUse").on("click", () => howToUse());
-    setChannels();
+    // setChannels();
 
     setupFinished = true;
 }
