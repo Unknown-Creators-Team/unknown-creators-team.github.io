@@ -127,10 +127,11 @@ export function getDropdownValue(dropdown) {
 
 export function setDropdownValue(dropdown, value) {
     dropdown = $(dropdown);
+    if (dropdown.children(".old-text").length === 0)
+        dropdown.append($("<div>").addClass("old-text").hide().text(dropdown.children("p").text()));
     dropdown.children("div").children("option").filter(function () {
         return $(this).attr("value") === value;
-    }).each(function () {
-        dropdown.children("p").text($(this).text());
+    }).each(function () {dropdown.children("p").text($(this).text());
     });
 
     const width = dropdown.children("div").children("option").map(function () {
@@ -139,6 +140,14 @@ export function setDropdownValue(dropdown, value) {
     if (Number(dropdown.css("width").replace(/[^0-9.]/g, "")) < width) {
         dropdown.css("width", width + "px");
     }
+}
+
+export function resetDropdowns() {
+    $(".dropdown").each(function () {
+        if ($(this).children("div").children("option").length === 0) return;
+        $(this).children("p").text($(this).children(".old-text").text());
+        $(this).children(".old-text").remove();
+    });
 }
 
 export function getTextWidth(text) {

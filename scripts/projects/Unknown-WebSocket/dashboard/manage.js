@@ -1,9 +1,9 @@
-import { Cookie, cookie, getFromToken, refreshToken, getGuilds, setDropdownValue, getDropdownValue, waitNewToken } from "../../../init.js";
-let token, params, serverUri, account, casette, firstData, latestData, guilds;
+import { Cookie, cookie, getFromToken, refreshToken, getGuilds, setDropdownValue, getDropdownValue, waitNewToken, resetDropdowns } from "../../../init.js";
+let token, params, serverUri, account, casette, firstData, latestData, guilds, setupFinished;
 const retryButton = `<a href="${window.location}">再試行</a>`;
 
 $(async function () {
-    $(".spinner").show();
+    $("#viewer-spin").show();
     // defaultData = $("#viewer").html();
     firstData = toDate();
 
@@ -88,7 +88,7 @@ function getConfig() {
         },
     })
         .then((res) => {
-            $(".spinner").hide();
+            $("#viewer-spin").hide();
             if (res.status === 200) {
                 res.json().then((json) => {
                     casette = json;
@@ -112,7 +112,7 @@ function getConfig() {
             }
         })
         .catch((error) => {
-            $(".spinner").hide();
+            $("#viewer-spin").hide();
             console.log(error);
             if (error.message.includes("ENOTFOUND")) {
                 $("#viewer").html("<h1>Server not found</h1>");
@@ -135,6 +135,8 @@ function getConfig() {
 }
 
 function loadData() {
+
+    resetDropdowns();
     // $("#viewer").html(defaultData);
     $("#casetteId").val(params.get("id"));
     $("#formatVersion").val(casette.formatVersion);
@@ -151,6 +153,7 @@ function loadData() {
     const expires_at = casette.subscription.expires_at;
     $("#expires_at").val(expires_at === -1 ? "無期限" : new Date(expires_at * 1000).toLocaleString());
     $("#owner").val(casette.owner);
+    $("#administrators").empty();
     casette.administrators.forEach((admin, i) => {
         $("#administrators")
             .append(`<li><input type="text" name="administrators" required><span></span></li>`)
@@ -162,8 +165,8 @@ function loadData() {
     guilds.forEach((guild, i) => {
         $("#guildId div").append(`<option value="${guild.id}">${guild.name}</option>`);
     });
-    if (!guilds.find((guild) => guild.id === casette.guildId)) {
-        $("#guildId").append(`<option value="${casette.guildId}">アクセスできないサーバー</option>`);
+    if (!guilds.find((guild) => guild.id === casette.guildId) && casette.guildId !== "") {
+        $("#guildId div").append(`<option value="${casette.guildId}">アクセスできないサーバー</option>`);
     }
     setDropdownValue("#guildId", casette.guildId);
     
@@ -175,6 +178,7 @@ function loadData() {
     $("#globalChat #enabled").prop("checked", casette.globalChat.enabled);
     $("#globalChat #room").val(casette.globalChat.room);
 
+    $("#blockedIps").empty();
     casette.blockedIps.forEach((ip, i) => {
         $("#blockedIps")
             .append(`<li><input type="text" name="blockedIps" required><span></span></li>`)
@@ -200,6 +204,8 @@ function loadData() {
     $("#emojis #join").val(casette.emojis.join);
     $("#emojis #leave").val(casette.emojis.leave);
     $("#emojis #death").val(casette.emojis.death);
+
+    $("#roleTag").empty();
     casette.roleTag.forEach((tag, i) => {
         $("#roleTag")
             .append(
@@ -231,6 +237,7 @@ function loadData() {
     $("#chatRegex #enabled").prop("checked", casette.advanced.chatRegex.enabled);
     $("#chatRegex #regex").val(casette.advanced.chatRegex.regex);
 
+    $("#betaModules").empty();
     casette.advanced.betaModules.forEach((module, i) => {
         $("#betaModules")
             .append(`<li><input type="text" name="betaModules" required><span></span></li>`)
@@ -321,6 +328,8 @@ function toDate() {
 }
 
 function setUpHtml() {
+    if (setupFinished) return;
+
     $("#administrators li span").on("click", function () {
         $(this).parent().remove();
     });
@@ -383,13 +392,13 @@ function setUpHtml() {
         // if (!form.checkValidity()) return;
 
         event.preventDefault();
-        $(".spinner").show();
+        $("#viewer-spin").show();
         sendConfig();
     });
 
     $("#cancel").on("click", () => {
         // location.reload();
-        $(".spinner").show();
+        $("#viewer-spin").show();
         const token_ = cookie.load().get("token");
         console.log("token_:", token_);
         refreshToken(token_)
@@ -419,6 +428,8 @@ function setUpHtml() {
     $("#reissueToken").on("click", () => reissueToken());
     $("#howToUse").on("click", () => howToUse());
     setChannels();
+
+    setupFinished = true;
 }
 
 function sendConfig() {
@@ -499,6 +510,11 @@ function sendConfig() {
 }
 
 function reissueToken() {
+    $("#reissueToken").hide();
+    const width = $("#reissueToken").width();
+    $("#reissueToken-loading").width(width);
+    $("#reissueToken-loading").show();
+    
     fetch(serverUri + "/uws/v1/dashboard/reissue", {
         method: "POST",
         headers: {
@@ -523,12 +539,19 @@ function reissueToken() {
                     $("#closeReissuedDisplay").on("click", () => {
                         location.reload();
                     });
+
+                    $("#reissueToken-loading").hide();
+                    $("#reissueToken").show();
+                    
                 } else {
                     if (json.message) {
                         $("#viewer").html(`<h1>${res.status} ${res.statusText}: ${json.message}</h1>${retryButton}`);
                     } else {
                         $("#viewer").html(`<h1>${res.status} ${res.statusText}</h1>${retryButton}`);
                     }
+
+                    $("#reissueToken-loading").hide();
+                    $("#reissueToken").show();
                 }
             });
         })
@@ -613,7 +636,9 @@ function buttonControl() {
 
 function setChannels(force = false) {
     console.log("Hi")
-    $("#channels").addClass("ban");
+    
+    $("#channels").children("div").eq(0).addClass("ban");
+    $("#channels").children("div").eq(1).show();
 
     console.log(getDropdownValue("#guildId"))
     fetch(serverUri + `/uws/v1/server/${getDropdownValue("#guildId")}/channels`)
@@ -622,6 +647,7 @@ function setChannels(force = false) {
         $("#channels #main option").remove();
         $("#channels #status option").remove();
         $("#channels #console option").remove();
+        
         channels.forEach((channel) => {
             if (![0,4].includes(channel.type)) return;
             const disabled = channel.type === 4 ? "disabled" : "";
@@ -643,7 +669,8 @@ function setChannels(force = false) {
         setDropdownValue("#channels #status", casette.channels.status);
         setDropdownValue("#channels #console", casette.channels.console);
 
-        $("#channels").removeClass("ban");
+        $("#channels").children("div").eq(0).removeClass("ban");
+        $("#channels").children("div").eq(1).hide();
         if (!force) firstData = toDate();
     })
     .catch((e) => console.error("error:", e));

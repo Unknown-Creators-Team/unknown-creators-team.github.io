@@ -94,7 +94,7 @@ input, select {
     overflow: hidden; /* Add this */
 }
 
-#reissueToken {
+#reissueToken, #reissueToken-loading {
     display: inline-block;
     padding: 5px 10px;
     background-color: #ffffff;
@@ -103,6 +103,23 @@ input, select {
     cursor: pointer;
     border: none;
     transition: all .2s;
+}
+
+#reissueToken-loading {
+    position: relative;
+}
+
+#reissueToken-loading div {
+    position: absolute;
+    top: 6px;
+    left: calc(50% - 8px);
+    float: left;
+    margin: 0 auto;
+    
+}
+
+#reissueToken-loading p {
+    display: inline-block;
 }
 
 #reissueToken:hover {
@@ -362,6 +379,7 @@ option {
     filter: blur(2px);
     pointer-events: none;
     opacity: 0.5;
+    user-select: none;
 }
 
 .display {
@@ -391,6 +409,12 @@ option {
 .display button:hover {
     background-color: #d33636;
     color: #ffffff;
+}
+
+.cover {
+    position: absolute;
+    top: calc(50% - 24px / 2);
+    left: calc(50% - 176px / 2);
 }
 
 @media (max-width: 1024px) {

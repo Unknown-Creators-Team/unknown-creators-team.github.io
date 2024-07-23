@@ -65,6 +65,16 @@ a {
     animation: sp-anime 1s infinite linear;
 }
 
+.spinner-16 {
+    width: 16px;
+    height: 16px;
+    /* margin: 10px auto; */
+    border: 2px #ddd solid;
+    border-top: 2px #5d5d5d solid;
+    border-radius: 50%;
+    animation: sp-anime 1s infinite linear;
+}
+
 @keyframes sp-anime {
     100% {
         transform: rotate(360deg);

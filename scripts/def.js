@@ -119,4 +119,19 @@ $(function() {
             });
         }
     });
+
+    // <pre><code>...</code></pre> をクリックしたら中身をコピーする
+    $("pre code").on("click", function () {
+        const text = $(this).text();
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+        $(this).after("<div class='copy'>Copied!</div>");
+        setTimeout(() => {
+            $(".copy").remove();
+        }, 1000);
+    });
 });

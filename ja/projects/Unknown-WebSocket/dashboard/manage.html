@@ -11,40 +11,58 @@
     <link rel="stylesheet" href="/styles/def.css">
     <link rel="stylesheet" href="/styles/projects/Unknown-WebSocket/dashboard/manage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+
 </head>
 
 <body>
     <header></header>
 
     <main>
-        <div class="spinner"></div>
+        <div class="spinner" id="viewer-spin"></div>
         <div class="container" id="viewer">
             <form method="dialog">
                 <div id="big-box">
 
 
                     <div id="info-box" class="box">
-                        <h3>情報</h3>
-                        <label for="カセットID">カセットID</label>
-                        <input type="text" id="casetteId" name="casetteId" readonly required>
 
-                        <label for="formatVersion">フォーマットバージョン</label>
-                        <input type="number" id="formatVersion" name="formatVersion" disabled readonly required>
+                        <style>
+                            .inline-block {
+                                display: inline-block;
+                            }
+                        </style>
+
+                        <h2>情報</h2>
+                        <div class="inline-block">
+                            <label for="カセットID">カセットID</label>
+                            <input type="text" id="casetteId" name="casetteId" readonly required>
+                        </div>
+
+                        <div class="inline-block">
+                            <label for="formatVersion">フォーマットバージョン</label>
+                            <input type="number" id="formatVersion" name="formatVersion" disabled readonly required>
+                        </div>
 
                         <br>
 
-                        <label for="subscription">サブスクリプション</label>
-                        <input type="text" id="subscription" name="subscription" readonly required>
-
-                        <label for="expires_at">期限切れまで</label>
-                        <input type="text" id="expires_at" name="expires_at" readonly required>
+                        <div class="inline-block">
+                            <label for="subscription">サブスクリプション</label>
+                            <input type="text" id="subscription" name="subscription" readonly required>
+                        </div>
+                            
+                        <div class="inline-block">
+                            <label for="expires_at">期限切れまで</label>
+                            <input type="text" id="expires_at" name="expires_at" readonly required>
+                        </div>
 
                         <p id="reissueToken">トークンを再発行</p>
+                        <div id="reissueToken-loading" style="display: none;"><div class="spinner-16"></div><p></p></div>
                         <p id="howToUse">使い方</p>
                     </div>
 
                     <div id="server-box" class="box">
-                        <h3>サーバー</h3>
+                        <h2>サーバー設定</h2>
                         <div class="field">
                             <label for="owner">オーナー</label>
                             <input type="text" id="owner" name="owner" readonly required>
@@ -118,7 +136,7 @@
                     </div>
 
                     <div id="globalBan" class="box">
-                        <h3>Global Ban</h3>
+                        <h2>Global Ban 設定</h2>
                         <div>
                             <label for="enabled">有効</label>
                             <label class="switch">
@@ -144,7 +162,7 @@
                     </div>
 
                     <div id="globalChat" class="box">
-                        <h3>Global Chat</h3>
+                        <h2>Global Chat 設定</h2>
                         <div>
                             <label for="enabled">有効</label>
                             <label class="switch">
@@ -160,7 +178,7 @@
                     </div>
 
                     <div id="message-box" class="box">
-                        <h3>メッセージ</h3>
+                        <h2>メッセージ設定</h2>
                         <div>
                             <label for="sendMessageDelete">Send Message Delete</label>
                             <label class="switch">
@@ -193,7 +211,7 @@
                     </div>
 
                     <div id="console-box" class="box">
-                        <h3>コンソール</h3>
+                        <h2>コンソール設定</h2>
                         <div>
                             <label for="console">コンソール</label>
                             <label class="switch">
@@ -213,46 +231,52 @@
                     </div>
 
                     <!-- クリック不可 -->
-                    <div id="channels" class="box ban">
-                        <h3>チャンネル</h3>
-                        <div class="field custom-select">
-                            <p for="main">メインチャンネルID</p>
-                            <!-- <input type="text" id="main" name="main" required> -->
-                            <!-- <select name="main" id="main" class="channelSelector"></select> -->
-                            <div class="dropdown" id="main" style="max-width: 300px;">
-                                <p>チャンネルを選択</p>
-                                <div>
-                                    <input type="search" placeholder="Search">
+                    <div id="channels" class="box" style="position: relative;">
+                        <div class="ban">
+
+                            <h2>チャンネル設定</h2>
+                            <div class="field custom-select">
+                                <p for="main">メインチャンネル</p>
+                                <!-- <input type="text" id="main" name="main" required> -->
+                                <!-- <select name="main" id="main" class="channelSelector"></select> -->
+                                <div class="dropdown" id="main" style="max-width: 300px;">
+                                    <p>チャンネルを選択</p>
+                                    <div>
+                                        <input type="search" placeholder="Search">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="field">
+                                <p for="status">ステータスチャンネル</p>
+                                <!-- <input type="text" id="status" name="status" required> -->
+                                <div class="dropdown" id="status" style="max-width: 300px;">
+                                    <p>チャンネルを選択</p>
+                                    <div>
+                                        <input type="search" placeholder="Search">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="field">
+                                <p for="console">コンソールチャンネル</p>
+                                <!-- <input type="text" id="console" name="console"> -->
+                                <div class="dropdown" id="console" style="max-width: 300px;">
+                                    <p>チャンネルを選択</p>
+                                    <div>
+                                        <input type="search" placeholder="Search">
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="field">
-                            <p for="status">ステータスチャンネルID</p>
-                            <!-- <input type="text" id="status" name="status" required> -->
-                            <div class="dropdown" id="status" style="max-width: 300px;">
-                                <p>チャンネルを選択</p>
-                                <div>
-                                    <input type="search" placeholder="Search">
-                                </div>
-                            </div>
+                        <div class="cover">
+                            <p>サーバーを選択して表示</p>
                         </div>
-
-                        <div class="field">
-                            <p for="console">コンソールチャンネルID</p>
-                            <!-- <input type="text" id="console" name="console"> -->
-                            <div class="dropdown" id="console" style="max-width: 300px;">
-                                <p>チャンネルを選択</p>
-                                <div>
-                                    <input type="search" placeholder="Search">
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
 
                     <div id="emojis" class="box">
-                        <h3>絵文字</h3>
+                        <h2>絵文字設定</h2>
                         <div class="field">
                             <label for="join">Join絵文字</label>
                             <input type="text" id="join" name="join">
@@ -271,7 +295,7 @@
                     </div>
 
                     <div id="sync-box" class="box">
-                        <h3>同期</h3>
+                        <h2>同期設定</h2>
                         <div class="field array-field">
                             <label for="roleTag">ロールタグ
                                 <p class="add-button" id="add-roleTag">追加</p>
@@ -293,7 +317,7 @@
                     </div> -->
 
                     <div id="advanced-box" class="box">
-                        <h3>高度な設定</h3>
+                        <h2>高度な設定</h2>
                         <div id="playerNameRegex">
                             <h4>改変された名前</h4>
                             <div>
@@ -359,7 +383,7 @@
             <hr>
             <div style="text-align: left;">
                 <p>1. カセットIDを含むタグを自己に追加してください</p>
-                <pre><code id="casette-id">/tag @s add "uws:casette-{CASETTE_ID}"</code></pre>
+                <pre><code id="casette-id" class="language-bash">/tag @s add "uws:casette-{CASETTE_ID}"</code></pre>
                 <p>2. トークンを含むタグを自己に追加してください</p>
                 <p>トークンは「トークンを再発行」をクリックしてDMに送信されたトークンを追加してください</p>
                 <p>3. サーバーに接続してください</p>
