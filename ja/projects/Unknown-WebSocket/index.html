@@ -272,6 +272,14 @@
                             <p><b><a href="https://discord.com/oauth2/authorize?client_id=957677766340382781&permissions=1126040433191009&integration_type=0&scope=bot+applications.commands">ボット</a>を導入</b>してください。</p>
                         </div>
                     </div>
+                    <div class="question">
+                        <h3><code>/connect uws.un-known.xyz:22000</code> を実行するとワールドが閉じられてしまいます。<span>▼</span></h3>
+                        <div hidden>
+                            <p>通信の暗号化を要求していることが原因です。</p>
+                            <p>UWSの通信は接続後に暗号化されるため、マインクラフトの設定を変更する必要があります。</p>
+                            <p><code>設定</code> > <code>一般</code> > <code>暗号化されたwebsocketの要求</code> を<u>無効</u>にしてください。</p>
+                        </div>
+                    </div>
                     <script type="module">
                         $(".faq .question").click(function() {
                             if ($(this).find("div").is(":hidden")) {
