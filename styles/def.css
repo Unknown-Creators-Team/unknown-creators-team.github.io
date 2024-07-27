@@ -154,6 +154,54 @@ a {
     cursor: not-allowed;
 }
 
+.info {
+    display: inline-block;
+    position: relative;
+    user-select: none;
+}
+
+.info > p {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: #5b97ed;
+    font-size: 14px;
+    border: 1px solid #5b97ed;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+}
+
+.info .description {
+    padding: 10px;
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: max-content;
+    
+
+    
+    background-color: #f9f9f9;
+    border: 1px solid #5b97ed;
+
+    z-index: 1000000;    
+}
+
+.info .description > p {
+    margin: 0;
+    
+}
+
+.info:hover .description {
+    display: block;
+}
+
 /* header */
 
 header {

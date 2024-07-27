@@ -134,4 +134,39 @@ $(function() {
             $(".copy").remove();
         }, 1000);
     });
+
+    $('.info').on('mouseenter', function () {
+        const $description = $(this).children('.description');
+        const windowWidth = $(window).width();
+        const windowHeight = $(window).height();
+
+        $description.css({
+            "width": "max-content",
+            "left": "0",
+            "top": "20px",
+        });
+
+        // 右端にはみ出す場合
+        let rect = $description[0].getBoundingClientRect();
+        console.log (rect.right, $description.width(), windowWidth);
+        if (rect.right > windowWidth) {
+            console.log("はみだした");
+            const newWidth = Math.floor(windowWidth * 0.9 - 20);
+            const newLeft = (windowWidth - newWidth) / 3;
+            console.log("newWidth:", newWidth, "newLeft:", newLeft);
+            console.log("rect.left:", rect.left);
+            $description.css({
+                "width": `${newWidth}px`,
+                "left": `${newLeft - rect.left}px`
+            });
+        }
+
+        // 下端にはみ出す場合
+        rect = $description[0].getBoundingClientRect();
+        if (rect.bottom > windowHeight) {
+            $description.css('top', `-${rect.height + 20}px`);
+        } else {
+            $description.css('top', '20px');
+        }
+    });
 });

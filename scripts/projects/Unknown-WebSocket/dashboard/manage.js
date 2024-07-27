@@ -437,6 +437,14 @@ function setUpHtml() {
     $("#howToUse").on("click", () => howToUse());
     // setChannels();
 
+    /* inputにrequireがついていたらlabelのafterに赤いアスタリスクをつける */
+    $("input[required]").each(function () {
+        $(this).prev("label").append('<span style="color: #eb1414;">*</span>');
+    });
+    $(".required").each(function () {
+        $(this).append('<span style="color: #eb1414;">*</span>');
+    });
+
     setupFinished = true;
 }
 

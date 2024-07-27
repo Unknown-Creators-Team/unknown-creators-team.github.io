@@ -138,7 +138,7 @@ export function setDropdownValue(dropdown, value) {
 
     const width = dropdown.children("div").children("option").map(function () {
         return getTextWidth($(this).text());
-    }).get().reduce((a, b) => Math.max(a, b)) * 10 + 40;
+    }).get().reduce((a, b) => Math.max(a, b), 1) * 10 + 40;
     if (Number(dropdown.css("width").replace(/[^0-9.]/g, "")) < width) {
         dropdown.css("width", width + "px");
     }

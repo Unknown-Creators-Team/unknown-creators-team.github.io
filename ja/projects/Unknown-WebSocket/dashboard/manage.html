@@ -36,28 +36,31 @@
                         <h2>情報</h2>
                         <div class="inline-block">
                             <label for="カセットID">カセットID</label>
-                            <input type="text" id="casetteId" name="casetteId" readonly required>
+                            <input type="text" id="casetteId" name="casetteId" readonly>
                         </div>
 
                         <div class="inline-block">
                             <label for="formatVersion">フォーマットバージョン</label>
-                            <input type="number" id="formatVersion" name="formatVersion" disabled readonly required>
+                            <input type="number" id="formatVersion" name="formatVersion" disabled readonly>
                         </div>
 
                         <br>
 
                         <div class="inline-block">
                             <label for="subscription">サブスクリプション</label>
-                            <input type="text" id="subscription" name="subscription" readonly required>
+                            <input type="text" id="subscription" name="subscription" readonly>
                         </div>
-                            
+
                         <div class="inline-block">
                             <label for="expires_at">期限切れまで</label>
-                            <input type="text" id="expires_at" name="expires_at" readonly required>
+                            <input type="text" id="expires_at" name="expires_at" readonly>
                         </div>
 
                         <p id="reissueToken">トークンを再発行</p>
-                        <div id="reissueToken-loading" style="display: none;"><div class="spinner-16"></div><p></p></div>
+                        <div id="reissueToken-loading" style="display: none;">
+                            <div class="spinner-16"></div>
+                            <p></p>
+                        </div>
                         <p id="howToUse">使い方</p>
                     </div>
 
@@ -65,7 +68,7 @@
                         <h2>サーバー設定</h2>
                         <div class="field">
                             <label for="owner">オーナー</label>
-                            <input type="text" id="owner" name="owner" readonly required>
+                            <input type="text" id="owner" name="owner" readonly>
                         </div>
 
                         <div class="field array-field">
@@ -89,7 +92,17 @@
                         </div>
 
                         <div class="field">
-                            <p for="guildId">サーバー</p>
+                            <p for="guildId" class="required inline">サーバー
+                            <div class="info">
+                                <p>i</p>
+                                <div class="description" hidden>
+                                    <p>管理できるサーバーのみ表示されます。</p>
+                                    <p>表示されない場合は、<a
+                                            href="https://discord.com/oauth2/authorize?client_id=957677766340382781&permissions=1126040433191009&integration_type=0&scope=bot+applications.commands"
+                                            target="_blank">ボット</a>を招待してください。</p>
+                                </div>
+                            </div>
+                            </p>
                             <div class="dropdown" id="guildId" style="max-width: 300px;">
                                 <p>サーバーを選択</p>
                                 <div>
@@ -117,7 +130,15 @@
                         </div>
 
                         <div class="field">
-                            <label for="setMaxPlayers">最大プレイヤー数</label>
+                            <label for="setMaxPlayers">最大プレイヤー数
+                                <div class="info">
+                                    <p>i</p>
+                                    <div class="description" hidden>
+                                        <p><code>5</code> -> ワールドに入れる人数を5に固定します。</p>
+                                        <p><code>+5</code> -> ワールドに入れる人数を今いる人数より5人多く設定します。</p>
+                                    </div>
+                                </div>
+                            </label>
                             <input type="text" id="setMaxPlayers" name="setMaxPlayers" required>
                         </div>
 
@@ -236,7 +257,7 @@
 
                             <h2>チャンネル設定</h2>
                             <div class="field custom-select">
-                                <p for="main">メインチャンネル</p>
+                                <p for="main" class="required">メインチャンネル</p>
                                 <!-- <input type="text" id="main" name="main" required> -->
                                 <!-- <select name="main" id="main" class="channelSelector"></select> -->
                                 <div class="dropdown" id="main" style="max-width: 300px;">
@@ -246,9 +267,9 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="field">
-                                <p for="status">ステータスチャンネル</p>
+                                <p for="status" class="required">ステータスチャンネル</p>
                                 <!-- <input type="text" id="status" name="status" required> -->
                                 <div class="dropdown" id="status" style="max-width: 300px;">
                                     <p>チャンネルを選択</p>
@@ -257,9 +278,9 @@
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="field">
-                                <p for="console">コンソールチャンネル</p>
+                                <p for="console" class="required">コンソールチャンネル</p>
                                 <!-- <input type="text" id="console" name="console"> -->
                                 <div class="dropdown" id="console" style="max-width: 300px;">
                                     <p>チャンネルを選択</p>
@@ -367,7 +388,7 @@
 
             </form>
         </div>
-        
+
         <div id="reissuedDisplay" class="display">
             <h2>トークンを再発行しました</h2>
             <p>再発行したトークンはカセットオーナーのDMに送信されます</p>
