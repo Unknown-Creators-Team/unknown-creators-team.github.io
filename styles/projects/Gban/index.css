@@ -1,11 +1,41 @@
-.gban-wrapper {
+main {
     background-color: #e7e7e7;
+}
+
+.gban-wrapper {
     text-align: center;
     padding-top: 100px;
 }
 
 .heading {
     text-align: center;
+}
+
+.sponsor {
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    
+    /* 画面に入りきるように */
+    flex-wrap: wrap;
+}
+
+.sponsor p {
+    padding: 5px;
+    margin: 5px;
+    background: #c3c3c3;
+    border-radius: 5px;
+    border: 1px solid #8b8b8b;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sponsor p:hover {
+    opacity: 0.8;
+}
+
+.sponsor p:active {
+    transform: translateY(2px);
 }
 
 .search {

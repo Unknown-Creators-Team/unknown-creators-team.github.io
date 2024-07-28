@@ -1,5 +1,6 @@
 $(() => {
     let showingXuid = undefined;
+    let xuid;
     const clicking = () => {
         const show = (name = undefined, xuid = undefined) => {
             const player = GBan.find(item =>
@@ -32,7 +33,7 @@ $(() => {
             const params = new URLSearchParams({ xuid });
             window.location.href = `${url.replace(
                 "/index.html",
-                ""
+                "/"
             )}proof.html?${params.toString()}`;
         });
 
@@ -64,6 +65,11 @@ $(() => {
             clicking();
         })
         .catch(console.error);
+
+    $(".sponsor p").on("click", function () {
+        // そのスポンサーの名前で検索
+        $("input[type='search']").val($(this).text()).trigger("change");
+    });
 
     $("input[type='search']").on("keyup change blur", function () {
         $("input[type='search']").each(function () {
