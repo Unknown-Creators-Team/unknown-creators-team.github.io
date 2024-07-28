@@ -8,7 +8,12 @@ $(function () {
             .then(GBan => {
                 const player = GBan.find(item => item.xuid === xuid);
                 
-                $(".proof-img").html(`<img src="${player.proof}" alt="Proof"><p id="open-new-tab">新しいタブで開く</p>`);
+                // proofが画像か動画かで分岐
+                if (player.proof.endsWith(".mp4")) {
+                    $(".proof").html(`<video src="${player.proof}" controls></video><p id="open-new-tab">新しいタブで開く</p>`);
+                } else {
+                    $(".proof").html(`<img src="${player.proof}" alt="Proof"><p id="open-new-tab">新しいタブで開く</p>`);
+                }
                 $("#open-new-tab").click(() => window.open(player.proof));
                 // fetch(player.proof, { mode: "no-cors" })
                 // .then(response => response.formData())
