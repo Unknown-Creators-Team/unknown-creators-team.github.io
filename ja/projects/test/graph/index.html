@@ -9,6 +9,8 @@
     <!-- <link rel="stylesheet" href="/styles/"> -->
     <link rel="stylesheet" href="/styles/def.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <!-- chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         main {
@@ -49,13 +51,64 @@
     <footer></footer>
     <script type="module" src="/scripts/def.js"></script>
     <script>
-        // jqueryを使用してtextareaにあるjsonデータをcanvasに描画する
+        // jquery&chart.jsを使用してtextareaにあるjsonデータをcanvasに描画する
         $(function () {
-            const json = $('#json');
-            const convert = $('#convert');
-            const graph = $('#graph');
-            
-            
+            const canvas = document.getElementById('graph');
+            const ctx = canvas.getContext('2d');
+            let data = [];
+
+            $('#convert').on('click', function () {
+                ctx.reset();
+                data = JSON.parse($('#json').val());
+                const xzSpeed = $('#xzSpeed').prop('checked');
+                const xyzSpeed = $('#xyzSpeed').prop('checked');
+                const xzVelocity = $('#xzVelocity').prop('checked');
+                const xyzVelocity = $('#xyzVelocity').prop('checked');
+
+                const labels = data.map((d, i) => i);
+                const datasets = [];
+
+                if (xzSpeed) {
+                    datasets.push({
+                        label: 'xzSpeed',
+                        data: data.map(d => d.xzSpeed),
+                        borderColor: 'red',
+                        fill: false
+                    });
+                }
+                if (xyzSpeed) {
+                    datasets.push({
+                        label: 'xyzSpeed',
+                        data: data.map(d => d.xyzSpeed),
+                        borderColor: 'blue',
+                        fill: false
+                    });
+                }
+                if (xzVelocity) {
+                    datasets.push({
+                        label: 'xzVelocity',
+                        data: data.map(d => d.xzVelocity),
+                        borderColor: 'green',
+                        fill: false
+                    });
+                }
+                if (xyzVelocity) {
+                    datasets.push({
+                        label: 'xyzVelocity',
+                        data: data.map(d => d.xyzVelocity),
+                        borderColor: 'yellow',
+                        fill: false
+                    });
+                }
+
+                const chart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: datasets
+                    }
+                });
+            });
         })
     </script>
 </body>
