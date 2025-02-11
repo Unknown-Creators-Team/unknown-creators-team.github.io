@@ -82,9 +82,9 @@ $(function () {
         } else if (host == "dev.un-known.xyz") {
             window.location.href =
                 "https://discord.com/oauth2/authorize?client_id=1134773310127878274&response_type=code&redirect_uri=http%3A%2F%2Fdev.un-known.xyz%3A5500%2Flogin.html&scope=guilds+identify+email";
-        } else if (host == "www.un-known.xyz") {
+        } else if (host == "old.un-known.xyz") {
             window.location.href =
-                "https://discord.com/oauth2/authorize?client_id=1134773310127878274&response_type=code&redirect_uri=https%3A%2F%2Fwww.un-known.xyz%2Flogin.html&scope=guilds+identify+email";
+                "https://discord.com/oauth2/authorize?client_id=1134773310127878274&response_type=code&redirect_uri=https%3A%2F%2Fold.un-known.xyz%2Flogin.html&scope=guilds+identify+email";
         }
     }
 
